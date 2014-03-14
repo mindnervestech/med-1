@@ -89,7 +89,7 @@
 			</div>
 			<footer>
 				<p>
-					&copy; 2013 Company, Inc. &middot; <a href="#myModal"
+					&copy; 2014 MindNerves Technologies. &middot; <a href="#myModal"
 						data-toggle="modal">Privacy & Terms</a>
 				</p>
 			</footer>

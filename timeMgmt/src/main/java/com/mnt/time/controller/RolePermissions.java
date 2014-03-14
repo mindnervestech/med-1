@@ -79,9 +79,10 @@ public class RolePermissions {
 			roleLevel.update();
 			
 //			User.findByEmail(request().username()).companyobject.id
-			
+			User user1=User.findByEmail(username);
+			long companyId=user1.getCompanyobject().getId();
 			List<User> users = User.find.where(Expr.and(Expr.eq("role", roleLevel),
-					Expr.eq("role.roleX", RoleX.findByCompany(uid))))
+					Expr.eq("role.roleX", RoleX.findByCompany(companyId))))
 					.findList();
 			
 			for(User user : users){
@@ -219,9 +220,9 @@ public class RolePermissions {
 				String permissions="";
 				if(roleLevel.getPermissions() != null && !"".equals(roleLevel.getPermissions())){
 					blackListedPermissions = Arrays.asList(roleLevel.getPermissions().split("[|]"));
-					permissions = roleLevel.getPermissions();
+					//permissions = roleLevel.getPermissions();
 					for(String permission : allPerission){
-						if(!blackListedPermissions.contains(permission)){
+						if(blackListedPermissions.contains(permission)){
 							permissions = permissions.concat(permission).concat("|");
 						}
 					}
@@ -229,7 +230,7 @@ public class RolePermissions {
 				
 				return new GridViewModel.RowViewModel((roleLevel.getId()).intValue(), newArrayList(
 						roleLevel.getRole_name(),
-						roleLevel.getPermissions(),
+						permissions,
 						Long.toString(roleLevel.getId())));
 			}
 		};

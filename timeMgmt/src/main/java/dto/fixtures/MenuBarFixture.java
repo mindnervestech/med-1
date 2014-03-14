@@ -57,7 +57,11 @@ public class MenuBarFixture {
 		
 		if(resultMenu.size() == 0){
 			resultMenu.add(new MenuItem("Logout","Logout", null, routes.Application.logout.url, null,null));
-			resultMenu.add(new MenuItem("Home","Home", null, routes.Application.index.url, null,null));
+//			resultMenu.add(new MenuItem("Home","Home", null, routes.Application.index.url, null,null));
+		}
+		else
+		{
+			resultMenu.add(new MenuItem("Logout","Logout", null, routes.Application.logout.url, null,null));
 		}
 		return new MenuBar(resultMenu);
 	}

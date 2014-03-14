@@ -3,9 +3,11 @@
 <div class="tabbable container">
 <ul class="nav nav-tabs" style="background:#5c5c5c;">
 	<c:forEach var="items" items="${_menuContext.items}">	
+	
 		 <c:if test="${items.isSubMenu()}"> 	
 		  		<c:if test='${items.name == "Logout"}'>
 		  		<li style="float:right;">
+
 		 			 <a href="<%=com.mnt.time.controller.routes.Application.index.url%>" style="padding-top: 8px; float:left;"> ${user.firstName} |</a>
 		 			 <a style="float:left;" href='${items.url}'>${items.name}</a>
 		 		</li>
@@ -20,7 +22,7 @@
 		 <c:if test="${!items.isSubMenu()}">
 		 	<li class="dropdown">
 		 		<c:if test='${items.name == "Action Items"}'>
-		 			<%  int count = com.mnt.time.controller.Application.count("todo"); if(count != 0) { %>
+		 			<%  int count = com.mnt.time.controller.Application.count("${user.email}"); if(count != 0) { %>
 		 			<div class="noti_bubble"><%=count %></div>
 		 			<%} %>
 		 		</c:if>	
@@ -38,7 +40,6 @@
 </ul>
 <div class="tab-content">
 	<div class="tab-pane active" id="tab-panel-holder-contents">
-		
 	</div>
 </div>
 </div>

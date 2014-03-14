@@ -78,16 +78,17 @@ public class RequestInterceptor implements HandlerInterceptor {
     		}
 		}
         
-        List<String> blackListedPermissions = null;
-        if(user.getPermissions() != null){
-        	blackListedPermissions = Arrays.asList(user.getPermissions().split("[|]"));
-           	if(blackListedPermissions.contains(menu)){
-           		return false;
-           	}
-        }else{
-        	return false;
-        }
-        return true;
+		List<String> blackListedPermissions = null;
+		if (user.getPermissions() != null) {
+			blackListedPermissions = Arrays.asList(user.getPermissions().split("[|]"));
+			if (blackListedPermissions.contains(menu)) {
+				return true;
+			} 
+		} 
+		else {
+			return true;
+		}
+		return false;
 	}
 
 }
