@@ -62,6 +62,38 @@ $(document).ready(function(){
 			}
 		});
 	 	
+		
+		$('#addPermissions').click(function(){
+			/* var values = $('input:checkbox:checked.permissions').map(function () {
+				  return this.value;
+			}); */
+
+			$.ajax({
+				type: "POST",
+				url: "/permission/save",
+				dataType : "text",
+				data: $("#modal-form").serialize(),
+				success: function(data){
+					$('#update-modal').modal('hide');
+					$.pnotify({
+						history:false,
+				        text: data
+				    });
+					permissionSearch.doSearch();
+					
+				},
+				error: function(data){
+					console.log(data);
+				},
+				complete: function(jqXHR,status){
+					console.log(status);
+					console.log(jqXHR);
+					permissionSearch.doSearch();
+				}
+			});
+			return false;
+		});
+	 	
 });
 
 var PermissionSearch = {
@@ -164,37 +196,7 @@ var PermissionSearch = {
 				$('#update-modal').modal();
 				
 				
-				$('#addPermissions').click(function(){
-					/* var values = $('input:checkbox:checked.permissions').map(function () {
-						  return this.value;
-					}); */
-
-					$.ajax({
-						type: "POST",
-						url: "/permission/save",
-						dataType : "text",
-						data: $("#modal-form").serialize(),
-						success: function(data){
-							$('#update-modal').modal('hide');
-							$.pnotify({
-								history:false,
-						        text: data
-						    });
-							permissionSearch.doSearch();
-							
-						},
-						error: function(data){
-							console.log(data);
-						},
-						complete: function(jqXHR,status){
-							console.log(status);
-							console.log(jqXHR);
-							permissionSearch.doSearch();
-						}
-					});
-					return false;
-				})
-		 	}
+			 	}
 			
 				jQuery("#permission_list").jqGrid('bindKeys');
 				jQuery("#permission_list").jqGrid('navGrid','#permission_pager',{del:false,add:false,edit:false,search:false,refresh:false});
