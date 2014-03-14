@@ -130,7 +130,7 @@
 							<input type="text" id="timesheetRows_${loopIndex.index}__mon"
 								name="timesheetRows[${loopIndex.index}].mon"
 								value="${timesheetForm.model.timesheetRows.get(loopIndex.index).mon}"
-								placeholder="0:00" class="smallInput"> <span
+								placeholder="0:00" class="smallInput dayName"> <span
 								class="help-inline"></span> <span class="help-block"></span>
 						</div>
 					</div>
@@ -141,7 +141,7 @@
 							<input type="text" id="timesheetRows_${loopIndex.index}__tue"
 								name="timesheetRows[${loopIndex.index}].tue"
 								value="${timesheetForm.model.timesheetRows.get(loopIndex.index).tue}"
-								placeholder="0:00" class="smallInput"> <span
+								placeholder="0:00" class="smallInput dayName"> <span
 								class="help-inline"></span> <span class="help-block"></span>
 						</div>
 					</div>
@@ -153,7 +153,7 @@
 							<input type="text" id="timesheetRows_${loopIndex.index}__wed"
 								name="timesheetRows[${loopIndex.index}].wed"
 								value="${timesheetForm.model.timesheetRows.get(loopIndex.index).wed}"
-								placeholder="0:00" class="smallInput"> <span
+								placeholder="0:00" class="smallInput dayName"> <span
 								class="help-inline"></span> <span class="help-block"></span>
 						</div>
 					</div>
@@ -165,7 +165,7 @@
 							<input type="text" id="timesheetRows_${loopIndex.index}__thu"
 								name="timesheetRows[${loopIndex.index}].thu"
 								value="${timesheetForm.model.timesheetRows.get(loopIndex.index).thu}"
-								placeholder="0:00" class="smallInput"> <span
+								placeholder="0:00" class="smallInput dayName"> <span
 								class="help-inline"></span> <span class="help-block"></span>
 						</div>
 					</div>
@@ -177,7 +177,7 @@
 							<input type="text" id="timesheetRows_${loopIndex.index}__fri"
 								name="timesheetRows[${loopIndex.index}].fri"
 								value="${timesheetForm.model.timesheetRows.get(loopIndex.index).fri}"
-								placeholder="0:00" class="smallInput"> <span
+								placeholder="0:00" class="smallInput dayName"> <span
 								class="help-inline"></span> <span class="help-block"></span>
 						</div>
 					</div>
@@ -189,7 +189,7 @@
 							<input type="text" id="timesheetRows_${loopIndex.index}__sat"
 								name="timesheetRows[${loopIndex.index}].sat"
 								value="${timesheetForm.model.timesheetRows.get(loopIndex.index).sat}"
-								placeholder="0:00" class="smallInput"> <span
+								placeholder="0:00" class="smallInput dayName"> <span
 								class="help-inline"></span> <span class="help-block"></span>
 						</div>
 					</div>
@@ -201,7 +201,7 @@
 							<input type="text" id="timesheetRows_${loopIndex.index}__sun"
 								name="timesheetRows[${loopIndex.index}].sun"
 								value="${timesheetForm.model.timesheetRows.get(loopIndex.index).sun}"
-								placeholder="0:00" class="smallInput"> <span
+								placeholder="0:00" class="smallInput dayName"> <span
 								class="help-inline"></span> <span class="help-block"></span>
 						</div>
 					</div>
@@ -297,7 +297,7 @@
 				<div class="input">
 					<input type="text" id="timesheetRows_x__mon"
 						name="timesheetRows[x].mon" value="" placeholder="0:00"
-						class="smallInput"> <span class="help-inline"></span> <span
+						class="smallInput dayName"> <span class="help-inline"></span> <span
 						class="help-block"></span>
 				</div>
 			</div>
@@ -306,7 +306,7 @@
 				<div class="input">
 					<input type="text" id="timesheetRows_x__tue"
 						name="timesheetRows[x].tue" value="" placeholder="0:00"
-						class="smallInput"> <span class="help-inline"></span> <span
+						class="smallInput dayName"> <span class="help-inline"></span> <span
 						class="help-block"></span>
 				</div>
 			</div>
@@ -316,7 +316,7 @@
 				<div class="input">
 					<input type="text" id="timesheetRows_x__wed"
 						name="timesheetRows[x].wed" value="" placeholder="0:00"
-						class="smallInput"> <span class="help-inline"></span> <span
+						class="smallInput dayName"> <span class="help-inline"></span> <span
 						class="help-block"></span>
 				</div>
 			</div>
@@ -326,7 +326,7 @@
 				<div class="input">
 					<input type="text" id="timesheetRows_x__thu"
 						name="timesheetRows[x].thu" value="" placeholder="0:00"
-						class="smallInput"> <span class="help-inline"></span> <span
+						class="smallInput dayName"> <span class="help-inline"></span> <span
 						class="help-block"></span>
 				</div>
 			</div>
@@ -336,7 +336,7 @@
 				<div class="input">
 					<input type="text" id="timesheetRows_x__fri"
 						name="timesheetRows[x].fri" value="" placeholder="0:00"
-						class="smallInput"> <span class="help-inline"></span> <span
+						class="smallInput dayName"> <span class="help-inline"></span> <span
 						class="help-block"></span>
 				</div>
 			</div>
@@ -346,7 +346,7 @@
 				<div class="input">
 					<input type="text" id="timesheetRows_x__sat"
 						name="timesheetRows[x].sat" value="" placeholder="0:00"
-						class="smallInput"> <span class="help-inline"></span> <span
+						class="smallInput dayName"> <span class="help-inline"></span> <span
 						class="help-block"></span>
 				</div>
 			</div>
@@ -356,7 +356,7 @@
 				<div class="input">
 					<input type="text" id="timesheetRows_x__sun"
 						name="timesheetRows[x].sun" value="" placeholder="0:00"
-						class="smallInput"> <span class="help-inline"></span> <span
+						class="smallInput dayName"> <span class="help-inline"></span> <span
 						class="help-block"></span>
 				</div>
 			</div>
@@ -431,16 +431,24 @@
 	</div>
 </div>
 
-<style>
-#statusInfo {
-float: right;
-width: 26%;
-}
-.worksheetHeader {
-width: 86%;
-}
-.twipsies well timesheetRow{
-	width: 100% !important;
-}
+<script>
+	$(".dayName").focusout (function() {
+		var d = this.value;
+		console.log(d);
+		
+		  if(parseInt(d) > 24) {
+			  $(this).val(0);
+		  }
+	});
+	
+	$( "body" ).on( "focusout", ".dayName", function() {
+		var d = this.value;
+		  if(parseInt(d) > 24) {
+			  $(this).val(0);
 
-</style>
+		  }
+	});
+
+</script>
+
+

@@ -50,7 +50,7 @@ public class Application  {
     	model.addAttribute("_menuContext", MenuBarFixture.build(username));
     	model.addAttribute("user", User.findByEmail(username));
     	//return "views/home";
-    	return "index";
+    	return "home";
     }
     @RequestMapping(value="/register" , method = RequestMethod.GET)
 	public  String companyregistration()

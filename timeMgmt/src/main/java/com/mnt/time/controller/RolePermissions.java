@@ -41,7 +41,7 @@ import dto.fixtures.MenuBarFixture;
 
 @Controller
 public class RolePermissions {
-	private static final String DELIMITER = " | ";
+	private static final String DELIMITER = "|";
 	
 	 @RequestMapping(value="/rolepermissionIndex" , method = RequestMethod.GET)
 	public String index(ModelMap model,@CookieValue("username") String username) {
@@ -80,14 +80,14 @@ public class RolePermissions {
 			
 //			User.findByEmail(request().username()).companyobject.id
 			
-	/*		List<User> users = User.find.where(Expr.and(Expr.eq("role", roleLevel),
+			List<User> users = User.find.where(Expr.and(Expr.eq("role", roleLevel),
 					Expr.eq("role.roleX", RoleX.findByCompany(uid))))
 					.findList();
 			
 			for(User user : users){
 				user.setPermissions(roleLevel.getPermissions());
 				user.update();
-			}*/
+			}
 			return "Permissions Saved Successfully";
 	}
 	

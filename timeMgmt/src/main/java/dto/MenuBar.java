@@ -73,6 +73,30 @@ public class MenuBar {
 		public boolean isSubMenu(){
 			return (subMenu == null || subMenu.size() == 0);
 		}
+
+		public void setMenu(String menu) {
+			this.menu = menu;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		public void setAccessRight(List<Role> accessRight) {
+			this.accessRight = accessRight;
+		}
+
+		public void setUrl(String url) {
+			this.url = url;
+		}
+
+		public void setSubMenu(List<MenuItem> subMenu) {
+			this.subMenu = subMenu;
+		}
+
+		public void setEntiryObject(List<ObjectBehaviour> entiryObject) {
+			this.entiryObject = entiryObject;
+		}
 		
 		
 	}

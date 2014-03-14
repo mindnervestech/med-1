@@ -73,7 +73,7 @@ public class UserPermissions {
 		}
 		User user = User.find.byId(uid);
 		user.setPermissions(result);
-		user.update(user.id);
+		user.update(user.getId());
 		return "Permissions Saved Successfully";
 	}
 	
@@ -224,12 +224,12 @@ public class UserPermissions {
 					}
 				}
 				
-				return new GridViewModel.RowViewModel((user.id).intValue(), newArrayList(
+				return new GridViewModel.RowViewModel((user.getId()).intValue(), newArrayList(
 						user.getEmployeeId(),
 						user.getFirstName(),
 						user.getLastName(),
 						user.getDesignation().toString(),
-						permissions,
+						user.getPermissions(),
 					Long.toString(user.getId())));
 			}
 		};
