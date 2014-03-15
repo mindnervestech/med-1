@@ -1,12 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-</body>
-</html>
+<div class="container">
+		<div class="heading">
+		
+<form:form action="<%=com.mnt.time.controller.routes.Application.login.url%>" method="get">
+				
+					<br>
+					<br>
+					<br>
+					<fieldset id="login_field" class="right-align" style="width:35%;margin-top:70px;">
+					
+				
+								<div class="well" style="width:100%;">
+									<h3>Please Check your Inbox for your User Name and Password</h3>
+									
+			        			    <p>
+			           				 	<button type="submit" class="btn btn-success" style="margin-left:185px;">Go To Login</button>
+			           			   </p>
+		       			  	 </div>
+			</fieldset>
+			</form:form>
+		</div>
+	</div>	
+	

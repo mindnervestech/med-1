@@ -277,10 +277,10 @@
 				<c:choose>
 					<c:when test="${fieldType.value().dt != null}">
 						<fmt:formatDate var="fmtDate" pattern="dd-MM-YYYY"  value="${fieldType.value().dt}" />
-						<input style="width: 117%;" size="16" type="text" value='${fmtDate}' readonly name="${fieldType.name()}" class='${_fieldClass}'>
+						<input style="width: 100%;" size="16" type="text" value='${fmtDate}' readonly name="${fieldType.name()}" class='${_fieldClass}'>
 					</c:when>
 					<c:otherwise>
-						<input style="width: 117%;" size="16" type="text" value='' name='${fieldType.name()}'
+						<input style="width: 100%;" size="16" type="text" value='' name='${fieldType.name()}'
 							readonly class="add-on">
 					</c:otherwise>
 				</c:choose>

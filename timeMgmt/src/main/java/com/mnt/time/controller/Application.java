@@ -355,18 +355,18 @@ public class Application  {
 			}
 			else
 			{		
-					MailSetting smtpSettings = MailSetting.find.where().eq("companyObject", userobject.companyobject).findUnique();
+					MailSetting smtpSettings = MailSetting.find.where().eq("companyObject", userobject.getCompanyobject()).findUnique();
 					String recipients = "";
 			    	String subject = "";
 			    	String body = "";
 			    	String passWord = generatePassword();
-			    	recipients = userobject.email;
+			    	recipients = userobject.getEmail();
 			    	subject = "Password recovery email";
 			    	body = "Your Login Details :";
-			    	body += "\nUser Name :" + userobject.email;
+			    	body += "\nUser Name :" + userobject.getEmail();
 			    	body += "\nPassword  :" + passWord;
-			    	userobject.tempPassword = 1;
-			    	userobject.password = passWord;
+			    	userobject.setTempPassword(1);
+			    	userobject.setPassword(passWord);
 			    	userobject.update();
 			    	Email.sendOnlyMail(smtpSettings,recipients, subject, body);
 					return "forgotpassword/displaypassword";

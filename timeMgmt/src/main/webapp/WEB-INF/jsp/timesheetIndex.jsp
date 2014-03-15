@@ -9,20 +9,20 @@
 	type="text/javascript"></script>
 
 <jsp:include page="menuContext.jsp" />
-<form:form method="POST" commandName="timesheetForm"
+<form:form method="POST" commandName="timesheetForm" class="container"
 	enctype="multipart/form-data"
 	action="<%=com.mnt.time.controller.routes.Timesheets.create.url%>"
 	id="createTimesheet">
 	<div class="tsMainDiv">
 		<div class="timesheetInfoDiv container">
-			<div id="empInfo">
-				<h5>Employee Name : ${user.firstName} ${user.lastName}</h5>
+			<div class="controls" id="empInfo">
+				<h6>Employee Name : ${user.firstName} ${user.lastName}</h6>
 				<h6>Employee ID : ${user.employeeId}</h6>
 
 				<input type="hidden" id="employeeID" value="${user.id}">
 			</div>
-			<div id="weekInfo">
-				<div style="margin-left: 31%;">
+			<div class="controls" id="weekInfo">
+				<div style="float: right;">
 					<input class="week-picker" type="text" value="" readonly> <input
 						type="button" style="display: none;" id="getEmployeeTimesheet"
 						value="Go" class="btn">
@@ -56,7 +56,7 @@
  			</div>
 		</div>
 
-		<div class="worksheetDiv container"></div>
+		<div class="worksheetDiv "></div>
 	</div>
 </form:form>
 
@@ -92,7 +92,6 @@
 	width: 5%;
 }
 .well {
-	width: 84%;
 	padding-right: 0% !important;
 }
 </style>

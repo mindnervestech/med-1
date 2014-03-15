@@ -1,12 +1,42 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-</body>
+<div class="container">
+		<div class="heading">
+	
+	<form action="<%=com.mnt.time.controller.routes.Application.finduser.url%>" method="GET">
+		
+					<br>
+					<br>
+					<br>
+					
+					<c:if test="${not empty success}">
+				       <p class="success" style="color:red;">${success}</p>
+			        </c:if>
+					
+	                <c:if test="${not empty fail}">
+						<p class="error" style="color: red;">${fail}</p>
+					</c:if>
+	            	
+	            	
+								<fieldset id="registerHere">
+									<div class="well" style="width: 60%;">
+										<p>
+						                <input type="email" id="inputemail" name="inputemail" placeholder="Email"  >
+						            	</p>
+						            	<p>
+						            	<button  type="submit" class="btn btn-info" >Submit</button>
+						            	<a href="/" class="btn btn-warning">Back</a>
+						            	</p>
+						            </div>
+						       </fieldset>
+						</form>
+			</div>
+		</div>
+
+
+
+		<script src="http://code.jquery.com/jquery.js"></script>
+		<script src="resources/javascripts/bootstrap.min.js" ></script>
+
 </html>
