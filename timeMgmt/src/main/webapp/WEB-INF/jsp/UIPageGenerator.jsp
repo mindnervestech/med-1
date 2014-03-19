@@ -13,7 +13,7 @@
 <form id='${_pageContext.pageName()}${"_form"}' action="">
  	<div class="container">	   
 		<c:forEach var="rlist" items="${_pageContext.getFieldLayout().iterator()}">
-	     <div class="row-fluid container">
+	     <div class="row-fluid">
 	     	<c:forEach var="fieldType" items="${rlist.iterator()}">
 	     	
 	     		<c:choose>
@@ -37,7 +37,7 @@
 					</c:when>
 						
 					<c:when test='${rlist.size()==3}'>
-						<div class="span3" style="margin-right: 8%;">
+						<div class="span4">
 					<c:set var="fieldType" value="${fieldType}" scope="request" />
        				<c:set var="_namespace" value="${_pageContext.pageName()}" scope="request" />
       				 <c:set var="_fieldClass" value="span12" scope="request" />

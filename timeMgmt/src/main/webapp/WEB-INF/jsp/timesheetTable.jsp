@@ -8,7 +8,7 @@
 	type="text/javascript"></script>
 <div id="timeSheetTable">
 
-	<div class="worksheetHeader container">
+	<div class="worksheetHeader">
 		<h5>Work/Absence Hours Reporting</h5>
 		<div id="statusInfo">
 			<h6>With :</h6>
@@ -22,8 +22,8 @@
 		</div>
 	</div>
 
-	<div class="reportingTable">
-		<div class="tableCss" style="padding-right: 0%;">
+	<div style="width: 85%;"class="reportingTable">
+		<div class="tableCss">
 			<div class="innerLabelDiv">
 				<div class="largeInputLabel largeInputLabel_First clearfix">Project
 					Codes</div>
@@ -59,7 +59,7 @@
 
 		<c:forEach var="timeSheetRow" varStatus="loopIndex"
 			items="${timesheetForm.model.timesheetRows}">
-			<div class="twipsies well timesheetRow container" >
+			<div class="twipsies well timesheetRow" style="width: 99%;">
 				<div class="innerInputDiv">
 					<div class="innerChainSelect">
 						<div class="clearfix"

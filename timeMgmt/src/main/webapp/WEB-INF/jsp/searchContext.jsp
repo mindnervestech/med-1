@@ -243,7 +243,7 @@
 			<c:forEach var="gridAction" items='${_searchContext.getGridActions().iterator()}'>
 				_image = '/resources/images/${gridAction.icon.name()}.png';
 				
-				show = show + "<a id='${_searchContext.entityName()}${mode}_gridAction' action='${gridAction.target()}' class='tooltipShow' title='${gridAction.tooltip()}' href='#' type='${gridAction.icon.name()}' url='${gridAction.url()}' cell="+cellvalue+" ><img style='max-width:24px; margin-left:-1px;'src='"+_image+"'></a>"
+				show = show + "<a id='${_searchContext.entityName()}${mode}_gridAction' action='${gridAction.target()}' class='tooltipShow' title='${gridAction.tooltip()}' href='#' type='${gridAction.icon.name()}' url='${gridAction.url()}' cell="+cellvalue+" ><img style='max-width:22px; margin-left:5px;'src='"+_image+"'></a>"
 			</c:forEach>
 			return show;
 		},

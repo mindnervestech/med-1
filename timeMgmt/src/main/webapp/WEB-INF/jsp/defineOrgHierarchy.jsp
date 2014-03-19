@@ -137,7 +137,7 @@
 
 				<div class="actions" style="margin-top: 1%;">
 					<input type="button" class="btn btn-info" id="submitButton"
-						value="Submit" style="margin: 1% 2%; width: 8%;"">
+						value="Submit" style="margin: 1% 2%; width: 8%;">
 				</div>
 			</c:if>
 		</form:form>

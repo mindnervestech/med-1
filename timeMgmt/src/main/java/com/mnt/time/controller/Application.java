@@ -559,4 +559,52 @@ public class Application  {
 			}
 	   return count;
    }
+   public static int countLeavesRequest(String username)
+   {
+	   int count = 0;
+	   
+	   User user = User.findByEmail(username);
+	   
+	   if(user==null) return 0;
+
+	   if("Admin".equals(user.getDesignation()))
+		   	{
+			   Expression exp1 = Expr.eq("companyobject.companyCode", user.getCompanyobject().getCompanyCode());
+			   Expression exp2 = Expr.ne("email", user.getEmail());
+			   count = User.find.where().ilike("userStatus","PendingApproval").add(exp1).add(exp2).findRowCount();
+		   	}
+		else if("SuperAdmin".equals(user.getDesignation()))
+		   	{
+			   count = Company.find.where().ilike("companyStatus","PendingApproval").findRowCount();
+		   	}
+		else if(RoleLevel.checkUserLevel(user.getId(), user.getRole().getRole_level()))
+			{
+			 count = ApplyLeave.find.where().eq("status",LeaveStatus.Submitted).findRowCount();
+			}
+	   return count;
+   }
+   public static int countTimesheetRequest(String username)
+   {
+	   int count = 0;
+	   
+	   User user = User.findByEmail(username);
+	   
+	   if(user==null) return 0;
+
+	   if("Admin".equals(user.getDesignation()))
+		   	{
+			   Expression exp1 = Expr.eq("companyobject.companyCode", user.getCompanyobject().getCompanyCode());
+			   Expression exp2 = Expr.ne("email", user.getEmail());
+			   count = User.find.where().ilike("userStatus","PendingApproval").add(exp1).add(exp2).findRowCount();
+		   	}
+		else if("SuperAdmin".equals(user.getDesignation()))
+		   	{
+			   count = Company.find.where().ilike("companyStatus","PendingApproval").findRowCount();
+		   	}
+		else if(RoleLevel.checkUserLevel(user.getId(), user.getRole().getRole_level()))
+			{
+			 count = Timesheet.find.where().and(Expr.eq("status", TimesheetStatus.Submitted),Expr.eq("timesheetWith", user)).findRowCount();
+			}
+	   return count;
+   }
 }

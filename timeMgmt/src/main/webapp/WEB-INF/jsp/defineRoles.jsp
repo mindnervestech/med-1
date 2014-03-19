@@ -13,6 +13,7 @@
 		<div id="rolex">
 			<c:forEach var="role_level" items="${rolexForm.model.roleLevels}"
 				varStatus='loopIndex'>
+				
 				<div class="twipsies well roleLevel">
 					<div class="clearfix">
 						<label for="roleLevels_${loopIndex.index}__role_level">Role
@@ -171,7 +172,7 @@
 							class="help-block"></span>
 					</div>
 				</div>
-			</div>
+			</div> 
 		</div>
 	</fieldset>
 	<div class="actions buttonPosition">

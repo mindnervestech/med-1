@@ -43,6 +43,8 @@ public enum Permissions {
 	Mail(routes.Mail.index.url,Setting,"Mail Setting"),
 	Notification(routes.Notifications.index.url,Setting,"TimeSheet Notification"),
 	DefineRoles(routes.Roles.defineRoles.url,Setting,"Define Roles"),
+	DefineLeaves(routes.Leaves.defineLeaves.url,Setting,"Define Leaves"),
+	LeaveSettings(routes.Leaves.leaveSettings.url,Setting,"Leave Settings"),
 	OrgHierarchy(routes.Roles.showRoles.url,Setting,"Org Hierarchy");		
 	
 	private String url;

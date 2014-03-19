@@ -50,7 +50,7 @@
 			<h3 id="myModalLabel">Permissions</h3>
 			<h7>
 			<strong style="color: red;">Click the Permission which
-				should NOT be accessed</strong></h7>
+				should be accessed</strong></h7>
 		</div>
 		<div class="modal-body">
 			<ul style="list-style-type: none;"></ul>

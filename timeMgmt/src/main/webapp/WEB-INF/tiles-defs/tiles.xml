@@ -101,6 +101,16 @@
     	<put-attribute name="content" value="/WEB-INF/jsp/defineRoles.jsp" />
   	</definition> 
 
+ 	<definition name="defineLeaves" extends="base.definition">
+    	<put-attribute name="title" value="Define Leaves" />
+    	<put-attribute name="content" value="/WEB-INF/jsp/defineLeaves.jsp" />
+  	</definition> 
+
+	<definition name="leaveSettings" extends="base.definition">
+    	<put-attribute name="title" value="Leaves Settings" />
+    	<put-attribute name="content" value="/WEB-INF/jsp/leaveSettings.jsp" />
+  	</definition>
+
   	<definition name="defineOrgHierarchy" extends="base.definition">
     	<put-attribute name="title" value="Define Roles" />
     	<put-attribute name="content" value="/WEB-INF/jsp/defineOrgHierarchy.jsp" />

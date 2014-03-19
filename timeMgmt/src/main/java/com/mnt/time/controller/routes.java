@@ -306,6 +306,18 @@ public interface TimesheetBuckets {
 
 
 public interface Leaves {
+	public interface defineLeaves{
+		public static String url="/defineLeaves";
+	}
+	
+	public interface saveLeaves{
+		public static String url="/saveLeaves";
+	}
+	
+	public interface leaveSettings{
+		public static String url="/leaveSettings";
+	}
+	
 	public interface applyIndex {
 		public static String url="/leaveIndex";
 	}

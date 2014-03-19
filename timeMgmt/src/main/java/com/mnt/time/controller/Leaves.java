@@ -5,7 +5,9 @@ import static play.data.Form.form;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -22,6 +24,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import models.ApplyLeave;
+import models.LeaveLevel;
+import models.LeaveX;
+import models.RoleLevel;
+import models.RoleX;
 import models.User;
 import play.data.DynamicForm;
 import play.data.Form;
@@ -30,6 +36,7 @@ import play.libs.Json;
 import utils.EmailExceptionHandler;
 import utils.ExceptionHandler;
 
+import com.avaje.ebean.Expr;
 import com.custom.domain.LeaveStatus;
 import com.custom.helpers.LeaveApplyContext;
 import com.custom.helpers.LeaveBucketSearchContext;
@@ -274,4 +281,64 @@ public class Leaves {
 				return Json.toJson(jsonMap).toString();
 		}
 	}
+	 @RequestMapping(value="/defineLeaves" , method = RequestMethod.GET)
+	 public String defineLeaves(ModelMap model, @CookieValue("username") String username)
+	 {	
+			User user = User.findByEmail(username);
+			LeaveX leaveX = LeaveX.find.where(Expr.eq("company", user.companyobject)).findUnique();
+			Form<LeaveX> leaveXForm;
+			if(leaveX != null){
+				leaveXForm = form(LeaveX.class).fill(leaveX);
+			}else{
+				LeaveX object = new LeaveX();
+				List<LeaveLevel> leaveLevels = new ArrayList<LeaveLevel>();
+				leaveLevels.add(new LeaveLevel());
+				object.setLeaveLevels(leaveLevels);
+				leaveXForm = form(LeaveX.class).fill(object);
+					
+			}
+			model.addAttribute("user",user);
+			model.addAttribute("_menuContext",MenuBarFixture.build(username));
+			model.addAttribute("leavexForm",leaveXForm);
+			model.addAttribute("leaveLevels",new ArrayList<LeaveLevel>());
+	//		model.addAttribute("levels",getAllRoles(username));
+
+	/*	 User user=User.findByEmail(username);
+		 model.addAttribute("user",user);
+		 model.addAttribute("_menuContext", MenuBarFixture.build(username));
+	*/	 return "defineLeaves";
+	 }
+	 
+	 @RequestMapping(value="/leaveSettings",method = RequestMethod.GET)
+	 public String showLeaves(ModelMap model,@CookieValue("username") String username){
+		 User user=User.findByEmail(username);
+		 model.addAttribute("user",user);
+		 model.addAttribute("roleLevels",Roles.getAllRoles(username));
+		 model.addAttribute("_menuContext", MenuBarFixture.build(username));
+		 return"leaveSettings";
+	 } 
+
+	 @RequestMapping(value="/saveLeaves " ,method=RequestMethod.POST)		
+		public @ResponseBody String saveLeaves(@CookieValue("username")String username,HttpServletRequest request){
+				
+			User user = User.findByEmail(username);
+			Form<LeaveX> leaveXForm = form(LeaveX.class).bindFromRequest(request);
+			LeaveX leaveX = LeaveX.find.where(Expr.eq("company", user.getCompanyobject())).findUnique();
+	//		Form<LeaveX> l1 = form(LeaveX.class).bindFromRequest(request);
+			if(leaveX != null){
+				for(LeaveLevel _rl : leaveXForm.get().getLeaveLevels()){
+						_rl.leaveX = leaveX;
+						_rl.save();
+				}
+			}else{
+				leaveXForm.get().setCompany(user.getCompanyobject());
+		//		leaveXForm.get().setId(1L);
+			
+				leaveXForm.get().save();
+			}
+
+			return "Defined Leaves has been saved";
+	 
+	 }
+
 }

@@ -21,8 +21,8 @@
 		 </c:if>
 		 <c:if test="${!items.isSubMenu()}">
 		 	<li class="dropdown">
-		 		<c:if test='${items.name == "Action Items"}'>
-		 			<%  int count = com.mnt.time.controller.Application.count("${user.email}"); if(count != 0) { %>
+		 		<c:if test='${items.name == "Actions"}'>
+ 		 			<% int count =com.mnt.time.controller.Application.count(((models.User)request.getAttribute("user")).getEmail()); if(count != 0) { %>
 		 			<div class="noti_bubble"><%=count %></div>
 		 			<%} %>
 		 		</c:if>	
