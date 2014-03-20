@@ -2,7 +2,7 @@
 	color: #f4995d;
 }
 
-.show-link{background:url("../images/custom/show.png") no-repeat; padding:14px; padding-top:1px; margin-left:10%;}
+.show-link{background:url("../images/custom/show.png") no-repeat; padding:14px; padding-top:1px; background-size: 71%; margin-left:25%;}
 
 .customTextArea{
 	width: 500px !important;

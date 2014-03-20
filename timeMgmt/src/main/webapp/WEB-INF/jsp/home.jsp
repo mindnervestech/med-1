@@ -9,133 +9,191 @@
 
 <style>
 .textResponse {
-	width: 27% !important;
 	font-weight: bold;
 	float: left;
 }
 
 .dataResponse {
-	margin-left: 19%;
-}
-.container{
-width: 0px !importent;
+	margin-left: 5%;
 }
 
+.container {
+	width: 0px!importent;
+}
 
+h5 {
+	margin-bottom: 0%;
+	margin-top: 0%;
+}
+
+body {
+	font-size: 14px !important;
+}
 </style>
 
-<div class="container">
-	<div class="well" style="width: 53%; margin: 0 auto;">
-		<form:form
-			action="<%=com.mnt.time.controller.routes.Application.changePassword.url%>"
-			id="changePassword">
-			<fieldset>
-				<div class="span7 form-inline">
-					<h5 align="left" class="textResponse">
-						<span class="text-info">Salutation</span>
-					</h5>
-					<input class="dataResponse" type="text" value="${user.salutation}"
-						readonly="readonly">
-				</div>
-				<div class="span7 form-inline">
-					<h5 align="left" class="textResponse">
-						<span class="text-info">First Name</span>
-					</h5>
-					<input class="dataResponse" type="text" id="firstName"
-						name="firstName" value="${user.firstName.toUpperCase()}"
-						readonly="readonly">
-				</div>
-				<c:if test="${user.middleName != null}">
-					<div class="span7 form-inline">
-						<h5 align="left" class="textResponse">
-							<span class="text-info">Middle Name</span>
-						</h5>
-						<input class="dataResponse" type="text" id="middleName"
-							name="middleName" value="${user.middleName.toUpperCase()}"
-							readonly="readonly">
+<div class="row">
+	<div class="col-lg-9 col-md-8">
+
+		<div class="timeline-cover">
+			<div class="widget cover">
+				<div class="widget-body padding-none margin-none">
+					<div class="top">
+						<img src="/resources/images/1.jpg" class="img-responsive"
+							style="width: 942px; height: -29%; height: 205px; margin-top: -6%; margin-left: 2%;" />
 					</div>
-				</c:if>
+
+					<div class="status innerAll" style="margin-left: 3%;">
+						<i class="fa fa-quote-left text-muted pull-left fa-fw"></i>
+						<p class="lead margin-none">Welcome
+							${user.firstName.toUpperCase()} ${user.lastName.toUpperCase()}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="col-sm-6">
+				<div style="margin-left: 5%; margin-top: -2%;"
+					class="innerAll bg-white">
+					<h5>User Profile</h5>
+					<div style="float: left;" class="media innerB ">
+						<a href="" class="pull-left"> <img
+							src="/resources/images/22.jpg" style="margin-left: 2%;"
+							width="75" />
+						</a>
+
+					</div>
+				</div>
+			</div>
+			<div class="container">
+				<div class="" style="width: 53%; margin: 0 auto; float: left;">
+					<div
+						style="float: left; float: right; margin-right: -49%; margin-top: -10%;">
+						<h3>Notifications</h3>
+						<% int leavesRequest =com.mnt.time.controller.Application.countLeavesRequest(((models.User)request.getAttribute("user")).getEmail()); 
+						   int timesheetRequest =com.mnt.time.controller.Application.countTimesheetRequest(((models.User)request.getAttribute("user")).getEmail());
+						if(leavesRequest != 0) { %>
+							<h5>Pending Leaves Request :<%=leavesRequest %> </h5>
+			 			<%} 
+			 			if(leavesRequest == 0  && timesheetRequest == 0 ) { %>
+							<h5>No Pending Leaves and Timesheets Request </h5>
+			 			<%} 
+						if(timesheetRequest != 0) { %>
+						<h5>Pending Timesheet Request :<%=timesheetRequest %> </h5>
+		 			<%}
+			 			%>
+			 			
+					</div>
+					<form:form
+						action="<%=com.mnt.time.controller.routes.Application.changePassword.url%>"
+						id="changePassword">
+						<%-- 			
+				<div class="span6 form-inline" >
+					<h5 align="left" class="textResponse">
+						<span class="text-info span3" style="color: #797979">First Name :</span>
+						<span>${user.firstName.toUpperCase()}</span>
+					</h5>
+					
+				</div>
 				<c:if test="${user.lastName != null}">
-					<div class="span7 form-inline">
+					<div class="span6 form-inline">
 						<h5 align="left" class="textResponse">
-							<span class="text-info">Last Name</span>
+							<span class="text-info span3"style="color: #797979">Last Name :</span>
+							<span>${user.lastName.toUpperCase()}</span>
 						</h5>
-						<input class="dataResponse" type="text" id="lastName"
-							name="lastName" value="${user.lastName.toUpperCase()}"
-							readonly="readonly">
+						
+						
 					</div>
 				</c:if>
-				<div class="span7 form-inline">
-					<h5 align="left" class="textResponse">
-						<span class="text-info">Email</span>
-					</h5>
-					<input class="dataResponse" type="text" id="email" name="email"
-						value="${user.email}" readonly="readonly">
-				</div>
-				<div class="span7 form-inline">
-					<h5 align="left" class="textResponse">
-						<span class="text-info">Employee Id</span>
-					</h5>
-					<input class="dataResponse" type="text" id="employeeId"
-						name="employeeId" value="${user.employeeId}" readonly="readonly">
-				</div>
-				<c:if test="${user.companyobject != null}">
-					<div class="span7 form-inline">
-						<h5 align="left" class="textResponse">
-							<span class="text-info">Company</span>
-						</h5>
-						<input class="dataResponse" type="text"
-							value="${user.companyobject.companyName.toUpperCase()}"
-							readonly="readonly">
-					</div>
-				</c:if>
-
-				<div class="span7 form-inline">
-					<h5 align="left" class="textResponse">
-						<span class="text-info">Role</span>
-					</h5>
-					<input class="dataResponse" type="text" value="${user.designation}"
-						readonly="readonly">
-				</div>
-
-				<c:if
-					test="${user.manager != null && user.manager.lastName != null}">
-					<div class="span7 form-inline">
-						<h5 align="left" class="textResponse">
-							<span class="text-info">Reporting Manager</span>
-						</h5>
-						<input class="dataResponse" type="text"
-							value="${user.manager.firstName.toUpperCase()} ${user.manager.lastName.toUpperCase()}"
-							readonly="readonly">
-					</div>
-
-				</c:if>
-
-				<div class="control-group">
-					<div class="controls">
-						<div class="span7 form-inline">
+ --%>
+						<div class="span6 form-inline">
 							<h5 align="left" class="textResponse">
-								<span class="text-info">New Password</span>
+								<span class="text-info span3" style="color: #797979">Email
+									:</span> <span>${user.email}</span>
 							</h5>
-							<input class="dataResponse" type="password" id="password"
-								name="password" placeholder="New Password" required value="">
+
+
 						</div>
-					</div>
+						<div class="span6 form-inline">
+							<h5 align="left" class="textResponse">
+								<span class="text-info span3" style="color: #797979">Employee
+									Id :</span> <span>${user.employeeId}</span>
+							</h5>
+
+
+						</div>
+						<c:if test="${user.companyobject != null}">
+							<div class="span6 form-inline">
+								<h5 align="left" class="textResponse">
+									<span class="text-info span3" style="color: #797979">Company
+										:</span> <span>${user.companyobject.companyName.toUpperCase()}</span>
+								</h5>
+
+
+							</div>
+						</c:if>
+
+						<div class="span6 form-inline">
+							<h5 align="left" class="textResponse">
+								<span class="text-info span3" style="color: #797979">Role
+									:</span> <span>${user.designation}</span>
+							</h5>
+
+						</div>
+
+						<c:if
+							test="${user.manager != null && user.manager.lastName != null}">
+							<div class="span6 form-inline">
+								<h5 align="left" class="textResponse">
+									<span class="text-info span3" style="color: #797979">Reporting
+										Manager :</span> <span>${user.manager.firstName.toUpperCase()}
+										${user.manager.lastName.toUpperCase()}</span>
+								</h5>
+
+
+							</div>
+
+						</c:if>
+
+						<div class="control-group">
+							<div class="controls">
+								<div class="span6 form-inline">
+									<h5 align="left" class="textResponse">
+										<span class="text-info span3" style="color: #797979">New
+											Password</span>
+									</h5>
+									<input class="dataResponse span3"
+										style="width: 143px; padding: 0%; margin-bottom: 1%;"
+										type="password" id="password" name="password"
+										placeholder="New Password" required value="">
+								</div>
+							</div>
+						</div>
+						<div class="span6 form-inline">
+							<h5 align="left" class="textResponse">
+								<span class="text-info span3" style="color: #797979">Confirm
+									New Password</span>
+							</h5>
+							<input class="dataResponse span3"
+								style="padding: 0%; width: 143px;" type="password"
+								id="cpassword" name="cpassword"
+								placeholder="Confirm New Password" required value="">
+						</div>
+
+						<button type="submit" class="btn btn-success"
+							style="margin-left: 46%; margin-top: 2%;">Submit</button>
+					</form:form>
 				</div>
-				<div class="span7 form-inline">
-					<h5 align="left" class="textResponse">
-						<span class="text-info">Confirm New Password</span>
-					</h5>
-					<input class="dataResponse" type="password" id="cpassword"
-						name="cpassword" placeholder="Confirm New Password" required
-						value="">
-				</div>
-			</fieldset>
-			<button type="submit" class="btn btn-success"
-				style="margin-left: 46%; margin-top: 2%;">Submit</button>
-		</form:form>
+			</div>
+
+
+
+		</div>
+
 	</div>
-</div>
+
+
 
 <script type="text/javascript"
 	src="resources/javascripts/jquery.validate.min.js"></script>
@@ -179,23 +237,25 @@ width: 0px !importent;
 												},
 											},
 
-											errorClass : "help-inline",
-											errorElement : "span",
-											highlight : function(element) {
-												$(element).closest(
-														'.control-group')
-														.removeClass('success')
-														.addClass('error');
-											},
-											success : function(element) {
-												element
-														.addClass('valid')
-														.closest(
-																'.control-group')
-														.removeClass('error')
-														.addClass('success');
-											}
-										});
+												errorClass : "help-inline",
+												errorElement : "span",
+												highlight : function(element) {
+													$(element).closest(
+															'.control-group')
+															.removeClass(
+																	'success')
+															.addClass('error');
+												},
+												success : function(element) {
+													element
+															.addClass('valid')
+															.closest(
+																	'.control-group')
+															.removeClass(
+																	'error')
+															.addClass('success');
+												}
+											});
 
 					});
 
