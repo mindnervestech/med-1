@@ -8,13 +8,13 @@
 		  		<c:if test='${items.name == "Logout"}'>
 		  		<li style="float:right;">
 
-		 			 <a href="<%=com.mnt.time.controller.routes.Application.index.url%>" style="padding-top: 8px; float:left;"> ${user.firstName} |</a>
-		 			 <a style="float:left;" href='${items.url}'>${items.name}</a>
+		 			 <a href="${pageContext.request.contextPath}/<%=com.mnt.time.controller.routes.Application.index.url%>" style="padding-top: 8px; float:left;"> ${user.firstName} |</a>
+		 			 <a style="float:left;" href="${pageContext.request.contextPath}/${items.url}">${items.name}</a>
 		 		</li>
 		 		</c:if>
 		 		<c:if test='${items.name != "Logout"}'>
 		 		<li>
-		 			<a href='${items.url}'>${items.name}</a>
+		 			<a href="${pageContext.request.contextPath}/${items.url}">${items.name}</a>
 		 		</li>
 		 		</c:if>
 		 	
@@ -30,7 +30,7 @@
 		 			<ul class="dropdown-menu">
 		 			
                   	<c:forEach var="subMenu" items="${items.getSubMenu()}">
-                 	 <li><a href='${subMenu.url}' >${subMenu.name}</a></li>
+                 	 <li><a href="${pageContext.request.contextPath}/${subMenu.url}">${subMenu.name}</a></li>
                  	</c:forEach>
                 	</ul>
 		 	</li>

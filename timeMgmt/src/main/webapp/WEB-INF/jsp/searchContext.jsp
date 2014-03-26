@@ -106,10 +106,10 @@
  	var  ${_searchContext.entityName()}${mode}${"_SearchGrid"} = {
  			
  	
-			_searchURL: "${_searchContext.searchUrl()}",
+			_searchURL: "${pageContext.request.contextPath}/${_searchContext.searchUrl()}",
 			initialise: function (){
 				$('#${_searchContext.entityName()}${mode}${"_jqGrid_list"}').jqGrid({
-			   	url:'${_searchContext.searchUrl()}',
+			   	url:'${pageContext.request.contextPath}/${_searchContext.searchUrl()}',
 			   	height:231,
 			   	width: $('#${_searchContext.entityName()}${mode}${"_search"}').width() + 40,
 			   	datatype: 'json',
@@ -241,7 +241,7 @@
 			
 			_actionSize  = ${_searchContext.getGridActions().size()};
 			<c:forEach var="gridAction" items='${_searchContext.getGridActions().iterator()}'>
-				_image = '/resources/images/${gridAction.icon.name()}.png';
+				_image = 'resources/images/${gridAction.icon.name()}.png';
 				
 				show = show + "<a id='${_searchContext.entityName()}${mode}_gridAction' action='${gridAction.target()}' class='tooltipShow' title='${gridAction.tooltip()}' href='#' type='${gridAction.icon.name()}' url='${gridAction.url()}' cell="+cellvalue+" ><img style='max-width:22px; margin-left:5px;'src='"+_image+"'></a>"
 			</c:forEach>
@@ -262,7 +262,7 @@
 			
 			jQuery('#${_searchContext.entityName()}${mode}${"_jqGrid_list"}').setGridParam({
 				mtype:'GET',
-				url:'${_searchContext.searchUrl()}' + "?" + ${_searchContext.entityName()}${"_squrl"}
+				url:'${pageContext.request.contextPath}/${_searchContext.searchUrl()}' + "?" + ${_searchContext.entityName()}${"_squrl"}
 			}).trigger('reloadGrid');
 			
 			return false;
@@ -370,7 +370,7 @@
 					return;
 				}
 				$.ajax({
-					url:'${_searchContext.showEditUrl()}',
+					url:'${pageContext.request.contextPath}/${_searchContext.showEditUrl()}',
 					data: {query: s[0]},
 					success: function(data) {
 								
@@ -383,7 +383,7 @@
 			        			width:window.innerWidth * 0.8,
 			        			increaseHeight:100,
 			        			leftPanelWidthPercent:20,
-			        			submitUrl:'${_searchContext.editUrl()}',
+			        			submitUrl:'${pageContext.request.contextPath}/${_searchContext.editUrl()}',
 			        			id:'${_searchContext.entityName()}${"_edit-wizard"}',
 			        			onCardReady: function(_currentCard){
 			        					
@@ -507,7 +507,7 @@
 									return;
 								}
 								$.ajax({
-									url:'${button.url()}',
+									url:'${pageContext.request.contextPath}/${button.url()}',
 									data: {query: s[0]},
 									success: function(data) {
 										$('#custom-modal-container').empty();
@@ -545,7 +545,7 @@
 	<c:if test="${_parentSearchCtx == null}">
 		var options = {width:window.innerWidth * 0.8 ,
 				increaseHeight:100,leftPanelWidthPercent:20,
-				submitUrl:'${_searchContext.createUrl()}',
+				submitUrl:'${pageContext.request.contextPath}/${_searchContext.createUrl()}',
 				id:'${_searchContext.entityName()}${"_add-wizard"}',
 				onCardReady: function(_currentCard){
 					
