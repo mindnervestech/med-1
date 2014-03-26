@@ -12,15 +12,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Bootstrap -->
-<script src="resources/javascripts/jquery-1.9.0.min.js" type="text/javascript"></script>
-<link rel="stylesheet" media="screen" href="resources/stylesheets/bootstrap.css">
-<link rel="stylesheet" href="resources/stylesheets/bootstrap-responsive.css">
-<link rel="stylesheet"  href="resources/stylesheets/select2.css" />
+<script src='<c:url value="resources/javascripts/jquery-1.9.0.min.js"/>' type="text/javascript"></script>
+<link rel="stylesheet" media="screen" href='<c:url value="resources/stylesheets/bootstrap.css"/>'>
+<link rel="stylesheet" href='<c:url value="resources/stylesheets/bootstrap-responsive.css"/>'>
+<link rel="stylesheet"  href='<c:url value="resources/stylesheets/select2.css"/>' />
 
-<script src="resources/javascripts/bootstrap.min.js"></script>
-<script type="text/javascript" src="resources/javascripts/jquery.validate.min.js"></script>
-<script type="text/javascript" src="resources/javascripts/select2.js"></script>
-<script type="text/javascript" src="resources/javascripts/select2_locale_en.js.template"></script>
+<script src='<c:url value="resources/javascripts/bootstrap.min.js"/>'></script>
+<script type="text/javascript" src='<c:url value="resources/javascripts/jquery.validate.min.js"/>'></script>
+<script type="text/javascript" src='<c:url value="resources/javascripts/select2.js"/>'></script>
+<script type="text/javascript" src='<c:url value="resources/javascripts/select2_locale_en.js.template"/>'></script>
 </head>
 
 <body>
@@ -30,7 +30,7 @@
 		<div class="container">
 			<div class="heading">
 				<form:form action="changePassword" method="POST" id="changePassword">
-					<a href="/"><img alt="" src="resources/images/custom/logo.png"></a>
+					<a href="/"><img alt="" src='<c:url value="resources/images/custom/logo.png"/>'></a>
 					<legend></legend>
 					<br>
 					<br>
@@ -81,7 +81,7 @@
 				},
 				oldpassword : {
 					remote : {
-						url:"/checkOldPassword",
+						url:"${pageContext.request.contextPath}/checkOldPassword",
 						type : "post",
 						data : {
 							q : function(){

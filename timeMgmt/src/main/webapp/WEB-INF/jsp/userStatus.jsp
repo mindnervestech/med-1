@@ -68,11 +68,11 @@ $( ".tooltipShow" ).tooltip('show');
  
  function User_confimationDialog(_url)
  {
-	 if(_url == '/userStatusApprove'){
+	 if(_url == '${pageContext.request.contextPath}/userStatusApprove'){
 		 return true;
 	 }
 	 
-	 if(_url == '/userStatusdisapprove'){
+	 if(_url == '${pageContext.request.contextPath}/userStatusdisapprove'){
 		 return true;
 	 }
 	 return false;

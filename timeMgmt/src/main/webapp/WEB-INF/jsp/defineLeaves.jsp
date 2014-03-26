@@ -5,32 +5,49 @@
 <h4>
 	<b style="width: 1051px; margin-left: 20px;"><i>Define Leaves</i></b>
 </h4>
-<script src="resources/customScripts/defineLeave.js" type="text/javascript"></script>
-<form:form method="POST" commandName="leavexForm" action="<%=com.mnt.time.controller.routes.Leaves.saveLeaves.url%>" id="form">
+<script src='<c:url value="resources/customScripts/defineLeave.js"/>' type="text/javascript"></script>
+<form:form method="POST" commandName="leavexForm"
+	action="${pageContext.request.contextPath}/<%=com.mnt.time.controller.routes.Leaves.saveLeaves.url%>"
+	id="form">
 	<fieldset>
 		<div id="leavex">
-			<div class=" twipsies well leaveLevel" style="width: 96%; ">
-				<div class="clearfix" style="margin-right: 4%;float: left;">
-					<label for="leaveLevels_0__leave">Leaves Type</label> <input
-						type="text" name="leaveLevels[0].leave_type"
-						id="leaveLevels_0__leave_type" class="input-small"
-						placeholder="Leave Type">
+			<c:forEach var="leaves" items="${leaveLevels}" varStatus='loopIndex'>
+				<div class=" twipsies well leaveLevel" style="width: 96%;">
+					<div class="clearfix" style="margin-right: 4%; float: left;">
+						<label for="leaveLevels_${loopIndex.index}__leave">Leaves
+							Type</label> <input type="text"
+							name="leaveLevels[${loopIndex.index}].leave_type"
+							value="${leaves.getLeave_type()}"
+							id="leaveLevels_${loopIndex.index}__leave_type"
+							class="input-small" placeholder="Leave Type">
+					</div>
+					<div class="clearfix" style="width: 52%;">
+						<label for="leaveLevels_${loopIndex.index}__leave">Carried
+							Forward</label> <select
+							id="leaveLevels_${loopIndex.index}__carry_forward"
+							name="leaveLevels[${loopIndex.index}].carry_forward"
+							class="input-small">
+							<option class="largeInput largeInputFirst required" value="">-select-</option>
+							<option class="largeInput largeInputFirst required" value="YES">YES</option>
+							<option class="largeInput largeInputFirst required" value="NO">NO</option>
+							<option class="largeInput largeInputFirst required" selected
+								value="${leaves.getCarry_forward()}">${leaves.getCarry_forward()}</option>
+						</select> <a class="removeLeave btn danger pull-right">Remove</a>
+					</div>
+					<div class="clearfix" style="margin-right: 4%; float: left;">
+						<input type="hidden" name="leaveLevels[${loopIndex.index}].id"
+							value="${leaves.getId()}"
+							id="leaveLevels_${loopIndex.index}__leave_type"
+							class="input-small">
+					</div>
+
 				</div>
-				<div class="clearfix" style="width: 52%;">
-					<label for="leaveLevels_0__leave">Carried Forward</label> <select
-						id="leaveLevels_0__carry_forward"
-						name="leaveLevels[0].carry_forward" class="input-small">
-						<option class="largeInput largeInputFirst required" value="">-select-</option>
-						<option class="largeInput largeInputFirst required" value="YES">YES</option>
-						<option class="largeInput largeInputFirst required" value="NO">NO</option>
-					</select> <a class="removeLeave btn danger pull-right">Remove</a>
-				</div>
-			</div>
+			</c:forEach>
 
 
 
-			<div class="twipsies well leaveLevel_template hidden" >
-				<div class="clearfix" style="margin-right: 4%;float: left;">
+			<div class="twipsies well leaveLevel_template hidden">
+				<div class="clearfix" style="margin-right: 4%; float: left;">
 					<label for="leaveLevels_x__leave">Leaves Type</label> <input
 						type="text" name="leaveLevels[x].leave_type"
 						id="leaveLevels_x__leave_type" class="input-small"
@@ -45,14 +62,18 @@
 						<option class="largeInput largeInputFirst required" value="NO">NO</option>
 					</select> <a class="removeLeave btn danger pull-right">Remove</a>
 				</div>
+				<div class="clearfix" style="margin-right: 4%; float: left;">
+					<input type="hidden" name="leaveLevels[x].id" value=""
+						id="leaveLevels_x__leave_type" class="input-small">
+				</div>
+
 			</div>
 		</div>
 
 
 	</fieldset>
 	<div class=" actions buttonPosition">
-		<a class="addMore btn btn-success">Add More</a> 
-	<input type="button"
+		<a class="addMore btn btn-success">Add More</a> <input type="button"
 			class="btn btn-info" id="submitButton" value="Submit"
 			style="width: 9%;">
 	</div>
@@ -67,7 +88,7 @@
 			$.ajax({
 				type : "POST",
 				data : $("#form").serialize(),
-				url : "/saveLeaves",
+				url : "${pageContext.request.contextPath}/saveLeaves",
 				success : function(data) {
 					$.pnotify({
 						history : false,
@@ -84,9 +105,7 @@
  	background-color: #ffffff; 
  	border: 0px solid #e3e3e3;
 } */
- .input-small {
+.input-small {
 	width: 159px !important;
 }
- 
-
 </style>

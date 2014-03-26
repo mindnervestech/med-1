@@ -198,7 +198,7 @@
 
 <script>
 	$("#approveTimeSheet").click(function(){
-		$.get('/timesheet/approveTimesheetsOk', {id: $('#timesheetID').html()}, 
+		$.get('${pageContext.request.contextPath}/timesheet/approveTimesheetsOk', {id: $('#timesheetID').html()}, 
 				function(response) {
 					_dataType = JSON.parse(response);
 					$("#custom-modal-container").modal('hide');
@@ -211,7 +211,7 @@
 	});
 
 	$("#rejectTimeSheet").click(function(){
-		$.get('/timesheet/rejectTimesheetsOk', {id: $('#timesheetID').html()}, 
+		$.get('${pageContext.request.contextPath}/timesheet/rejectTimesheetsOk', {id: $('#timesheetID').html()}, 
 				function(response) {
 			_dataType = JSON.parse(response);
 			$("#custom-modal-container").modal('hide');

@@ -25,7 +25,7 @@
 	<h4>Feedback For ${user.firstName} ${user.lastName}</h4>
 </div>
 
-<form action="<%=com.mnt.time.controller.routes.Feedbacks.create.url%>"
+<form action="${pageContext.request.contextPath}/<%=com.mnt.time.controller.routes.Feedbacks.create.url%>"
 	method="GET" id="createFeedbackForm" class="formClass"
 	enctype="multipart/form-data">
 	<input type="hidden" value="${user.id}" name="employeeID"> <br>
@@ -74,7 +74,7 @@
 
 <script>
 	$("#feedbackSubmitBtn").click(function(){
-		$.post("/submitFeedback",$('#createFeedbackForm').serialize(), function(response) {
+		$.post("${pageContext.request.contextPath}/submitFeedback",$('#createFeedbackForm').serialize(), function(response) {
 			$('#custom-modal-container').modal('hide');
 			$.pnotify({
 				history:false,

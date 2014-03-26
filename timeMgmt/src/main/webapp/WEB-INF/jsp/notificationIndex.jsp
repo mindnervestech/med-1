@@ -4,7 +4,7 @@
 <jsp:include page="menuContext.jsp"/> 
   <h3><b><i>TimeSheet Notification</i></b></h3>
   		
-  		<form action="<%=com.mnt.time.controller.routes.Notifications.save.url%>" id="notificationSettings" method="POST">
+  		<form action="${pageContext.request.contextPath}<%=com.mnt.time.controller.routes.Notifications.save.url%>" id="notificationSettings" method="POST">
 			
 			<c:forEach var="_node" items="${notifyForm.get().iterator()}">
 			<div class="container">

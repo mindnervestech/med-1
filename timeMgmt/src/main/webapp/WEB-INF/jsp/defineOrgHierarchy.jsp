@@ -3,15 +3,13 @@
 
 <jsp:include page="menuContext.jsp" />
 
-<link rel="stylesheet" media="screen"
-	href="resources/stylesheets/customRoleX.css")">
-<script src="resources/customScripts/roleScript.js"
-	type="text/javascript"></script>
+<link rel="stylesheet" media="screen" href='<c:url value="resources/stylesheets/customRoleX.css"/>'>
+<script src='<c:url value="resources/customScripts/roleScript.js"/>' type="text/javascript"></script>
 
 <fieldset>
 	<div id="rolex">
 		<form:form method="POST" commandName="rolexForm"
-			action="<%=com.mnt.time.controller.routes.Roles.saveRole.url%>"
+			action="${pageContext.request.contextPath}/<%=com.mnt.time.controller.routes.Roles.saveRole.url%>"
 			id="form">
 			<c:if test="${rolexForm==null}">
 				<h4>List defined Role First</h4>
@@ -153,7 +151,7 @@
 				$.ajax({
 					type : "POST",
 					data : $("#form").serialize(),
-					url : "/saveOrg",
+					url : "${pageContext.request.contextPath}/saveOrg",
 					success : function(data) {
 						$.pnotify({
 							history : false,

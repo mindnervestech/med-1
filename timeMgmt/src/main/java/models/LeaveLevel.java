@@ -40,15 +40,15 @@ public class LeaveLevel extends Model{
 	}
 	
 	public static LeaveLevel findByUser(Long id, String pm) {
-        return find.where().add(Expr.eq("LeaveX", LeaveX.findByCompany(User.findById(id).getCompanyobject().getId()))).findUnique();
+        return find.where().add(Expr.eq("leaveX", LeaveX.findByCompany(User.findById(id).getCompanyobject().getId()))).findUnique();
     }
 	
 	public static List<LeaveLevel> findListByCompany(Long id) {
-		return find.where().add(Expr.eq("LeaveX",LeaveX.find.where().eq("company", Company.find.byId(id)).findUnique())).findList();
+		return find.where().add(Expr.eq("leaveX",LeaveX.find.where().eq("company", Company.find.byId(id)).findUnique())).findList();
     }
 	
 	public static LeaveLevel findByCompany(Long id) {
-		return find.where().add(Expr.eq("LeaveX",LeaveX.find.where().eq("company", Company.find.byId(id)).findUnique())).findUnique();
+		return find.where().add(Expr.eq("leaveX",LeaveX.find.where().eq("company", Company.find.byId(id)).findUnique())).findUnique();
     }
 
 	public String getLeave_type() {

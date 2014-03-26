@@ -45,11 +45,11 @@
  
  function Company_confimationDialog(_url)
  {
-	 if(_url == '/companyStatusApprove'){
+	 if(_url == '${pageContext.request.contextPath}/companyStatusApprove'){
 		 return true;
 	 }
 	 
-	 if(_url == '/companyStatusDisapprove'){
+	 if(_url == '${pageContext.request.contextPath}/companyStatusDisapprove'){
 		 return true;
 	 }
 	 return false;

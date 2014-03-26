@@ -69,7 +69,7 @@
 	$(document).ready(
 			function() {
 				rolePermissionSearch = RolePermissionSearch
-						.initialise("<%=com.mnt.time.controller.routes.RolePermissions.getRoleList.url%>");
+						.initialise("${pageContext.request.contextPath}<%=com.mnt.time.controller.routes.RolePermissions.getRoleList.url%>");
 				$("#role_permission_search").click(function() {
 					rolePermissionSearch.doSearch();
 				});
@@ -85,7 +85,7 @@
 					}); */
 					$.ajax({
 						type : "POST",
-						url : "/rolepermission/save",
+						url : "${pageContext.request.contextPath}rolepermission/save",
 						data : $("#role-modal-form").serialize(),
 						success : function(data) {
 							$('#role-update-modal').modal('hide');
@@ -173,7 +173,7 @@
 
 									$.ajax({
 										type : "POST",
-										url : "/rolepermission/update",
+										url : "${pageContext.request.contextPath}rolepermission/update",
 										data : {
 											id : id
 										},

@@ -70,7 +70,7 @@
 												minimumInputLength: 2,
 												multiple:${fieldType.multiselect()},
 											    ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
-											        url: "/findDelegatedTo",
+											        url: "${pageContext.request.contextPath}/findDelegatedTo",
 											        dataType: 'json',
 											        data: function (term, page) {
 											            return {
@@ -206,7 +206,7 @@
 					test="${fieldType.validation() !=null && fieldType.validation().required()}">
 					<sup style="color: red"> *</sup>
 				</c:if> <img id='${_namespace}${fieldType.name()${"_browse"}' alt=""
-				src="images/browse.jpg">
+				src='<c:url value="images/browse.jpg"/>'>
 			</label>
 			<div class="controls">
 				<c:choose>

@@ -4,7 +4,7 @@
 <div class="container">
 		<div class="heading">
 	
-	<form action="<%=com.mnt.time.controller.routes.Application.finduser.url%>" method="GET">
+	<form action="${pageContext.request.contextPath}<%=com.mnt.time.controller.routes.Application.finduser.url%>" method="GET">
 		
 					<br>
 					<br>
@@ -36,7 +36,7 @@
 
 
 
-		<script src="http://code.jquery.com/jquery.js"></script>
-		<script src="resources/javascripts/bootstrap.min.js" ></script>
+		<script src='<c:url value="http://code.jquery.com/jquery.js"/>'></script>
+		<script src='<c:url value="resources/javascripts/bootstrap.min.js"/>' ></script>
 
 </html>

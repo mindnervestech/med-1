@@ -1,7 +1,7 @@
-<link rel="stylesheet"  href="resources/stylesheets/BarChart.css" />
-<link rel="stylesheet"  href="resources/stylesheets/base.css" />
-<link rel="stylesheet"  type="text/css" media="all" href="resources/stylesheets/jquery.pnotify.default.css" />
-<script type="text/javascript" src="resources/javascripts/jit.js"></script>
+<link rel="stylesheet"  href='<c:url value="resources/stylesheets/BarChart.css"/>' />
+<link rel="stylesheet"  href='<c:url value="resources/stylesheets/base.css"/>' />
+<link rel="stylesheet"  type="text/css" media="all" href='<c:url value="resources/stylesheets/jquery.pnotify.default.css"/>' />
+<script type="text/javascript" src='<c:url value="resources/javascripts/jit.js"/>'></script>
 <style>
 	#custom-modal-container{
 		width: 900px !important;
@@ -105,7 +105,7 @@
 				$.ajax({
 					type: "GET",
 					dataType: "json",
-					url:"/projViewGraphHrs",
+					url:"${pageContext.request.contextPath}/projViewGraphHrs",
 					data:{id:${proID}},
 					success: function(data){
 						$("#infovis").empty();

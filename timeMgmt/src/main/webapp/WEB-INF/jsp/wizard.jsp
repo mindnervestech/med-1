@@ -1,89 +1,124 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <div class="wizard" id='${_searchContext.entityName()}${"_some-wizard"}'>
- 
-			
-		    
-		    <c:forEach var="wizard" items="${_searchContext.getWizards()}"><%--J Open --%>       
-		    	<div class="wizard-card" data-cardname="${_searchContext.entityName()}${wizard.name()}" data-validate='${"form_"}${_searchContext.entityName()}${"_add_wizard"}'>
-		        	<h3>${wizard.name()}</h3>
-					    <c:forEach var="fieldType" items="${wizard.card().iterator()}"><%--I Open --%> 
-							
-			        	  <c:choose>   <%--H Open --%>   			
-		        			  <c:when test='${fieldType.ctype().name() == "INPUT"}'> <%-- G Open --%>
-		        			    <c:choose> <%-- F Open --%>
-									<c:when test='${!fieldType.hidden()}'> <%-- E Open --%>
-										<c:choose> <%-- C Open --%>
-										
-										 <c:when test="${!fieldType.autocomplete() && !fieldType.multiselect()}"><%-- A Open--%>
-											<c:if test="${fieldType.order() %2 == 1}">
-		        								<div class="control-group" style="float:left;width:46%;margin: 0px; height:75px;">
-		        							</c:if>
-		        							<c:if test="${fieldType.order() % 2 != 1}">
-		        								<div class="control-group" style="height:75px;" >
-		        							</c:if>
-											<label class="control-label" for="textinput">${fieldType.label()}
-											  <c:if test="${fieldType.validation()!=null && fieldType.validation().required()}">
-											  
-											  	<sup style="color: red"> *</sup>
-											  </c:if>
-											</label>
-											<div class="controls">
-											  <c:choose>
-											   <c:when test="${fieldType.validation() !=null && fieldType.validation().required()}">
-											  	 <input id="${_searchContext.entityName()}${fieldType.name()}" name="${fieldType.name()}" placeholder="${fieldType.label()}" ${fieldType.htmlAttrib()} required class="input-large" type="text" rel="popover" >
-											   </c:when>
-											   <c:otherwise>
-											     <input id="${_searchContext.entityName()}${fieldType.name()}" name="${fieldType.name()}" placeholder="${fieldType.label()}" ${fieldType.htmlAttrib()} class="input-large" type="text">
-											   </c:otherwise>
-											  </c:choose>											    
-											</div>
-										   </div>
-										 </c:when> <%-- A close --%>
-									     <c:otherwise>	 	<%-- B Open --%>
-											  <c:if test="${fieldType.order()%2==1}">
-		        								<div class="control-group" style="float:left;width:46%;margin: 0px; height:75px;">
-		        							  </c:if>
-		        							  <c:if test="${fieldType.order()%2!=1}">
-		        								<div class="control-group" style=" height:75px;">
-		        							  </c:if>
-											  <div class="fuelux controls">
-												   <label class="control-label" for="textinput">${fieldType.label()}
-													  <c:if test="${fieldType.validation()!=null && fieldType.validation().required()}">
-													  	<sup style="color: red"> *</sup>
-													  </c:if>
-													  <img alt="" src="images/browse.jpg">
-												  </label>
-												  
-												  <c:choose>
-												    <c:when test="${fieldType.validation()!=null && fieldType.validation().required()}">
-											        <!-- here two placeholder present so i removed it -->
 
-											    		<input id="${_searchContext.entityName()}${fieldType.name()}" placeholder="${fieldType.label()}" ${fieldType.htmlAttrib()} required type="text">
-											        </c:when>
-											        <c:otherwise>
-											        <!-- here two placeholder present so i removed it -->
-											      		<input id="${_searchContext.entityName()}${fieldType.name()}" placeholder="${fieldType.label()}" ${fieldType.htmlAttrib()} type="text">
-											        </c:otherwise>
-											      </c:choose>
-											      
-											        <c:choose>
-											          <c:when test="${fieldType.multiselect()}">
-											    		<input id='${_searchContext.entityName()}${fieldType.name()}${"_hidden"}' placeholder="${fieldType.label()}" name='${fieldType.name()}${"_ids"}' type="hidden">
-											       	  </c:when>
-											      	<c:otherwise>
-											    		<input id='${_searchContext.entityName()}${fieldType.name()}${"_hidden"}' placeholder="${fieldType.label()}" name='${fieldType.name()}${"_id"}'  type="hidden">
-											        </c:otherwise>
-											      </c:choose>
-											      </div>
-											  </div>
-											<script>
+	<c:forEach var="wizard" items="${_searchContext.getWizards()}">
+		<%--J Open --%>
+		<div class="wizard-card"
+			data-cardname="${_searchContext.entityName()}${wizard.name()}"
+			data-validate='${"form_"}${_searchContext.entityName()}${"_add_wizard"}'>
+			<h3>${wizard.name()}</h3>
+			<c:forEach var="fieldType" items="${wizard.card().iterator()}">
+				<%--I Open --%>
+
+				<c:choose>
+					<%--H Open --%>
+					<c:when test='${fieldType.ctype().name() == "INPUT"}'>
+						<%-- G Open --%>
+						<c:choose>
+							<%-- F Open --%>
+							<c:when test='${!fieldType.hidden()}'>
+								<%-- E Open --%>
+								<c:choose>
+									<%-- C Open --%>
+
+									<c:when
+										test="${!fieldType.autocomplete() && !fieldType.multiselect()}">
+										<%-- A Open--%>
+										<c:if test="${fieldType.order() %2 == 1}">
+											<div class="control-group"
+												style="float: left; width: 46%; margin: 0px; height: 75px;">
+										</c:if>
+										<c:if test="${fieldType.order() % 2 != 1}">
+											<div class="control-group" style="height: 75px;">
+										</c:if>
+										<label class="control-label" for="textinput">${fieldType.label()}
+											<c:if
+												test="${fieldType.validation()!=null && fieldType.validation().required()}">
+
+												<sup style="color: red"> *</sup>
+											</c:if>
+										</label>
+										<div class="controls">
+											<c:choose>
+												<c:when
+													test="${fieldType.validation() !=null && fieldType.validation().required()}">
+													<input
+														id="${_searchContext.entityName()}${fieldType.name()}"
+														name="${fieldType.name()}"
+														placeholder="${fieldType.label()}"
+														${fieldType.htmlAttrib()} required class="input-large"
+														type="text" rel="popover">
+												</c:when>
+												<c:otherwise>
+													<input
+														id="${_searchContext.entityName()}${fieldType.name()}"
+														name="${fieldType.name()}"
+														placeholder="${fieldType.label()}"
+														${fieldType.htmlAttrib()} class="input-large" type="text">
+												</c:otherwise>
+											</c:choose>
+										</div>
+		</div>
+		</c:when>
+		<%-- A close --%>
+		<c:otherwise>
+			<%-- B Open --%>
+			<c:if test="${fieldType.order()%2==1}">
+				<div class="control-group"
+					style="float: left; width: 46%; margin: 0px; height: 75px;">
+			</c:if>
+			<c:if test="${fieldType.order()%2!=1}">
+				<div class="control-group" style="height: 75px;">
+			</c:if>
+			<div class="fuelux controls">
+				<label class="control-label" for="textinput">${fieldType.label()}
+					<c:if
+						test="${fieldType.validation()!=null && fieldType.validation().required()}">
+						<sup style="color: red"> *</sup>
+					</c:if> <img alt="" src='<c:url value="images/browse.jpg" />'>
+				</label>
+
+				<c:choose>
+					<c:when
+						test="${fieldType.validation()!=null && fieldType.validation().required()}">
+						<!-- here two placeholder present so i removed it -->
+
+						<input id="${_searchContext.entityName()}${fieldType.name()}"
+							placeholder="${fieldType.label()}" ${fieldType.htmlAttrib()}
+							required type="text">
+					</c:when>
+					<c:otherwise>
+						<!-- here two placeholder present so i removed it -->
+						<input id="${_searchContext.entityName()}${fieldType.name()}"
+							placeholder="${fieldType.label()}" ${fieldType.htmlAttrib()}
+							type="text">
+					</c:otherwise>
+				</c:choose>
+
+				<c:choose>
+					<c:when test="${fieldType.multiselect()}">
+						<input
+							id='${_searchContext.entityName()}${fieldType.name()}${"_hidden"}'
+							placeholder="${fieldType.label()}"
+							name='${fieldType.name()}${"_ids"}' type="hidden">
+					</c:when>
+					<c:otherwise>
+						<input
+							id='${_searchContext.entityName()}${fieldType.name()}${"_hidden"}'
+							placeholder="${fieldType.label()}"
+							name='${fieldType.name()}${"_id"}' type="hidden">
+					</c:otherwise>
+				</c:choose>
+			</div>
+</div>
+<script>
 											$('#${_searchContext.entityName()}${fieldType.name()}').select2({
 												placeholder: "Search",
 												minimumInputLength: 2,
 												multiple:${fieldType.multiselect()},
 											    ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
-											        url: "${_searchContext.autoCompleteUrls().get(fieldType.label())}",
+											        url: "${pageContext.request.contextPath}/${_searchContext.autoCompleteUrls().get(fieldType.label())}",
 											        dataType: 'json',
 											        data: function (term, page) {
 											            return {
@@ -115,88 +150,100 @@
 											});
 											
 											</script>
-										 </c:otherwise> <%-- B close --%>
-									   </c:choose><%-- C close --%>
-									  </c:when> <%-- E Close --%>
-								     <c:otherwise>
-										<input id="${_searchContext.entityName()}${fieldType.name()}" name='${fieldType.name()}${"_hidden"}' type="hidden">
-									 </c:otherwise>
-								   </c:choose><%-- F Close --%>
-								</c:when> <%-- G close  --%>
-						 		
-						 		
-						 		<c:when test='${fieldType.ctype().name()== "SELECT_OPTION"}'>
-						 			
-									<c:if test="${fieldType.order() %2 ==1}">
-										<div class="control-group" style="float:left;width:46%;margin: 0px; height:75px;">
-		        					</c:if>
-			        				<c:if test='${fieldType.order() %2 !=1}'>
-			        			
-			        					<div class="control-group" style="height:75px;">
-		        					</c:if>
-		        					
-									<label class="control-label" for="selectbasic">${fieldType.label()}</label>
-									
-									<div class="controls">
-									
-									   <select id="${_searchContext.entityName()}${fieldType.name()}" name="${fieldType.name()}" class="input-large">
-										    
-										    <c:forEach var="option" items='${fieldType.options()}'>
-										    	<c:if test="${option.uiHidden()==false}">
-										    		<option value='${option}'>${option.getName()}</option>
-										    	</c:if>
-										    </c:forEach>						      
-									    </select>
-									  </div>
-									</div>	
-								</c:when>
-								
-						 		<c:when test='${fieldType.ctype().name()=="SEARCH"}'>
-									<div class="control-group">
-									  <label class="control-label" for="selectbasic">${fieldType.label()}</label>
-									  <div class="controls">
-									  		<%-- TODO --%>		
-									     searchContext('${_searchContext.getSearchContexts().get(fieldType.name())}','${_searchContext.entityName()}',"add" 	
-	     							  </div>
-									   <input class="OneToMany" entity='${_searchContext.entityName()}' id='${_searchContext.entityName()}${fieldType.name()}${"_hidden"}' name='${fieldType.name()}${"_ids"}'  type="hidden">	    
-						    		  </div>
-								</c:when>
-								
-						 		<c:when test='${fieldType.ctype().name()=="DATE"}'>
-							    	<c:if test='${fieldType.order() %2==1}'>
-		        						<div class="control-group" style="float:left;width:46%;margin: 0px; height:75px;">
-		        					</c:if>
-		        					<c:if test='${fieldType.order() %2!=1}'>	
-		        						<div class="control-group" style="height:75px;">
-		        					</c:if>
-		        					<label class="control-label" for="selectbasic">${fieldType.label()}
-		  	 						<c:if test='${fieldType.validation() !=null && fieldType.validation().required()}'>
-		  	 						  	<sup style="color: red"> *</sup>
-									</c:if>
-									</label>
-									 <div id="${fieldType.name()}" data-provide="datepicker" data-date="" class="input-prepend date datepicker" data-date-format="dd-mm-yyyy">
-	    								<span class="add-on"><i class="icon-calendar"></i></span>
-	    								<input class="add-on" size="16" type="text" value=""  placeholder="DD-MM-YYYY"  name="${fieldType.name()}">
-									 </div>
-								  </div>
-								</c:when>
-								
-							</c:choose> <%-- H Close--%>
-		        		</c:forEach><%-- I Close--%>
-		        </div>		
-		    </c:forEach> <%-- J Close--%>
-		    
-		    <div class="wizard-success">
-        			${_searchContext.entityName()}${" Created Successfully"}
-    		</div>
- 
-		    <div class="wizard-error">
-		        submission had an error
-		    </div>
- 
-		    <div class="wizard-failure">
-		        submission failed
-		    </div>
+</c:otherwise>
+<%-- B close --%>
+</c:choose>
+<%-- C close --%>
+</c:when>
+<%-- E Close --%>
+<c:otherwise>
+	<input id="${_searchContext.entityName()}${fieldType.name()}"
+		name='${fieldType.name()}${"_hidden"}' type="hidden">
+</c:otherwise>
+</c:choose>
+<%-- F Close --%>
+</c:when>
+<%-- G close  --%>
+
+
+<c:when test='${fieldType.ctype().name()== "SELECT_OPTION"}'>
+
+	<c:if test="${fieldType.order() %2 ==1}">
+		<div class="control-group"
+			style="float: left; width: 46%; margin: 0px; height: 75px;">
+	</c:if>
+	<c:if test='${fieldType.order() %2 !=1}'>
+
+		<div class="control-group" style="height: 75px;">
+	</c:if>
+
+	<label class="control-label" for="selectbasic">${fieldType.label()}</label>
+
+	<div class="controls">
+
+		<select id="${_searchContext.entityName()}${fieldType.name()}"
+			name="${fieldType.name()}" class="input-large">
+
+			<c:forEach var="option" items='${fieldType.options()}'>
+				<c:if test="${option.uiHidden()==false}">
+					<option value='${option}'>${option.getName()}</option>
+				</c:if>
+			</c:forEach>
+		</select>
+	</div>
+	</div>
+</c:when>
+
+<c:when test='${fieldType.ctype().name()=="SEARCH"}'>
+	<div class="control-group">
+		<label class="control-label" for="selectbasic">${fieldType.label()}</label>
+		<div class="controls">
+			<%-- TODO --%>
+			searchContext('${_searchContext.getSearchContexts().get(fieldType.name())}','${_searchContext.entityName()}',"add"
+		</div>
+		<input class="OneToMany" entity='${_searchContext.entityName()}'
+			id='${_searchContext.entityName()}${fieldType.name()}${"_hidden"}'
+			name='${fieldType.name()}${"_ids"}' type="hidden">
+	</div>
+</c:when>
+
+<c:when test='${fieldType.ctype().name()=="DATE"}'>
+	<c:if test='${fieldType.order() %2==1}'>
+		<div class="control-group"
+			style="float: left; width: 46%; margin: 0px; height: 75px;">
+	</c:if>
+	<c:if test='${fieldType.order() %2!=1}'>
+		<div class="control-group" style="height: 75px;">
+	</c:if>
+	<label class="control-label" for="selectbasic">${fieldType.label()}
+		<c:if
+			test='${fieldType.validation() !=null && fieldType.validation().required()}'>
+			<sup style="color: red"> *</sup>
+		</c:if>
+	</label>
+	<div id="${fieldType.name()}" data-provide="datepicker" data-date=""
+		class="input-prepend date datepicker" data-date-format="dd-mm-yyyy">
+		<span class="add-on"><i class="icon-calendar"></i></span> <input
+			class="add-on" size="16" type="text" value=""
+			placeholder="DD-MM-YYYY" name="${fieldType.name()}">
+	</div>
+	</div>
+</c:when>
+
+</c:choose>
+<%-- H Close--%>
+</c:forEach>
+<%-- I Close--%>
+</div>
+</c:forEach>
+<%-- J Close--%>
+
+<div class="wizard-success">${_searchContext.entityName()}${" Created Successfully"}
+</div>
+
+<div class="wizard-error">submission had an error</div>
+
+<div class="wizard-failure">submission failed</div>
 
 </div>
 
@@ -231,7 +278,7 @@ $(document).ready(function(){
 			    				 digits: ${fieldType.validation().digits()},
 								 <c:if test='${!"".equals(fieldType.validation().remote())}'>
 									 remote: {
-										 url: '${fieldType.validation().remote()}',
+										 url: '${pageContext.request.contextPath}/${fieldType.validation().remote()}',
 										 type: "post",
 										 data:{
 											 q: function(){

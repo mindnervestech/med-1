@@ -2,9 +2,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 
-<script src="/resources/javascripts/jquery.chainedSelects.js"
+<script src='<c:url value="/resources/javascripts/jquery.chainedSelects.js"/>'
 	type="text/javascript"></script>
-<script src="/resources/customScripts/timesheetRow.js"
+<script src='<c:url value="/resources/customScripts/timesheetRow.js"/>'
 	type="text/javascript"></script>
 <div id="timeSheetTable">
 

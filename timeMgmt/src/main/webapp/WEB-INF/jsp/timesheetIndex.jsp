@@ -4,14 +4,14 @@
 
 
 <link rel="stylesheet" media="screen"
-	href="/resources/customCSS/customTimesheet.css">
-<script src="/resources/customScripts/timesheet.js"
+	href='<c:url value="/resources/customCSS/customTimesheet.css"/>'>
+<script src='<c:url value="/resources/customScripts/timesheet.js"/>'
 	type="text/javascript"></script>
 
 <jsp:include page="menuContext.jsp" />
 <form:form method="POST" commandName="timesheetForm"
 	enctype="multipart/form-data"
-	action="<%=com.mnt.time.controller.routes.Timesheets.create.url%>"
+	action="${pageContext.request.contextPath}/<%=com.mnt.time.controller.routes.Timesheets.create.url%>"
 	id="createTimesheet">
 	<div class="tsMainDiv">
 		<div class="timesheetInfoDiv container">

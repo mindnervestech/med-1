@@ -5,10 +5,10 @@
 	<b style="width: 1051px; margin-left: 20px;"><i>Define Roles</i></b>
 </h4>
 
-<link rel="stylesheet" media="screen" href="resources/stylesheets/customRoleX.css">
-<script src="resources/customScripts/roleScript.js" type="text/javascript"></script>
+<link rel="stylesheet" media="screen" href='<c:url value="resources/stylesheets/customRoleX.css"/>'>
+<script src='<c:url value="resources/customScripts/roleScript.js"/>' type="text/javascript"></script>
 <form:form method="POST" commandName="rolexForm"
-	action="<%=com.mnt.time.controller.routes.Roles.saveRole.url%>" id="form">
+	action="${pageContext.request.contextPath}/<%=com.mnt.time.controller.routes.Roles.saveRole.url%>" id="form">
 	<fieldset>
 		<div id="rolex">
 			<c:forEach var="role_level" items="${rolexForm.model.roleLevels}"
@@ -191,7 +191,7 @@
 			$.ajax({
 				type : "POST",
 				data : $("#form").serialize(),
-				url : "/saveRole",
+				url : "${pageContext.request.contextPath}/saveRole",
 				success : function(data) {
 					$.pnotify({
 						history : false,

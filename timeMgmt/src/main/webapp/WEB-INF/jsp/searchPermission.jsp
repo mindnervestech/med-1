@@ -33,7 +33,7 @@
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
 		<h3 id="myModalLabel">Permissions</h3>
-		<h7><strong style = "color : red;">Click the Permission which should NOT be accessed</strong></h7>
+		<h7><strong style = "color : red;">Click the Permission which should be accessed</strong></h7>
 	</div>
 	<div class="modal-body">
 		<ul style="list-style-type: none;"></ul>
@@ -50,7 +50,7 @@
 <script>
 
 $(document).ready(function(){
-		permissionSearch = PermissionSearch.initialise("<%=com.mnt.time.controller.routes.UserPermissions.getUserList.url%>");
+		permissionSearch = PermissionSearch.initialise("${pageContext.request.contextPath}<%=com.mnt.time.controller.routes.UserPermissions.getUserList.url%>");
 	 	$("#permission_search").click(function(){
 	 		permissionSearch.doSearch();
 		});	 
@@ -70,7 +70,7 @@ $(document).ready(function(){
 
 			$.ajax({
 				type: "POST",
-				url: "/permission/save",
+				url: "${pageContext.request.contextPath}permission/save",
 				dataType : "text",
 				data: $("#modal-form").serialize(),
 				success: function(data){
@@ -83,11 +83,8 @@ $(document).ready(function(){
 					
 				},
 				error: function(data){
-					console.log(data);
 				},
 				complete: function(jqXHR,status){
-					console.log(status);
-					console.log(jqXHR);
 					permissionSearch.doSearch();
 				}
 			});
@@ -142,7 +139,7 @@ var PermissionSearch = {
 							   $('#selectedUserId').val(id);
 								$.ajax({
 									type: "POST",
-									url: "/permission/update",
+									url: "${pageContext.request.contextPath}permission/update",
 									data: {id: id},
 									success: function(data){
 										var result = JSON.parse(data);

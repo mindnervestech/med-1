@@ -12,11 +12,11 @@
  	     
 	function My_TimeSheet_Approval_Bucket_confimationDialog(_url)
 	 {
-		 if(_url == '/timesheet/approveTimesheets'){
+		 if(_url == '${pageContext.request.contextPath}/timesheet/approveTimesheets'){
 			 return false;
 		 }
 		 
-		 if(_url == '/timesheet/rejectTimesheets'){
+		 if(_url == '${pageContext.request.contextPath}/timesheet/rejectTimesheets'){
 			 return true;
 		 }
 		 return false;

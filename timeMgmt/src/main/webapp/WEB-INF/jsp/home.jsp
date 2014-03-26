@@ -38,7 +38,7 @@ body {
 			<div class="widget cover">
 				<div class="widget-body padding-none margin-none">
 					<div class="top">
-						<img src="/resources/images/1.jpg" class="img-responsive"
+						<img src='<c:url value="/resources/images/1.jpg"/>' class="img-responsive"
 							style="width: 942px; height: -29%; height: 205px; margin-top: -6%; margin-left: 2%;" />
 					</div>
 
@@ -59,7 +59,7 @@ body {
 					<h5>User Profile</h5>
 					<div style="float: left;" class="media innerB ">
 						<a href="" class="pull-left"> <img
-							src="/resources/images/22.jpg" style="margin-left: 2%;"
+							src='<c:url value="/resources/images/22.jpg"/>' style="margin-left: 2%;"
 							width="75" />
 						</a>
 
@@ -195,12 +195,12 @@ body {
 
 
 
-<script type="text/javascript"
-	src="resources/javascripts/jquery.validate.min.js"></script>
-<script src="resources/javascripts/bootstrap.min.js"></script>
-<script type="text/javascript" src="resources/javascripts/select2.js"></script>
-<script type="text/javascript"
-	src="resources/javascripts/select2_locale_en.js.template"></script>
+	<script type="text/javascript"
+		src='<c:url value="resources/javascripts/jquery.validate.min.js"/>'></script>
+	<script src='<c:url value="resources/javascripts/bootstrap.min.js"/>'></script>
+	<script type="text/javascript" src='<c:url value="resources/javascripts/select2.js"/>'>
+	<script type="text/javascript"
+		src='<c:url value="resources/javascripts/select2_locale_en.js.template"/>'></script>
 
 
 

@@ -12,19 +12,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Bootstrap -->
-<script src="resources/javascripts/jquery-1.9.0.min.js" type="text/javascript"></script>
-<link rel="stylesheet" media="screen" href="resources/stylesheets/bootstrap.css">
-<link rel="stylesheet" href="resources/stylesheets/bootstrap-responsive.css">
-<link rel="stylesheet"  type="text/css" media="all" href="resources/stylesheets/jquery.pnotify.default.css" />
-<link rel="stylesheet"  type="text/css" media="all" href="resources/stylesheets/jquery.pnotify.default.icons.css" />
-<script src="resources/javascripts/jquery.pnotify.js" type="text/javascript"></script> 
+<script src='<c:url value="resources/javascripts/jquery-1.9.0.min.js"/>' type="text/javascript"></script>
+<link rel="stylesheet" media="screen" href='<c:url value="resources/stylesheets/bootstrap.css"/>'>
+<link rel="stylesheet" href='<c:url value="resources/stylesheets/bootstrap-responsive.css"/>'>
+<link rel="stylesheet"  type="text/css" media="all" href='<c:url value="resources/stylesheets/jquery.pnotify.default.css"/>' />
+<link rel="stylesheet"  type="text/css" media="all" href='<c:url value="resources/stylesheets/jquery.pnotify.default.icons.css"/>' />
+<script src='<c:url value="resources/javascripts/jquery.pnotify.js"/>' type="text/javascript"></script> 
 </head>
 
 <body>
 	<div class="container">
 		<div class="heading">
 			<legend></legend>
-			<a href=""><img alt="" src="resources/images/custom/logo.png"></a>
+			<a href=""><img alt="" src='<c:url value="resources/images/custom/logo.png"/>'></a>
 			<br> <br> <br>
 			<h3>Time sheet that don't suck!!</h3>
 			<br> <br>
@@ -41,7 +41,7 @@
 				<p class="registered" class="serif" style="color: #00ff00;">
 					${registered}</p>
 			</c:if>
-
+			
 			<form:form action="login" method="POST">
 				<fieldset id="login_field">
 					<div class="well" style="width: 400px;">
@@ -96,9 +96,9 @@
 		</div>
 	</div>
 	
-	<script src="resources/javascripts/bootstrap.min.js"></script>
-	<script src="resources/javascripts/jqBootstrapValidation.js"></script>
-	<script type="text/javascript" src="resources/javascripts/jquery.validate.js"></script>
+	<script src='<c:url value="resources/javascripts/bootstrap.min.js"/>'></script>
+	<script src='<c:url value="resources/javascripts/jqBootstrapValidation.js"/>'>
+	<script type="text/javascript" src='<c:url value="resources/javascripts/jquery.validate.js"/>'></script>
 </body>
 	
 <script type="text/javascript">
@@ -108,8 +108,6 @@
 	$('#login_field input').on('mouseleave',function() {
 		$(this).popover('hide')
 	});
-	//$.pnotify.defaults.history = false;
-	//alert(localStorage.getItem("notification_mesg"));
 	$(document).ready(function(){
 		if(localStorage.getItem("notification_mesg")){
 			

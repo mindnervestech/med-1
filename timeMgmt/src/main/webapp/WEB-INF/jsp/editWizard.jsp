@@ -35,17 +35,18 @@
 													test='${fieldType.validation() !=null && fieldType.validation().required()}'>
 													<input
 														id='${_searchContext.entityName()}${"edit"}${fieldType.name()}'
-														value='${fieldType.value().getO().toString()}' ${fieldType.htmlAttrib()}
-														name="${fieldType.name()}"
+														value='${fieldType.value().getO().toString()}'
+														${fieldType.htmlAttrib()} name="${fieldType.name()}"
 														placeholder="${fieldType.label()}" class="input-large"
 														type="text" required rel="popover">
 												</c:when>
 												<c:otherwise>
-												
+
 													<input
 														id='${_searchContext.entityName()}${"edit"}${fieldType.name()}'
-														value='${fieldType.value().getO().toString()}' ${fieldType.htmlAttrib()}
-														name="${fieldType.name()}" class="input-large" type="text">
+														value='${fieldType.value().getO().toString()}'
+														${fieldType.htmlAttrib()} name="${fieldType.name()}"
+														class="input-large" type="text">
 												</c:otherwise>
 											</c:choose>
 										</div>
@@ -78,14 +79,16 @@
 										test='${fieldType.validation() !=null && fieldType.validation().required()}'>
 										<input
 											id='${_searchContext.entityName()}${"edit"}${fieldType.name()}'
-											value='${fieldType.value().getO().toString()}' ${fieldType.htmlAttrib()}
-											required placeholder="${fieldType.label()}" type="text">
+											value='${fieldType.value().getO().toString()}'
+											${fieldType.htmlAttrib()} required
+											placeholder="${fieldType.label()}" type="text">
 									</c:when>
 									<c:otherwise>
 										<input
 											id='${_searchContext.entityName()}${"edit"}${fieldType.name()}'
-											value='${fieldType.value().getO().toString()}'${fieldType.htmlAttrib()}
-											placeholder="${fieldType.label()}" type="text">
+											value='${fieldType.value().getO().toString()}'
+											${fieldType.htmlAttrib()} placeholder="${fieldType.label()}"
+											type="text">
 									</c:otherwise>
 								</c:choose>
 								<input
@@ -130,7 +133,7 @@
 												minimumInputLength: 1,
 												multiple:${fieldType.multiselect()},
 											    ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
-											        url: "${_searchContext.autoCompleteUrls().get(fieldType.label())}",
+											        url: "${pageContext.request.contextPath}/${_searchContext.autoCompleteUrls().get(fieldType.label())}",
 											        dataType: 'json',
 											        data: function (term, page) {
 											            return {
@@ -175,7 +178,7 @@
 											    	callback(data);
 											    }
 											}).on('change',function(ev){
-												console.log(ev.val);
+											//	console.log(ev.val);
 												$('#'+'${_searchContext.entityName()}${"edit"}${fieldType.name()}${"_hidden"}').val(ev.val);
 											});
 											</script>
