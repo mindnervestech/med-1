@@ -20,7 +20,7 @@
 	<b><i>Mail Settings</i></b>
 </h3>
 
-<form action="${pageContext.request.contextPath}/<%=com.mnt.time.controller.routes.Mail.settingSave.url%>"
+<form action="${pageContext.request.contextPath}<%=com.mnt.time.controller.routes.Mail.settingSave.url%>"
 	id="emailSettings" method="post">
 
 	<div class="mailDiv">

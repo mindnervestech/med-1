@@ -118,7 +118,7 @@
 												minimumInputLength: 2,
 												multiple:${fieldType.multiselect()},
 											    ajax: { // instead of writing the function to execute the request we use Select2's convenient helper
-											        url: "${pageContext.request.contextPath}/${_searchContext.autoCompleteUrls().get(fieldType.label())}",
+											        url: "${pageContext.request.contextPath}${_searchContext.autoCompleteUrls().get(fieldType.label())}",
 											        dataType: 'json',
 											        data: function (term, page) {
 											            return {

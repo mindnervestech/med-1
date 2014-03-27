@@ -605,7 +605,7 @@ public interface Feedbacks {
 	}
 
 	public interface customSearchIndex {
-		public static String url=" /feedback/customSearchIndex";
+		public static String url="/feedback/customSearchIndex";
 	}
 
 	public interface submit {

@@ -51,11 +51,11 @@ function My_Leave_Approval_Bucketadd_gridAction_isToBeHidden(_action){
  
  function My_Leave_Approval_Bucket_confimationDialog(_url)
  {
-	 if(_url == '${pageContext.request.contextPath}leave/approveLeave'){
+	 if(_url == '${pageContext.request.contextPath}/leave/approveLeave'){
 		 return true;
 	 }
 	 
-	 if(_url == '${pageContext.request.contextPath}leave/rejectLeave'){
+	 if(_url == '${pageContext.request.contextPath}/leave/rejectLeave'){
 		 return true;
 	 }
 	 return false;

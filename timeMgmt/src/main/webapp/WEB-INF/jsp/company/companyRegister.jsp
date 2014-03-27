@@ -140,7 +140,7 @@
 			rules : {
 				companyCode : {
 					remote : {
-						url:"${pageContext.request.contextPath}checkCompanyCode",
+						url:"${pageContext.request.contextPath}/checkCompanyCode",
 						type : "post",
 						data : {
 							q : function(){
@@ -151,7 +151,7 @@
 		      },
 		      companyName : {
 					remote : {
-						url:"${pageContext.request.contextPath}checkCompanyName",
+						url:"${pageContext.request.contextPath}/checkCompanyName",
 						type : "post",
 						data : {
 							q : function(){
@@ -162,7 +162,7 @@
 		      },
 		      companyEmail : {
 					remote : {
-						url:"${pageContext.request.contextPath}checkCompanyEmail",
+						url:"${pageContext.request.contextPath}/checkCompanyEmail",
 						type : "post",
 						data : {
 							q : function(){

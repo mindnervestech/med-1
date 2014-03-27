@@ -85,7 +85,7 @@
 					}); */
 					$.ajax({
 						type : "POST",
-						url : "${pageContext.request.contextPath}rolepermission/save",
+						url : "${pageContext.request.contextPath}/rolepermission/save",
 						data : $("#role-modal-form").serialize(),
 						success : function(data) {
 							$('#role-update-modal').modal('hide');
@@ -173,7 +173,7 @@
 
 									$.ajax({
 										type : "POST",
-										url : "${pageContext.request.contextPath}rolepermission/update",
+										url : "${pageContext.request.contextPath}/rolepermission/update",
 										data : {
 											id : id
 										},

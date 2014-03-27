@@ -11,7 +11,7 @@
 <jsp:include page="menuContext.jsp" />
 <form:form method="POST" commandName="timesheetForm"
 	enctype="multipart/form-data"
-	action="${pageContext.request.contextPath}/<%=com.mnt.time.controller.routes.Timesheets.create.url%>"
+	action="${pageContext.request.contextPath}<%=com.mnt.time.controller.routes.Timesheets.create.url%>"
 	id="createTimesheet">
 	<div class="tsMainDiv">
 		<div class="timesheetInfoDiv container">

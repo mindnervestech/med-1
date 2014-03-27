@@ -70,7 +70,7 @@ $(document).ready(function(){
 
 			$.ajax({
 				type: "POST",
-				url: "${pageContext.request.contextPath}permission/save",
+				url: "${pageContext.request.contextPath}/permission/save",
 				dataType : "text",
 				data: $("#modal-form").serialize(),
 				success: function(data){
@@ -139,7 +139,7 @@ var PermissionSearch = {
 							   $('#selectedUserId').val(id);
 								$.ajax({
 									type: "POST",
-									url: "${pageContext.request.contextPath}permission/update",
+									url: "${pageContext.request.contextPath}/permission/update",
 									data: {id: id},
 									success: function(data){
 										var result = JSON.parse(data);

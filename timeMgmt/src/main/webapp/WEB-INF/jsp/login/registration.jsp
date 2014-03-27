@@ -159,7 +159,7 @@
 								},
 								email : {
 									remote : {
-										url : "${pageContext.request.contextPath}checkUserEmail",
+										url : "${pageContext.request.contextPath}/checkUserEmail",
 										type : "post",
 										data : {
 											q : function() {

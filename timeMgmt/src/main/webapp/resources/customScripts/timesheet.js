@@ -72,7 +72,7 @@ function populateDateRange(startDate){
 }
 
 function getEmployeeTimesheet(){
-	$.get('/timesheet/getTimesheetTable', {id: $('#employeeID').val(),week:$('#weekValue').val(),year:$('#yearValue').val()}, 
+	$.get('timesheet/getTimesheetTable', {id: $('#employeeID').val(),week:$('#weekValue').val(),year:$('#yearValue').val()}, 
 			function(response) {
 				$(".worksheetDiv").empty();
 				$(".worksheetDiv").html(response);

@@ -30,7 +30,7 @@
 		 			<ul class="dropdown-menu">
 		 			
                   	<c:forEach var="subMenu" items="${items.getSubMenu()}">
-                 	 <li><a href='${subMenu.url}' >${subMenu.name}</a></li>
+                 	 <li><a href='${pageContext.request.contextPath}${subMenu.url}' >${subMenu.name}</a></li>
                  	</c:forEach>
                 	</ul>
 		 	</li>

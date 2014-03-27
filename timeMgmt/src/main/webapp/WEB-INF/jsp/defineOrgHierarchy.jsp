@@ -9,7 +9,7 @@
 <fieldset>
 	<div id="rolex">
 		<form:form method="POST" commandName="rolexForm"
-			action="${pageContext.request.contextPath}/<%=com.mnt.time.controller.routes.Roles.saveRole.url%>"
+			action="${pageContext.request.contextPath}<%=com.mnt.time.controller.routes.Roles.saveRole.url%>"
 			id="form">
 			<c:if test="${rolexForm==null}">
 				<h4>List defined Role First</h4>

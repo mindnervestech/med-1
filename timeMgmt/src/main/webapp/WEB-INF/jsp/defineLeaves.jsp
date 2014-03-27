@@ -7,7 +7,7 @@
 </h4>
 <script src='<c:url value="resources/customScripts/defineLeave.js"/>' type="text/javascript"></script>
 <form:form method="POST" commandName="leavexForm"
-	action="${pageContext.request.contextPath}/<%=com.mnt.time.controller.routes.Leaves.saveLeaves.url%>"
+	action="${pageContext.request.contextPath}<%=com.mnt.time.controller.routes.Leaves.saveLeaves.url%>"
 	id="form">
 	<fieldset>
 		<div id="leavex">
