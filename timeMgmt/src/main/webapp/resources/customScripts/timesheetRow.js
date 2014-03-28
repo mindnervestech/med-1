@@ -2,7 +2,7 @@ $(function(){
 	$('body').on('click','select.largeInputFirst',function(){
 		var projectRowId = $(this).attr("id");  
 		var taskRowId = getIdOfTaskRow($(this));
-		$("#"+projectRowId).chainSelect('#'+taskRowId,'/timesheet/getTaskCode');
+		$("#"+projectRowId).chainSelect('#'+taskRowId,'timesheet/getTaskCode');
 	});
 });
 
@@ -78,7 +78,7 @@ function submitTimesheetForm(){
 			$(".timesheetRow_template").remove();
 			$.ajax({
 				type:"POST",
-				url:"/timesheetCreate",
+				url:"timesheetCreate",
 				data: $('#createTimesheet').serialize(),
 				success: function(response) {
 					$(".worksheetDiv").empty();
@@ -133,20 +133,30 @@ $(document).ready(function() {
 			
 		$.ajax({
 			type:"GET",
-			url:"/timesheet/getLastWeekTimesheet",
+			url:"timesheet/getLastWeekTimesheet",
 			data: {week: weekno,year:yearno},
 			success: function(response) {
 				$(".worksheetDiv").empty();
 				$(".worksheetDiv").html(response);
 			},
 			error: function(error) {
-				bootbox.confirm(""+error.responseText, function(result) {
-					if(result == true){
-						return;
-			        }else{
-			        	return;
-			        }
-				});
+				if(error.status = 404) {
+					bootbox.confirm("No Timesheet Available", function(result) {
+						if(result == true){
+							return;
+				        }else{
+				        	return;
+				        }
+					});
+				} else {
+					bootbox.confirm(""+error.responseText, function(result) {
+						if(result == true){
+							return;
+				        }else{
+				        	return;
+				        }
+					});
+				}
 			}
 		});
 	});
@@ -174,7 +184,7 @@ $(document).ready(function() {
 		var id = $(".TIMEID").val();
 		$.ajax({
 			type:"GET",
-			url:"/retractTimesheet?id="+id,
+			url:"retractTimesheet?id="+id,
 			success: function(response) {
 				$(".worksheetDiv").empty();
 				$(".worksheetDiv").html(response);
@@ -191,7 +201,7 @@ $(document).ready(function() {
 		$("#weekValue").val(today.getWeek());
 		$("#yearValue").val(today.getFullYear());
 		$("#weekRange").html(getDateRangeOfWeek(today.getWeek()));
-		$.post('/timesheetCancel', function(response) {
+		$.post('timesheetCancel', function(response) {
 			$(".worksheetDiv").empty();
 			$(".worksheetDiv").html(response);
 		});		

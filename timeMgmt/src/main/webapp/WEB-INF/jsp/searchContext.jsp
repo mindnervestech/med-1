@@ -243,7 +243,7 @@
 			<c:forEach var="gridAction" items='${_searchContext.getGridActions().iterator()}'>
 				_image ='<c:url value="/resources/images/${gridAction.icon.name()}.png"/>';
 				
-				show = show + "<a id='${_searchContext.entityName()}${mode}_gridAction' action='${gridAction.target()}' class='tooltipShow' title='${gridAction.tooltip()}' href='#' type='${gridAction.icon.name()}' url='${gridAction.url()}' cell="+cellvalue+" ><img style='max-width:22px; margin-left:5px;'src='"+_image+"'></a>"
+				show = show + "<a id='${_searchContext.entityName()}${mode}_gridAction' action='${gridAction.target()}' class='tooltipShow' title='${gridAction.tooltip()}' href='#' type='${gridAction.icon.name()}' url='${pageContext.request.contextPath}${gridAction.url()}' cell="+cellvalue+" ><img style='max-width:22px; margin-left:5px;'src='"+_image+"'></a>"
 			</c:forEach>
 			return show;
 		},
@@ -351,7 +351,7 @@
 			if('${_searchContext.showEditButton().target()}' == 'NEW'){
 				if(s.length != 0 ){
 					var rowData = jQuery('#${_searchContext.entityName()}${mode}${"_jqGrid_list"}').getRowData(s[0]);
-					window.location.href = "${_searchContext.showEditButton().url()}"+"/"+s;
+					window.location.href = "${pageContext.request.contextPath}${_searchContext.showEditButton().url()}"+"/"+s;
 				}	
 				
 			}else{
@@ -483,7 +483,7 @@
 					
 		  		 	<c:when test='${button.target().name()=="ACTION"}'>
 		  		 	$('#${_searchContext.entityName()}${mode}${button.id()}').click(function() {
-						${_searchContext.entityName()}${"_this"}.doCustomAction("${button.url()}");
+						${_searchContext.entityName()}${"_this"}.doCustomAction("${pageContext.request.contextPath}${button.url()}");
 						
 		  		 	});
 					</c:when>

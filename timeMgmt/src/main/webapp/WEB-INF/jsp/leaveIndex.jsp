@@ -17,7 +17,7 @@
 
 	function Leave_confimationDialog(_url)
 	{
-		 if(_url == '/leave/retractLeave'){
+		 if(_url == '${pageContext.request.contextPath}/leave/retractLeave'){
 			 return true;
 		 }
 		 return false;
