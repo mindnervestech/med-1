@@ -1,5 +1,7 @@
 package dto;
 
+import java.nio.file.StandardCopyOption;
+
 import javax.persistence.Id;
 
 import play.db.ebean.Model;
@@ -33,7 +35,7 @@ public class LeaveBucket extends Model{
 	public String noOfDays;
 	
 	@SearchColumnOnUI(colName="Type of Leave", rank=5 , width = 60)
-	public TypeOfLeave typeOfLeave;
+	public String typeOfLeave;
 	
 	@SearchColumnOnUI(colName="Remarks", rank=6 , width = 80)
 	public String	remarks;
@@ -88,11 +90,11 @@ public class LeaveBucket extends Model{
 		this.noOfDays = noOfDays;
 	}
 
-	public TypeOfLeave getTypeOfLeave() {
+	public String getTypeOfLeave() {
 		return typeOfLeave;
 	}
 
-	public void setTypeOfLeave(TypeOfLeave typeOfLeave) {
+	public void setTypeOfLeave(String typeOfLeave) {
 		this.typeOfLeave = typeOfLeave;
 	}
 

@@ -40,6 +40,7 @@ import utils.SelectUIMap;
 
 import com.avaje.ebean.Expr;
 import com.custom.domain.TimesheetStatus;
+import com.custom.exception.NoTimeSheetFoudException;
 import com.custom.helpers.TimesheetSearchContext;
 import com.custom.workflow.timesheet.TimesheetWorkflowUtils;
 
@@ -178,11 +179,11 @@ public class Timesheets{
 		User user = User.findByEmail(username);
 		Form<Timesheet> timesheetForm;
 		Timesheet timesheet;
-		List<String> userProjects = getProjects(user.id, Integer.valueOf(week));
+		List<String> userProjects = getProjects(user.getId(), Integer.valueOf(week));
 		
 		if(userProjects.size() != 0){
-			if(Timesheet.byUser_Week_Year(user.id,(week-1),year).size() != 0 ){
-				timesheet = Timesheet.byUser_Week_Year(user.id,(week-1),year).get(0);
+			if(Timesheet.byUser_Week_Year(user.getId(),(week-1),year).size() != 0 ){
+				timesheet = Timesheet.byUser_Week_Year(user.getId(),(week-1),year).get(0);
 				timesheet.setStatus(TimesheetStatus.Draft);
 				timesheetForm = form(Timesheet.class).fill(timesheet);
 			}else{
@@ -202,11 +203,10 @@ public class Timesheets{
 				return "timesheetTable";
 				//return ok(timesheetTable.render(user, timesheetForm,userProjects));
 			}else{
-				return new ResponseEntity<String>("Sorry. You are not able to copy last week timesheet.",HttpStatus.BAD_REQUEST).toString();
+				throw new NoTimeSheetFoudException();
 			}
 		}else{
-
-			return new ResponseEntity<String>("Sorry. No timesheet available.",HttpStatus.BAD_REQUEST).toString();
+			throw new NoTimeSheetFoudException();
 
 		}
 	}

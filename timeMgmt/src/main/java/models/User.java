@@ -133,6 +133,9 @@ public class User extends Model {
 	@OneToOne
 	public RoleLevel role;
 	
+	@OneToOne
+	public LeaveLevel level;
+	
 	
 	@WizardCardUI(name="Other Info",step=3)
 	@UIFields(order=6,label=REPORTING_MANAGER, autocomplete=true)
@@ -491,6 +494,14 @@ public class User extends Model {
 
 	public void setProject(List<Project> project) {
 		this.project = project;
+	}
+
+	public LeaveLevel getLevel() {
+		return level;
+	}
+
+	public void setLevel(LeaveLevel level) {
+		this.level = level;
 	}
 
 }

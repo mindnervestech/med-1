@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import models.Company;
+import models.LeaveBalance;
 import models.MailSetting;
 import models.RoleLevel;
 import models.RoleX;

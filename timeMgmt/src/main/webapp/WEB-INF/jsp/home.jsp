@@ -3,10 +3,10 @@
 
 <jsp:include page="menuContext.jsp" />
 
-<h1 align="center">
+<!--  <h1 align="center">
 	<i>Welcome</i>
 </h1>
-
+ -->
 <style>
 .textResponse {
 	font-weight: bold;
@@ -37,11 +37,11 @@ body {
 		<div class="timeline-cover">
 			<div class="widget cover">
 				<div class="widget-body padding-none margin-none">
-					<div class="top">
-						<img src='<c:url value="/resources/images/1.jpg"/>' class="img-responsive"
+					<!-- <div class="top">
+						<img src="/resources/images/1.jpg" class="img-responsive"
 							style="width: 942px; height: -29%; height: 205px; margin-top: -6%; margin-left: 2%;" />
 					</div>
-
+ -->
 					<div class="status innerAll" style="margin-left: 3%;">
 						<i class="fa fa-quote-left text-muted pull-left fa-fw"></i>
 						<p class="lead margin-none">Welcome
@@ -52,39 +52,25 @@ body {
 		</div>
 
 
-		<div class="row">
+			
+	<div class="container">
+	<div style="float: left;margin-left: 1%;width: 60%;border: 1px solid #4387bf;">
 			<div class="col-sm-6">
-				<div style="margin-left: 5%; margin-top: -2%;"
+				<div style="margin-left: 5%;"
 					class="innerAll bg-white">
 					<h5>User Profile</h5>
 					<div style="float: left;" class="media innerB ">
 						<a href="" class="pull-left"> <img
-							src='<c:url value="/resources/images/22.jpg"/>' style="margin-left: 2%;"
+							src="/resources/images/22.jpg" style="margin-left: 2%;"
 							width="75" />
 						</a>
 
 					</div>
 				</div>
 			</div>
-			<div class="container">
-				<div class="" style="width: 53%; margin: 0 auto; float: left;">
-					<div
-						style="float: left; float: right; margin-right: -49%; margin-top: -10%;">
-						<h3>Notifications</h3>
-						<% int leavesRequest =com.mnt.time.controller.Application.countLeavesRequest(((models.User)request.getAttribute("user")).getEmail()); 
-						   int timesheetRequest =com.mnt.time.controller.Application.countTimesheetRequest(((models.User)request.getAttribute("user")).getEmail());
-						if(leavesRequest != 0) { %>
-							<h5>Pending Leaves Request :<%=leavesRequest %> </h5>
-			 			<%} 
-			 			if(leavesRequest == 0  && timesheetRequest == 0 ) { %>
-							<h5>No Pending Leaves and Timesheets Request </h5>
-			 			<%} 
-						if(timesheetRequest != 0) { %>
-						<h5>Pending Timesheet Request :<%=timesheetRequest %> </h5>
-		 			<%}
-			 			%>
-			 			
-					</div>
+			
+				<div class="" style="width: 50%; margin: 0 auto; float: left;">
+					
 					<form:form
 						action="<%=com.mnt.time.controller.routes.Application.changePassword.url%>"
 						id="changePassword">
@@ -185,9 +171,46 @@ body {
 							style="margin-left: 46%; margin-top: 2%;">Submit</button>
 					</form:form>
 				</div>
+			</div>	
+			
+				<div style="float: right;margin-right: 0%;padding: 0% 7% 15% 9%;border: 1px solid #4387bf;">
+						<h4 style="border-bottom: 1px solid black;width: 100%;padding-bottom: 4%;padding-top: 2%;text-align: center;">Notifications</h4>
+						<% int leavesRequest =com.mnt.time.controller.Application.countLeavesRequest(((models.User)request.getAttribute("user")).getEmail()); 
+						   int timesheetRequest =com.mnt.time.controller.Application.countTimesheetRequest(((models.User)request.getAttribute("user")).getEmail());
+						if(leavesRequest != 0) { %>
+							<h5>Pending Leaves Request : <%=leavesRequest %> </h5>
+			 			<%} 
+			 			if(leavesRequest == 0  && timesheetRequest == 0 ) { %>
+							<h5>No Pending Leaves and Timesheets Request </h5>
+			 			<%} 
+						if(timesheetRequest != 0) { %>
+						<h5 style="height: 155px;">Pending Timesheet Request : <%=timesheetRequest %> </h5>
+		 			<%}
+			 			%>
+			 			
+					</div>
+				
+						
+				
 			</div>
 
+ 				<div style="float: right; margin-right: 1%;padding: 0% 7% 12% 7%;border: 1px solid #4387bf;">
+		 					<h4 style="border-bottom: 1px solid black;width: 100%;padding-bottom: 4%;padding-top: 2%;text-align: center;">Leaves Balance</h4>
+		
+					<div class="clearfix"
+						style="margin-right: 4%; float: left; width: 100%;">
+						<c:forEach var="leave" items="${leaves}" varStatus='loopIndex'>
+							<label style="float: left; margin-right: 2%;font-weight: bold;font-size: 12px;"
+								for="leave_${loopIndex.index}_leave_name">
+								${leaves.get(loopIndex.index).getLeaveLevel().getLeave_type()} : ${leaves.get(loopIndex.index).getBalance()}
+							</label>
+						</c:forEach>
+		
+					</div>
+		</div>		
 
+
+		</div>
 
 		</div>
 

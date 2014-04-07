@@ -302,7 +302,7 @@
 .datepicker table tr td.active:hover[disabled],
 .datepicker table tr td.active.disabled[disabled],
 .datepicker table tr td.active.disabled:hover[disabled] {
-  background-color: rgb(250, 167, 50);
+  background-color: #428bca;
 }
 .datepicker table tr td.active:active,
 .datepicker table tr td.active:hover:active,

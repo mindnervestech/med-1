@@ -28,7 +28,7 @@
 }
 
 #role_permission_search:hover {
-	background: #333;
+	background: #e6e6e6;
 	color: #fff;
 }
 </style>

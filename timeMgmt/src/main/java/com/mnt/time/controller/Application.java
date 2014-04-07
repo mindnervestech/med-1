@@ -3,6 +3,7 @@ package com.mnt.time.controller;
 import static com.google.common.collect.Lists.transform;
 import static play.data.Form.form;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
@@ -11,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import models.ApplyLeave;
 import models.Company;
+import models.LeaveBalance;
 import models.MailSetting;
+import models.RoleLeave;
 import models.RoleLevel;
 import models.Timesheet;
 import models.User;
@@ -32,6 +35,7 @@ import play.libs.Json;
 import com.avaje.ebean.Expr;
 import com.avaje.ebean.Expression;
 import com.custom.domain.LeaveStatus;
+import com.custom.domain.RoleLevels;
 import com.custom.domain.TimesheetStatus;
 import com.custom.emails.Email;
 import com.google.common.base.Function;
@@ -47,8 +51,12 @@ public class Application  {
   
 	@RequestMapping(value="/index" , method = RequestMethod.GET)
     public String index(ModelMap model, @CookieValue("username") String username) {
-    	model.addAttribute("_menuContext", MenuBarFixture.build(username));
+		User user = User.findByEmail(username);
+		List<LeaveBalance> leavebal=LeaveBalance.find.where().eq("employee_id",user.getId()).findList();
+		
+		model.addAttribute("_menuContext", MenuBarFixture.build(username));
     	model.addAttribute("user", User.findByEmail(username));
+    	model.addAttribute("leaves",leavebal);
     	//return "views/home";
     	return "home";
     }

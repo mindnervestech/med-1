@@ -27,7 +27,7 @@
 			</c:choose>
 		 </c:forEach>
 			<label class="control-label" for="singlebutton">&nbsp;</label>
-			<button style="margin-left: 3%;"id='${_searchContext.entityName()}${mode}${"_searchButton"}' onclick="return false;" name="searchButton" class="btn">Search</button>
+			<button style="margin-left: 3%; color: gray;"id='${_searchContext.entityName()}${mode}${"_searchButton"}' onclick="return false;" name="searchButton" class="btn">Search</button>
 		</c:if>		
 				
 </div>
@@ -101,6 +101,11 @@
 	
 </div>
  
+ <style>
+ option:hover{
+	background-color: gray;
+}
+</style>
  	<script type="text/javascript">
  	
  	var  ${_searchContext.entityName()}${mode}${"_SearchGrid"} = {
@@ -271,6 +276,7 @@
 		doCustomAction:function(_url){
 			s = this.selectedItem();
 			_this = this;
+		
 			if(s.length == 0 ){
 				bootbox.confirm("Please Mark Selection From Grid", function(result) {
 					if(result == true){

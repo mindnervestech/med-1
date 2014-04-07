@@ -56,28 +56,28 @@
 .ui-widget { font-family: Lucida Grande, Lucida Sans, Arial, sans-serif; font-size: 1.1em; }
 .ui-widget .ui-widget { font-size: 1em; }
 .ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: Lucida Grande, Lucida Sans, Arial, sans-serif; font-size: 1em; }
-.ui-widget-content { border: 1px solid #fa9f61; background: #fcfdfd url(images/ui-bg_inset-hard_100_fcfdfd_1x100.png) 50% bottom repeat-x; color: #222222; }
+.ui-widget-content { border: 1px solid #808080; background: #fcfdfd url(images/ui-bg_inset-hard_100_fcfdfd_1x100.png) 50% bottom repeat-x; color: #222222; }
 .ui-widget-content a { color: #222222; }
-.ui-widget-header { border: 1px solid #fa9f61; background-color: rgb(250, 167, 50);
-					background-image: linear-gradient(to bottom, rgb(251, 180, 80), rgb(248, 148, 6)); 
+.ui-widget-header { border: 1px solid #428bca; background-color: #428bca;
+					background-image: linear-gradient(to bottom, #428bca, #428bca); 
 					color: #ffffff; font-weight: bold; }
 .ui-widget-header a { color: #ffffff; }
 
-/* Interaction states
+/* Interaction states      on hovar to change grid
 ----------------------------------*/
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border-left: 1px solid #fa9f61; border-right: 1px solid #fa9f61; background: #FFEDCB url(images/ui-bg_glass_85_dfeffc_1x400.png1) 50% 50% repeat-x; font-weight: bold; color: #333; }
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border-left: 1px solid #428bca; border-right: 1px solid #428bca; background: #edf2f7  url(images/ui-bg_glass_85_edf2f7_1x400.png1) 50% 50% repeat-x; font-weight: bold; color: #333; }
 .ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #2e6e9e; text-decoration: none; }
-.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 1px solid #fa9f61; background: #FFEDCB url(images/ui-bg_glass_75_d0e5f5_1x400.png1) 50% 50% repeat-x; font-weight: bold; color: #1d5987; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 1px solid #D1E0EE; background: #edf2f7  url(images/ui-bg_glass_75_edf2f7_1x400.png1) 50% 50% repeat-x; font-weight: bold; color: #1d5987; }
 .ui-state-hover a, .ui-state-hover a:hover { color: #1d5987; text-decoration: none; }
-.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 1px solid #79b7e7; background: #f5f8f9 url(images/ui-bg_inset-hard_100_f5f8f9_1x100.png) 50% 50% repeat-x; font-weight: bold; color: #e17009; }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 1px solid #363636; background: #363636 url(images/ui-bg_inset-hard_100_363636_1x100.png) 50% 50% repeat-x; font-weight: bold; color: #e17009; }
 .ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #e17009; text-decoration: none; }
 .ui-widget :active { outline: none; }
 
 /* Interaction Cues
 ----------------------------------*/
-.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight  {border: 1px solid #fad42e; background: #fbec88 url(images/ui-bg_flat_55_fbec88_40x100.png) 50% 50% repeat-x; color: #363636; }
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight  {border: 1px solid #428bca; background: #428bca url(images/ui-bg_flat_55_428bca_40x100.png) 50% 50% repeat-x; color: #363636 !important; }
 .ui-state-highlight a, .ui-widget-content .ui-state-highlight a,.ui-widget-header .ui-state-highlight a { color: #363636; }
-.ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error {border: 1px solid #cd0a0a; background: #fef1ec url(images/ui-bg_glass_95_fef1ec_1x400.png) 50% 50% repeat-x; color: #cd0a0a; }
+.ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error {border: 1px solid #cd0a0a; background: #fef1ec url(images/ui-bg_glass_95_fef1ec_1x400.png) 50% 50% repeat-x; color: #cd0a0a !important; }
 .ui-state-error a, .ui-widget-content .ui-state-error a, .ui-widget-header .ui-state-error a { color: #cd0a0a; }
 .ui-state-error-text, .ui-widget-content .ui-state-error-text, .ui-widget-header .ui-state-error-text { color: #cd0a0a; }
 .ui-priority-primary, .ui-widget-content .ui-priority-primary, .ui-widget-header .ui-priority-primary { font-weight: bold; }
@@ -367,6 +367,9 @@
 .ui-menu .ui-menu {
 	margin-top: -3px;
 }
+body {
+  font-size: 12px;
+}
 .ui-menu .ui-menu-item {
 	margin:0;
 	padding: 0;
@@ -382,10 +385,90 @@
 	line-height:1.5;
 	zoom:1;
 }
+.wizard-modal.modal .nav-list li.active > a {
+	background-color:#428bca !important;
+}
+.btn {
+	color: #ffffff;
+	}
+.btn-warning {
+  background-color: #4387bf !important;
+  background-image: -o-linear-gradient(top, #4387bf, #4387bf ); 
+  background-image: linear-gradient(to bottom, #4387bf, #4387bf);
+}
+.btn-success {
+  background-color: #4387bf;
+  background-image: -o-linear-gradient(top, #62c462, #51a351);
+  background-image: linear-gradient(to bottom, #4387bf, #4387bf);
+ 
+}
+.btn-info {
+  background-color: #4387bf;
+  background-image: linear-gradient(to bottom, #4387bf, #4387bf);
+  
+}
+.btn-group.open .btn-primary.dropdown-toggle {
+  background-color: #428bca;
+}
+.btn-success:hover,
+.btn-success:focus,
+.btn-success:active,
+.btn-success.active,
+.btn-success.disabled,
+.btn-success[disabled] {
+  color: #ffffff;
+  background-color: #4387bf;
+  *background-color: #499249;
+}
+.btn-warning:hover,
+.btn-warning:focus,
+.btn-warning:active,
+.btn-warning.active,
+.btn-warning.disabled,
+.btn-warning[disabled] {
+  color: #D2D6DD;
+  background-color: #f89406;
+  *background-color: #df8505;
+}
+.nav > li > a:hover,
+.nav > li > a:focus {
+  text-decoration: none;
+  background-color: #428bca;
+}
+.nav-tabs > li > a:hover,
+.nav-tabs > li > a:focus {
+  border-color: #428bca #428bca #428bca;
+}
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.btn-primary.disabled,
+.btn-primary[disabled] {
+  color: #ffffff;
+  background-color: #4387bf;
+  *background-color: #003bb3;
+}
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus,
+.dropdown-submenu:hover > a,
+.dropdown-submenu:focus > a {
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #428bca !important;
+  background-image: linear-gradient(to bottom, #428bca, #428bca)
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0);
+}
 .ui-menu .ui-menu-item a.ui-state-hover,
 .ui-menu .ui-menu-item a.ui-state-active {
 	font-weight: normal;
 	margin: -1px;
+}
+.btn-primary {
+  background-color: #4387bf;
+  background-image: -o-linear-gradient(top, #0088cc, #0044cc);
+  background-image: linear-gradient(to bottom, #4387bf, #4387bf);
 }
 /*!
  * jQuery UI Button 1.8.23

@@ -35,9 +35,13 @@
 			</div>	
 			</c:forEach>
 			
-			<input type="submit" name="Submit" class="btn">
+			<input type="submit" name="Submit" class="btn btnColor">
 		 	
 					
  </form>
   
-  
+  <style>
+.btnColor{
+	color: gray;
+}
+</style>

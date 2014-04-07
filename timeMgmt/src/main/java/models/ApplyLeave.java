@@ -18,6 +18,7 @@ import play.db.ebean.Model;
 
 import com.custom.domain.LeaveStatus;
 import com.custom.domain.TypeOfLeave;
+import com.mnt.core.domain.DomainEnum;
 import com.mnt.core.ui.annotation.SearchColumnOnUI;
 import com.mnt.core.ui.annotation.SearchFilterOnUI;
 import com.mnt.core.ui.annotation.UIFields;
@@ -45,13 +46,15 @@ public class ApplyLeave extends Model {
 	@Validation(required=true)
 	public String noOfDays;
 	
-	@SearchColumnOnUI(rank=3,colName="Type of Leave")
-	@SearchFilterOnUI(label="Type of Leave")
+	@Transient
 	@WizardCardUI(name="Leave",step=1)
-	@UIFields(order=3,label="Type of Leave")
-	@Enumerated(EnumType.STRING)
-	@Validation(required=true)
-	public TypeOfLeave typeOfLeave;
+	@UIFields(order=3,label="Type of Leave",name="typeOfLeave")
+	@Validation(required = true)
+	public static List<DomainEnum> leave_domain;
+	
+	
+	@SearchColumnOnUI(rank=3,colName="Type of Leave")
+	public String typeOfLeave;
 	
 	@SearchColumnOnUI(rank=4,colName="Remarks")
 	@WizardCardUI(name="Leave",step=1)
@@ -127,14 +130,14 @@ public class ApplyLeave extends Model {
 		this.noOfDays = noOfDays;
 	}
 
-	public TypeOfLeave getTypeOfLeave() {
+/*	public TypeOfLeave getTypeOfLeave() {
 		return typeOfLeave;
 	}
 
 	public void setTypeOfLeave(TypeOfLeave typeOfLeave) {
 		this.typeOfLeave = typeOfLeave;
 	}
-
+*/
 	public String getRemarks() {
 		return remarks;
 	}
@@ -222,5 +225,14 @@ public class ApplyLeave extends Model {
 	public void setLastUpdateDate(Timestamp lastUpdateDate) {
 		this.lastUpdateDate = lastUpdateDate;
 	}
+
+	public String getTypeOfLeave() {
+		return typeOfLeave;
+	}
+
+	public void setTypeOfLeave(String typeOfLeave) {
+		this.typeOfLeave = typeOfLeave;
+	}
+
 	
 }

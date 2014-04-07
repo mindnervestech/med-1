@@ -3,7 +3,21 @@
 
  <jsp:include page="menuContext.jsp"/> 
  <h4><b style=" width: 1051px; margin-left: 20px;"><i>My Leaves</i></b></h4>
-    <h1>leave type defination</h1>
+
+<div class=" twipsies well leaveLevel" style="width: 96%;">
+	<div class="clearfix"
+		style="margin-right: 4%; float: left; width: 100%;">
+		<c:forEach var="leave" items="${leaves}" varStatus='loopIndex'>
+			<label style="float: left; margin-right: 2%;"
+				for="leave_${loopIndex.index}_leave_name">
+				${leaves.get(loopIndex.index).getLeaveLevel().getLeave_type()}: ${leaves.get(loopIndex.index).getBalance()}
+			</label>
+		</c:forEach>
+
+	</div>
+</div>
+
+
 <c:set var="_searchContext" value="${context}" scope="request" />
 <c:set var="_parentSearchCtx" value="${null}" scope="request" />
 <c:set var="mode" value="add" scope="request" />
@@ -15,6 +29,28 @@
 
 <script>
 
+ $(document).ready(function(){
+	 var leaveBalanceDS = {};
+	 <c:forEach var="leave" items="${leaves}" varStatus='loopIndex'>
+	 leaveBalanceDS["${leaves.get(loopIndex.index).getLeaveLevel().getLeave_type()}"] = ${leaves.get(loopIndex.index).getBalance()};
+	</c:forEach>
+	
+	 $('#Leaveleave_domain').change (function() {
+		var v1 = $(this).val();
+		
+		if(parseInt($('#LeavenoOfDays').val()) > parseInt(leaveBalanceDS[v1])){
+	 		alert($('#LeavenoOfDays').val());
+			alert("u dont have sufficient leaves");
+	}else{
+		alert("success");
+	}
+		
+		
+	});	 
+
+
+	
+	
 	function Leave_confimationDialog(_url)
 	{
 		 if(_url == '${pageContext.request.contextPath}/leave/retractLeave'){
@@ -23,6 +59,6 @@
 		 return false;
 		
 	}
-	
+ });	
 </script>
 

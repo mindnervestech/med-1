@@ -66,7 +66,7 @@
     top: -18px;
     right:14px;
     padding:4px 8px 2px 8px;
-    background-color:orange;
+    background-color:#35bac4;
     color:white;
     font-weight:bold;
     font-size:14px;

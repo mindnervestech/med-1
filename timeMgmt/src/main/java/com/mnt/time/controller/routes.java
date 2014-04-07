@@ -310,6 +310,14 @@ public interface Leaves {
 		public static String url="/defineLeaves";
 	}
 	
+	public interface testupdate{
+		public static String url="/testupdate";
+	}
+	
+	public interface testupdate1{
+		public static String url="/testupdate1";
+	}
+	
 	public interface saveLeaves{
 		public static String url="/saveLeaves";
 	}

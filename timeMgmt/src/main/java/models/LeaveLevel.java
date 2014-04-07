@@ -1,5 +1,6 @@
 package models;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -7,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
+import javax.persistence.Version;
 
 import com.avaje.ebean.Expr;
 
@@ -22,9 +25,23 @@ public class LeaveLevel extends Model{
 	public String leave_type;
 		
 	public String carry_forward;
+
+	@Version
+	public Timestamp lastUpdate;
 	
 	@ManyToOne
 	public LeaveX leaveX;
+	
+	@OneToOne
+	public RoleLeave roleLeave;
+
+	public RoleLeave getRoleLeave() {
+		return roleLeave;
+	}
+
+	public void setRoleLeave(RoleLeave roleLeave) {
+		this.roleLeave = roleLeave;
+	}
 
 	public LeaveX getLeaveX() {
 		return leaveX;
@@ -75,4 +92,12 @@ public class LeaveLevel extends Model{
 		this.id = id;
 	}
 	public LeaveLevel(){}
+
+	public Timestamp getLastUpdate() {
+		return lastUpdate;
+	}
+
+	public void setLastUpdate(Timestamp lastUpdate) {
+		this.lastUpdate = lastUpdate;
+	}
 }

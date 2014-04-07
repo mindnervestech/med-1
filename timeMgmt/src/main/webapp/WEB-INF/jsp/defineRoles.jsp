@@ -49,7 +49,7 @@
 								<span class="help-block"></span>
 						</div>
 					</div>
-					<a class="removeRole btn danger pull-right">Remove</a>
+					<a class="removeRole btn danger pull-right btnColor">Remove</a>
 
 					<div class="clearfix"
 						id="roleLevels_${loopIndex.index}__reporting_to_field">
@@ -204,6 +204,9 @@
 </script>
 
 <style>
+.btnColor{
+	color: gray;
+}
 .buttonPosition {
 	margin-left: 18%;
 	margin-top: 1%;
