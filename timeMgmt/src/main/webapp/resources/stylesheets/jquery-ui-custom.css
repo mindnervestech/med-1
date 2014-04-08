@@ -407,6 +407,9 @@ body {
   background-image: linear-gradient(to bottom, #4387bf, #4387bf);
   
 }
+.progress-striped .bar {
+  background-color: #428bca !important;
+}
 .btn-group.open .btn-primary.dropdown-toggle {
   background-color: #428bca;
 }

@@ -568,7 +568,7 @@
  	}).trigger('resize');
 	$('.ui-icon-newwin').css(
 			{
-    			"background-image":"url('images/excel.png')",
+    			"background-image":"url('http://localhost:8080/time/resources/images/excel.png')",
     			"background-position":"0"
     		});
 	

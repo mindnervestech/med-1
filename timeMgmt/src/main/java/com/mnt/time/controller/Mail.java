@@ -44,7 +44,7 @@ public class Mail{
 		Form<MailSetting> mailForm = form(MailSetting.class).bindFromRequest(request);
 		
 		User user = User.findByEmail(username);
-		MailSetting mail1 = MailSetting.find.where().eq("companyObject", user.companyobject).findUnique();
+		MailSetting mail1 = MailSetting.find.where().eq("companyObject", user.getCompanyobject()).findUnique();
 		
 		MailSetting mail = mailForm.get();
 		mail.id = mail1.id;
