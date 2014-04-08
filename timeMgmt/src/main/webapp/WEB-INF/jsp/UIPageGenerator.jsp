@@ -131,7 +131,7 @@ $(document).ready(function(){
 			  			
 			  			<c:when test='${button.target().name() == "SUBMIT"}'>
 							$('#${_pageContext.pageName()}${button.id()}').click(function(){
-								${_pageContext.pageName()}${"_this"}.doSubmitAction("${button.url()}");	
+								${_pageContext.pageName()}${"_this"}.doSubmitAction("${pageContext.request.contextPath}${button.url()}");	
 				  			});
 						</c:when>
 						
