@@ -204,7 +204,7 @@ public class Roles {
 		User user = User.findByEmail(username);
 		List<String> roleLevels = new ArrayList<String>();
 		
-		List<RoleLevel> roleLevelList = RoleLevel.findListByCompany(user.companyobject.id);
+		List<RoleLevel> roleLevelList = RoleLevel.findListByCompany(user.getCompanyobject().getId());
 		for(int i=0;i<roleLevelList.size();i++){
 			roleLevels.add(roleLevelList.get(i).role_name);
 		}

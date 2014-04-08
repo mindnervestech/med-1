@@ -73,8 +73,8 @@
 
 	</fieldset>
 	<div class=" actions buttonPosition">
-		<a class="addMore btn btn-success">Add More</a> <input type="button"
-			class="btn btn-info" id="submitButton" value="Submit"
+		<a class="btn btn-warning">Add More</a> <input type="button"
+			class="btn btn-warning" id="submitButton" value="Submit"
 			style="width: 9%;">
 	</div>
 

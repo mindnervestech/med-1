@@ -173,18 +173,18 @@ body {
 				</div>
 			</div>	
 			
-				<div style="float: right;margin-right: 0%;padding: 0% 7% 15% 9%;border: 1px solid #4387bf;">
+				<div style="float: right;margin-right: 0%;width: 32%; height: 225px; border: 1px solid #4387bf;">
 						<h4 style="border-bottom: 1px solid black;width: 100%;padding-bottom: 4%;padding-top: 2%;text-align: center;">Notifications</h4>
 						<% int leavesRequest =com.mnt.time.controller.Application.countLeavesRequest(((models.User)request.getAttribute("user")).getEmail()); 
 						   int timesheetRequest =com.mnt.time.controller.Application.countTimesheetRequest(((models.User)request.getAttribute("user")).getEmail());
 						if(leavesRequest != 0) { %>
-							<h5>Pending Leaves Request : <%=leavesRequest %> </h5>
+							<h5 style="text-align: center;">Pending Leaves Request : <%=leavesRequest %> </h5>
 			 			<%} 
 			 			if(leavesRequest == 0  && timesheetRequest == 0 ) { %>
-							<h5>No Pending Leaves and Timesheets Request </h5>
+							<h5 style="text-align: center;">No Pending Leaves and Timesheets Request </h5>
 			 			<%} 
 						if(timesheetRequest != 0) { %>
-						<h5 style="height: 155px;">Pending Timesheet Request : <%=timesheetRequest %> </h5>
+						<h5 style="height: 155px;text-align: center;">Pending Timesheet Request : <%=timesheetRequest %> </h5>
 		 			<%}
 			 			%>
 			 			
@@ -193,14 +193,14 @@ body {
 						
 				
 			</div>
-
- 				<div style="float: right; margin-right: 1%;padding: 0% 7% 12% 7%;border: 1px solid #4387bf;">
+			<div class="container">
+ 				<div style="float: right;margin-top: 2%;width:32%; height: 225px; border: 1px solid #4387bf;">
 		 					<h4 style="border-bottom: 1px solid black;width: 100%;padding-bottom: 4%;padding-top: 2%;text-align: center;">Leaves Balance</h4>
 		
 					<div class="clearfix"
 						style="margin-right: 4%; float: left; width: 100%;">
 						<c:forEach var="leave" items="${leaves}" varStatus='loopIndex'>
-							<label style="float: left; margin-right: 2%;font-weight: bold;font-size: 12px;"
+							<label style="float: left;text-align: center;margin-left: 15%;font-weight: bold;font-size: 12px;"
 								for="leave_${loopIndex.index}_leave_name">
 								${leaves.get(loopIndex.index).getLeaveLevel().getLeave_type()} : ${leaves.get(loopIndex.index).getBalance()}
 							</label>
