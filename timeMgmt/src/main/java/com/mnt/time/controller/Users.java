@@ -168,8 +168,8 @@ public class Users {
 			e.printStackTrace();
 			return new ResponseEntity<String>(HttpStatus.BAD_REQUEST).toString();
 		}
-		//Integer count = Application.count(username);
-		//String notification = count.toString();  // Discuss with Jagbir: what is fun of having this ?
+		Integer count = Application.count(username);
+		String notification = count.toString(); 
 		String message="";
 		if(userStatus){
 			message = "User have been Edited Successfully";
@@ -178,7 +178,7 @@ public class Users {
 		}
 		 
 		Map<String,String> jsonMap = new HashMap<String,String>();
-		//jsonMap.put("count", notification);
+		jsonMap.put("count", notification);
 		jsonMap.put("message", message);
 		return Json.toJson(jsonMap).toString();
     }

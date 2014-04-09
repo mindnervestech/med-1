@@ -198,7 +198,11 @@ public class Status {
 			
 			User superAdmin = User.find.where().eq("designation", "SuperAdmin").findUnique();
 			MailSetting smtpSetting = MailSetting.find.where().eq("companyObject",superAdmin.companyobject).findUnique();
+			try {
 			Email.sendOnlyMail(smtpSetting,recipients, subject, body);
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
 		}
 		Integer count = Application.count(username);
 		String notification = count.toString(); 

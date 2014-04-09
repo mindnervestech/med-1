@@ -42,7 +42,7 @@ public class RequestInterceptor implements HandlerInterceptor {
 		//return false;
 	}
 	
-	public static boolean isInRolePermission(String userName, String menu) {
+	/*public static boolean isInRolePermission(String userName, String menu) {
 		User user = User.findByEmail(userName);
 		List<String> blackListedPermissions = null;
 		
@@ -65,9 +65,9 @@ public class RequestInterceptor implements HandlerInterceptor {
         	}
         }
 		return true;
-	}
+	}*/
 
-	public static boolean isInUserPermission(User user,String menu){
+	public static boolean isInUserPermission(User user,String menu, List<String> listedPermissions){
         // Logic to check the uri in permission list for User, if yes return true else false
         
         if("CompanyRequest".equals(menu)){
@@ -78,9 +78,8 @@ public class RequestInterceptor implements HandlerInterceptor {
     		}
 		}
         
-		List<String> listedPermissions = null;
 		if (user.getPermissions() != null) {
-			listedPermissions = Arrays.asList(user.getPermissions().split("[|]"));
+			
 			if (listedPermissions.contains(menu)) {
 				return true;
 			} 
