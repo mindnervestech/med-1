@@ -126,7 +126,7 @@
 					</div>
 				</div>
 
-				<a class="removeRole btn danger pull-right">Remove</a>
+				<a class="removeRole btn danger pull-right btnColor">Remove</a>
 				<div class="clearfix  " id="roleLevels_x__reporting_to_field">
 					<label for="roleLevels_x__reporting_to"></label>
 					<div class="input">
@@ -176,8 +176,8 @@
 		</div>
 	</fieldset>
 	<div class="actions buttonPosition">
-		<a class="btn btn-warning">Add More</a> <input type="button"
-			class="btn btn-warning" id="submitButton" value="Submit"style="width: 9%;">
+		<a class="addMore btn btn-success">Add More</a> <input type="button"
+			class="btn btn-info" id="submitButton" value="Submit"style="width: 9%;">
 	</div>
 </form:form>
 
