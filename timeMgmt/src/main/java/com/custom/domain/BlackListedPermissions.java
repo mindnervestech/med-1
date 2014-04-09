@@ -3,23 +3,22 @@ package com.custom.domain;
 public class BlackListedPermissions {
 
 	public static String BLACKLISTED_PERMISSIONS_FOR_SUPERADMIN = 
-			"ManageUser|ManageProject|ManageTask|ManageClient|Delegate|FeedBackCreate|FeedBackView|" +
-				"UserPermissions|UserRequest|MyBucket|LeaveBucket|TeamRate|ProjectReport|Mail|Notification|" +
-					"DefineRoles|OrgHierarchy|ApplyLeave|Leaves|Timesheet|CreateTimesheet|SearchTimesheet|RolePermissions";
+			"CompanyRequest|Mail|";
 	
 	
 	
 	public static String BLACKLISTED_PERMISSIONS_FOR_ADMIN = 
 			"Delegate|FeedBackCreate|FeedBackView|TeamRate|ProjectReport|Notification|" +
-					"ApplyLeave|Leaves|Timesheet|CreateTimesheet|SearchTimesheet|CompanyRequest";
+					"ApplyLeave|Leaves|Timesheet|CreateTimesheet|SearchTimesheet|Mail|"
+					+ "UserRequest|DefineRoles|OrgHierarchy|UserPermissions|ManageUser|ManageProject|ManageTask|ManageClient";
 	
 	
 
 	public static String BLACKLISTED_PERMISSIONS_FOR_USERS = 
-			"ManageUser|ManageProject|ManageTask|ManageClient|Delegate|FeedBackCreate|FeedBackView|" +
-				"UserPermissions|UserRequest|MyBucket|LeaveBucket|TeamRate|ProjectReport|Mail|Notification|" +
+			"Delegate|FeedBackCreate|FeedBackView|" +
+				"UserPermissions|UserRequest|MyBucket|LeaveBucket|TeamRate|ProjectReport|Notification|" +
 					"DefineRoles|OrgHierarchy|ApplyLeave|Leaves|Timesheet|CreateTimesheet|SearchTimesheet|" +
-						"CompanyRequest|RolePermissions";
+						"RolePermissions";
 
 
 }

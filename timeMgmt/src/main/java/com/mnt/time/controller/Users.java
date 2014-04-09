@@ -143,7 +143,7 @@ public class Users {
 			Object o = saveUtils.doSave(true, request);
 			User user = User.findById((Long)o);
 			if(user.userStatus == com.custom.domain.Status.PendingApproval){
-				user.userStatus = com.custom.domain.Status.Approved;
+				user.setUserStatus(com.custom.domain.Status.Approved);
 				user.update();
 				try{
 				MailSetting smtpSetting = MailSetting.find.where().eq("companyObject", user.companyobject).findUnique();
@@ -168,8 +168,8 @@ public class Users {
 			e.printStackTrace();
 			return new ResponseEntity<String>(HttpStatus.BAD_REQUEST).toString();
 		}
-		Integer count = Application.count(username);
-		String notification = count.toString(); 
+		//Integer count = Application.count(username);
+		//String notification = count.toString();  // Discuss with Jagbir: what is fun of having this ?
 		String message="";
 		if(userStatus){
 			message = "User have been Edited Successfully";
@@ -178,7 +178,7 @@ public class Users {
 		}
 		 
 		Map<String,String> jsonMap = new HashMap<String,String>();
-		jsonMap.put("count", notification);
+		//jsonMap.put("count", notification);
 		jsonMap.put("message", message);
 		return Json.toJson(jsonMap).toString();
     }

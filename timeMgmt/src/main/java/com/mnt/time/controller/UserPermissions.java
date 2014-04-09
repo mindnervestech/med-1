@@ -151,11 +151,11 @@ public class UserPermissions {
 		String sord = form.get("sord");
 		
 		List<Expression> expressions = new ArrayList<Expression>();
-		if(form.get("firstName") != null){
+		if(form.get("firstName") != null && !form.get("firstName").isEmpty()){
 			expressions.add( Expr.like("firstName", "%"+form.get("firstName")+"%"));
 		}
 		
-		if(form.get("lastName") != null){
+		if(form.get("lastName") != null && !form.get("lastName").isEmpty()){
 			expressions.add( Expr.like("lastName", "%"+form.get("lastName")+"%"));
 		}
 		int count =0;

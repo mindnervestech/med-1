@@ -5,6 +5,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import models.User;
+
 import com.custom.RequestInterceptor;
 import com.custom.domain.Permissions;
 import com.mnt.time.controller.routes;
@@ -33,12 +35,12 @@ public class MenuBarFixture {
 		}
 		
 		List<MenuItem> resultMenu = new ArrayList<MenuItem>();
-		
+		User user = User.findByEmail(username);
 		for(MenuItem mi : map.values()){
 			if(!mi.isSubMenu()){
 				List<MenuItem> resultSubMenus = new ArrayList<MenuItem>();
 				for(MenuItem sm : mi.subMenu){
-					if(RequestInterceptor.isInUserPermission(username, sm.menu) ){
+					if(RequestInterceptor.isInUserPermission(user, sm.menu) ){
 						resultSubMenus.add(sm);
 					}
 				}
@@ -49,7 +51,7 @@ public class MenuBarFixture {
 				}
 			}
 			else{
-				if(RequestInterceptor.isInUserPermission(username, mi.menu)){
+				if(RequestInterceptor.isInUserPermission(user, mi.menu)){
 					resultMenu.add(mi);
 				}
 			}

@@ -302,7 +302,7 @@ public class Application  {
 		    	body +="\nPlease take Necessary Action regarding Approval/Disapproval of User...";
 		    	
 		    	User superAdmin = User.find.where().eq("designation", "SuperAdmin").findUnique();
-				MailSetting smtpSetting = MailSetting.find.where().eq("companyObject",superAdmin.companyobject).findUnique();
+				MailSetting smtpSetting = MailSetting.find.where().eq("companyObject",superAdmin.getCompanyobject()).findUnique();
 				Email.sendOnlyMail(smtpSetting,recipients, subject, body);
     		}
     		catch (Exception e) {

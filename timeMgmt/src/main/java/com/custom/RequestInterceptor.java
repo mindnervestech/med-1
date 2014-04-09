@@ -49,7 +49,7 @@ public class RequestInterceptor implements HandlerInterceptor {
 		if("SuperAdmin".equals(user.designation)){
 			blackListedPermissions = Arrays.asList(user.getPermissions().split("[|]"));
 		}else if("Admin".equals(user.designation)){
-			return isInUserPermission(user.email, menu);
+			return isInUserPermission(user, menu);
 		}else{
 			RoleLevel roleLevel = RoleLevel.find.where().add(Expr.eq("role_level", user.designation)).findUnique();
 			if(roleLevel.getPermissions() != null && !"".equals(roleLevel.getPermissions())){
@@ -67,9 +67,9 @@ public class RequestInterceptor implements HandlerInterceptor {
 		return true;
 	}
 
-	public static boolean isInUserPermission(String userName,String menu){
+	public static boolean isInUserPermission(User user,String menu){
         // Logic to check the uri in permission list for User, if yes return true else false
-        User user = User.findByEmail(userName);
+        
         if("CompanyRequest".equals(menu)){
         	if("SuperAdmin".equals(user.designation)){
         		return true;
@@ -78,10 +78,10 @@ public class RequestInterceptor implements HandlerInterceptor {
     		}
 		}
         
-		List<String> blackListedPermissions = null;
+		List<String> listedPermissions = null;
 		if (user.getPermissions() != null) {
-			blackListedPermissions = Arrays.asList(user.getPermissions().split("[|]"));
-			if (blackListedPermissions.contains(menu)) {
+			listedPermissions = Arrays.asList(user.getPermissions().split("[|]"));
+			if (listedPermissions.contains(menu)) {
 				return true;
 			} 
 		} 
