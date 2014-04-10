@@ -49,20 +49,20 @@
 	<div class="container">
 		<div class="heading">
 			<form:form action="complete" method="POST" id="registerCompanyForm">
-				<legend></legend>
+				
 				<h1>TimeMinder</h1>
 				<br>
 				<br>
 				<br>
 				<div class="row">
-					<div class="span8">
+					<div class="span5">
 						<fieldset id="registerHere">
 							<c:if test="${not empty registered}">
 								<p class="registered" class="serif" style="color: #00ff00;">
 									${registered}</p>
 							</c:if>
 
-							<div class="well">
+							<div class="well" style="background-color: rgba(0, 0, 0, 0.2);">
 								<div class="control-group">
 									<div class="controls">
 										<input type="text" id="companyName" name="companyName"

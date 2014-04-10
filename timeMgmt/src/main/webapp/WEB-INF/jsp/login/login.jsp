@@ -44,7 +44,7 @@
         </ul>
 	<div class="container">
 		<div class="heading">
-			<legend></legend>
+			
 			<h1>TimeMinder</h1>
 			<br> <br> <br>
 			
@@ -65,7 +65,7 @@
 			
 			<form:form action="login" method="POST">
 				<fieldset id="login_field">
-					<div class="well" style="width: 400px;">
+					<div class="well" style="width: 350px;background-color: rgba(0, 0, 0, 0.2);">
 						<p>
 							<input type="email" name="email" value="${loginForm.data().get('email')}"
 								placeholder="Email" rel="popover" required="required"
