@@ -79,7 +79,7 @@ public class RolePermissions {
 			roleLevel.update();
 			
 //			User.findByEmail(request().username()).companyobject.id
-			User user1=User.findByEmail(username);
+			/*User user1=User.findByEmail(username);
 			long companyId=user1.getCompanyobject().getId();
 			List<User> users = User.find.where(Expr.and(Expr.eq("role", roleLevel),
 					Expr.eq("role.roleX", RoleX.findByCompany(companyId))))
@@ -88,7 +88,7 @@ public class RolePermissions {
 			for(User user : users){
 				user.setPermissions(roleLevel.getPermissions());
 				user.update();
-			}
+			}*/
 			return "Permissions Saved Successfully";
 	}
 	

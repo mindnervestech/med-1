@@ -56,24 +56,7 @@ public class Email {
 			}
 		  });
  
-		/*Futures.future(new Callable<Void>() {
-				@Override
-				public Void call() throws Exception {
-					try {
-						Message message = new MimeMessage(session);
-						message.setFrom(new InternetAddress(username));
-						message.setRecipients(Message.RecipientType.TO,
-							InternetAddress.parse(recipient));
-						message.setSubject(subject);
-						message.setText(body);	
-						Transport.send(message);
-					} catch (MessagingException e) {
-						EmailExceptionHandler.handleException(e);
-					}
-					return null;
-				}
-				
-			}, null) ;*/
+
 
 		try {
 
