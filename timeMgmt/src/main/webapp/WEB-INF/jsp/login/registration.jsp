@@ -9,6 +9,24 @@
 <html>
 <head>
 <title>Time</title>
+
+		<meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <title>Fullscreen Background Image Slideshow with CSS3</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <meta name="description" content="Fullscreen Background Image Slideshow with CSS3 - A Css-only fullscreen background image slideshow" />
+        <meta name="keywords" content="css3, css-only, fullscreen, background, slideshow, images, content" />
+        <meta name="author" content="Codrops" />
+        <link rel="shortcut icon" href="../favicon.ico"> 
+        <!-- <link rel="stylesheet" type="text/css" href="/resources/stylesheets/demo.css" /> -->
+        <link rel="stylesheet"  href='<c:url value="/resources/stylesheets/demo.css"/>'>
+        <link rel="stylesheet"  href='<c:url value="/resources/stylesheets/style1.css"/>'>
+        <!-- <link rel="stylesheet" type="text/css" href="/resources/stylesheets/style1.css" /> -->
+		<script type="text/javascript" src="/resources/stylesheets/modernizr.custom.86080.js"></script>
+
+
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Bootstrap -->
@@ -21,13 +39,21 @@
 
 <body>
 
+		<ul class="cb-slideshow">
+            <li><span>Image 01</span>
+            <li><span>Image 02</span>
+            <li><span>Image 03</span>
+            <li><span>Image 04</span>
+            <li><span>Image 05</span>
+        </ul>
+
 	<div class="container">
 		<legend></legend>
 		<div class="container">
 			<div class="heading">
 				<form:form action="registration" method="POST" id="createUserForm">
-					<a href="/"><img alt="" src='<c:url value="/resources/images/custom/logo.png"/>'></a>
 					<legend></legend>
+					<h1>TimeMinder</h1>
 					<br>
 					<br>
 					<br>

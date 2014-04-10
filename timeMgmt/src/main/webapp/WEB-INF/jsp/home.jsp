@@ -27,7 +27,8 @@ h5 {
 }
 
 body {
-	font-size: 14px !important;
+	font-size: 11px !important;
+	/* background-image: url(resources/images/1.jpg); */
 }
 </style>
 
