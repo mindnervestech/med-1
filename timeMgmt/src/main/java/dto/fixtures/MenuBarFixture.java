@@ -37,7 +37,7 @@ public class MenuBarFixture {
 		
 		List<MenuItem> resultMenu = new ArrayList<MenuItem>();
 		User user = User.findByEmail(username);
-		List<String> listedPermissions = Arrays.asList(user.getPermissions().split("[|]"));
+		List<String> listedPermissions = new ArrayList<String>(Arrays.asList(user.getPermissions().split("[|]")));
 		if(user.getRole() != null) {
 			List<String> rolePermissions = 
 					new ArrayList<String>(Arrays.asList(user.getRole().getPermissions().split("[|]")));
