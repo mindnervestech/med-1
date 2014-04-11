@@ -34,6 +34,7 @@ public class RoleLeave extends Model {
 	
 	public LeaveX leaveX;
 	
+	@Column(nullable=false)
 	public Long total_leave;
 
 	public static Model.Finder<Long, RoleLeave> find = new Model.Finder<Long,RoleLeave>

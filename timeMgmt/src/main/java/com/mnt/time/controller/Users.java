@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import models.Company;
 import models.LeaveBalance;
+import models.LeaveLevel;
 import models.MailSetting;
 import models.RoleLevel;
 import models.RoleX;
@@ -145,6 +146,7 @@ public class Users {
 			if(user.userStatus == com.custom.domain.Status.PendingApproval){
 				user.setUserStatus(com.custom.domain.Status.Approved);
 				user.update();
+				updateLeaveBalance(user);
 				try{
 				MailSetting smtpSetting = MailSetting.find.where().eq("companyObject", user.companyobject).findUnique();
 				String recipients = "";
@@ -156,6 +158,8 @@ public class Users {
 				body = "Congratulation !!! You are Approved By Admin..." +
 						"\nNow You can Login the TimeTrotter System!!";
 				Email.sendOnlyMail(smtpSetting,recipients, subject, body);
+				
+				
 				}catch (Exception e){
 					//ExceptionHandler.onError(request.getRequestURI(),e);
 				}
@@ -182,6 +186,23 @@ public class Users {
 		jsonMap.put("message", message);
 		return Json.toJson(jsonMap).toString();
     }
+	
+	private void updateLeaveBalance(Long id){
+		updateLeaveBalance(User.findById(id));
+	}
+	
+	private void updateLeaveBalance(User u){
+		List<LeaveLevel> ll=LeaveLevel.findListByCompany(u.getCompanyobject().getId());
+		for(LeaveLevel l:ll) {
+			if(LeaveBalance.find.where().eq("employee", u).eq("leaveLevel", l).findUnique() == null){
+				LeaveBalance lbalance = new LeaveBalance();
+				lbalance.employee = u;
+				lbalance.leaveLevel = l;
+				lbalance.save();
+			}
+		}
+		
+	}
 	
 	@RequestMapping(value="/userIndex", method = RequestMethod.GET)
 	public String index(ModelMap model,@CookieValue("username") String username) {
@@ -370,7 +391,8 @@ public class Users {
 			UserSave saveUtils = new UserSave(extra);
 			
 			try {
-				saveUtils.doSave(false, request);
+				Long id = (Long)saveUtils.doSave(false, request);
+				updateLeaveBalance(id);
 			}catch (Exception e) {
 				//ExceptionHandler.onError(request.getRequestURI(),e);
 				//	return badRequest();

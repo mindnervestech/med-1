@@ -13,7 +13,7 @@
 			<table class="table table-striped">
 			<c:forEach var="map" items="${leave2RoleMap}">
 				<tr>
-					<td><label style=""margin-top: 8%;"></strong>${map.key}</strong></label></td>
+					<td><label style="margin-top: 8%;"><strong>${map.key}</strong></label></td>
     				<c:forEach var="cell" items="${map.value}">
     					<td>
     						<label><small>${cell.leaveType}</small></label>

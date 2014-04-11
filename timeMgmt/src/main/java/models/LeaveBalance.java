@@ -30,6 +30,7 @@ public class LeaveBalance extends Model {
 	@Column(name="leave_level_id")
 	public LeaveLevel leaveLevel;
 
+	@Column(nullable=false)
 	public Float balance;
 	
 	/*@Transient

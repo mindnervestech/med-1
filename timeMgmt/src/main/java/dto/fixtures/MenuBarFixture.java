@@ -6,7 +6,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import models.RoleLevel;
 import models.User;
 
 import com.custom.RequestInterceptor;
@@ -41,7 +40,7 @@ public class MenuBarFixture {
 		List<String> listedPermissions = Arrays.asList(user.getPermissions().split("[|]"));
 		if(user.getRole() != null) {
 			List<String> rolePermissions = 
-					Arrays.asList(user.getRole().getPermissions().split("[|]"));
+					new ArrayList<String>(Arrays.asList(user.getRole().getPermissions().split("[|]")));
 			for(String rolePerm: rolePermissions) {
 				if(!listedPermissions.contains(rolePerm)) {
 					listedPermissions.add(rolePerm);

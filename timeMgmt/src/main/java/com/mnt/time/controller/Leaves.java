@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +27,8 @@ import models.User;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.joda.time.DateTime;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.TaskScheduler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.CookieValue;
@@ -38,6 +41,7 @@ import play.data.Form;
 import play.libs.Json;
 import utils.ExceptionHandler;
 
+import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Expr;
 import com.custom.RoleLeaveBindFromRequest;
 import com.custom.domain.LeaveStatus;
@@ -46,7 +50,9 @@ import com.custom.helpers.LeaveApplyContext;
 import com.custom.helpers.LeaveBucketSearchContext;
 import com.custom.helpers.LeaveSave;
 import com.custom.workflow.vacation.VacationWorkflowUtils;
+import com.google.common.collect.Sets;
 import com.mnt.core.domain.DomainEnum;
+
 
 
 //import controllers.routes.Status.userSearch;
@@ -58,6 +64,8 @@ import dto.fixtures.MenuBarFixture;
 
 @Controller
 public class Leaves {
+	//@Autowired private TaskScheduler taskScheduler;
+	
 	 @RequestMapping(value="/leaveIndex" , method = RequestMethod.GET)
 	public String applyIndex(ModelMap model, @CookieValue("username") String username) {
 		 User user = User.findByEmail(username);
@@ -345,7 +353,7 @@ public class Leaves {
 	 @RequestMapping(value="/saveLeaves " ,method=RequestMethod.POST)		
 		public @ResponseBody String saveLeaves(@CookieValue("username")String username,HttpServletRequest request){
 				
-			User user = User.findByEmail(username);
+			final User user = User.findByEmail(username);
 			Form<LeaveX> leaveXForm = form(LeaveX.class).bindFromRequest(request);
 			LeaveX leaveX = LeaveX.find.where(Expr.eq("company", user.getCompanyobject())).findUnique();
 			List<RoleLevel> rolelevel=RoleLevel.findListByCompany(user.getCompanyobject().getId());
@@ -356,28 +364,35 @@ public class Leaves {
 					{
 						_rl.update();
 					} else {
-					_rl.setLeaveX(leaveX);
-					_rl.save();
+						_rl.setLeaveX(leaveX);
+						_rl.save();
+						updateLeaveBalance(_rl, user);
 					}
 				}
 			}else{
 				leaveXForm.get().setCompany(user.getCompanyobject());
-		//		leaveXForm.get().setId(1L);
-			
 				leaveXForm.get().save();
 			}
-
+			
 			List<LeaveLevel> ll=LeaveLevel.findListByCompany(user.getCompanyobject().getId());
+			
 			for(RoleLevel r:rolelevel){
 				for(LeaveLevel l:ll) {
+					
 					if(RoleLeave.find.where()
 					.eq("roleLevel", r)
 					.eq("leaveLevel", l).findUnique() == null) {;
-						RoleLeave rl=new RoleLeave();
+						final RoleLeave rl=new RoleLeave();
 						rl.setRoleLevel(r);
 						rl.setCompany(user.getCompanyobject());
 						rl.setLeaveLevel(l);
 						rl.save();
+						//taskScheduler.schedule( new Runnable() {
+						//	public void run() {
+								;
+						//	}
+						//}, new Date());
+						
 					}
 				}
 			}
@@ -398,25 +413,19 @@ public class Leaves {
 		return "leave value saved";
 	}			
 
-	 public static HashMap<Long, List<String>>getAllLeaves(String username)
-	 {
-		 User user = User.findByEmail(username);
-		 HashMap<Long,List<String>> map = new HashMap<Long,List<String>>();
-		 List<RoleLeave>roleLeaves=RoleLeave.find.where()
-				 .add(Expr.eq("company_id",user.getCompanyobject().getId())).setOrderBy("roleLevel.id, leaveLevel.id").findList();
-		 List<LeaveLevel>leaveLevels=LeaveLevel.findListByCompany(user.getCompanyobject().getId());
-		 List<String> leaves=new ArrayList<String>();
-		 for(int i=0;i<leaveLevels.size();i++)
-		 {
-			 leaves.add(leaveLevels.get(i).getLeave_type());
-		 }
-		 for(int i=0;i<roleLeaves.size();i++)
-		 {			 
-			 map.put(roleLeaves.get(i).getId(),leaves);
-		 }
-		 return map;
-	 }
-	 
+	private void updateLeaveBalance(LeaveLevel rl, User user){
+		List<User> users = User.find.where().eq("companyobject",user.getCompanyobject()).findList();
+		for(User u:users) {
+			if(LeaveBalance.find.where().eq("employee", u).eq("leaveLevel", rl).findUnique() == null){
+				LeaveBalance lbalance = new LeaveBalance();
+				lbalance.employee = u;
+				lbalance.leaveLevel = rl;
+				lbalance.save();
+			}
+		}
+		 
+	}
+	
 	 
 	 static class RoleTypeByLeaveTypeMap {
 		 public static Map<String,List<LeaveCell>> build(User user ) {
@@ -500,7 +509,7 @@ public class Leaves {
 				 toBeAccrued =map.get(user.companyobject.getId()).get(user.role.getId()).get(leaveBalance.getLeaveLevel().getId());
 				 System.out.println("chk val "+toBeAccrued);
 				 leaveBalance.setBalance(leaveBalance.balance + toBeAccrued);
-				 leaveBalance.update();
+				 Ebean.update(leaveBalance,Sets.newHashSet("balance"));//leaveBalance.update();
 			 }
 		 }
 			 
