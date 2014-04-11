@@ -175,7 +175,7 @@ public class Timesheets{
 	
 	
 	@RequestMapping(value="/timesheet/getLastWeekTimesheet", method = RequestMethod.GET)
-	public String getLastWeekTimesheet(ModelMap model, @CookieValue("username") String username, Integer week,Integer year){
+	public String getLastWeekTimesheet(ModelMap model, @CookieValue("username") String username, @RequestParam("week") Integer week,@RequestParam("year") Integer year){
 		User user = User.findByEmail(username);
 		Form<Timesheet> timesheetForm;
 		Timesheet timesheet;

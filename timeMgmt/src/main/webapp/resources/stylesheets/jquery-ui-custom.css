@@ -442,7 +442,7 @@ body {
 .nav-tabs > li > a:focus {
   border-color: #428bca #428bca #428bca;
 }
-.btn-primary:hover,
+/* .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active,
 .btn-primary.active,
@@ -451,7 +451,7 @@ body {
   color: #ffffff;
   background-color: #4387bf;
   *background-color: #003bb3;
-}
+} */
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus,
 .dropdown-submenu:hover > a,
@@ -468,11 +468,12 @@ body {
 	font-weight: normal;
 	margin: -1px;
 }
-.btn-primary {
+/* .btn-primary {
   background-color: #4387bf;
   background-image: -o-linear-gradient(top, #0088cc, #0044cc);
-  background-image: linear-gradient(to bottom, #4387bf, #4387bf);
-}
+  background-image: linear-gradient(to bottom, #3179B4, #206399);
+} */
+
 /*!
  * jQuery UI Button 1.8.23
  *

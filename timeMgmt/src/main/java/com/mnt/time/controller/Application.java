@@ -229,7 +229,7 @@ public class Application  {
         {
         	redirectAttributes.addFlashAttribute("error","You have Entered Username that does not exists");
 			redirectAttributes.addFlashAttribute("loginForm", loginForm);
-			return "redirect:/login";
+			return "redirect:"+routes.Application.login.url;
         } 
         else
         {
