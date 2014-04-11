@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import models.LeaveLevel;
+import models.RoleLeave;
 import models.RoleLevel;
 import models.RoleX;
 import models.User;
@@ -24,11 +26,13 @@ import play.data.Form;
 import play.libs.Json;
 import utils.ExceptionHandler;
 
+import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Expr;
 import com.custom.domain.RoleLevels;
 import com.custom.helpers.CustomRoleSearchContext;
 import com.custom.helpers.RoleSave;
 import com.custom.helpers.TaskSearchContext;
+import com.google.common.collect.Sets;
 
 import dto.fixtures.MenuBarFixture;
 
@@ -64,10 +68,12 @@ public class Roles {
     }
 	
 	@RequestMapping(value="/roleSave" ,method=RequestMethod.POST)		
-	public String create(HttpServletRequest request) {
+	public String create(ModelMap model,@CookieValue("username")String username, HttpServletRequest request) {
 		try {
 			RoleSave saveUtils = new RoleSave();
 			saveUtils.doSave(false,request);
+			
+			
 		} catch (Exception e) {
 			ExceptionHandler.onError(request.getRequestURI(),e);
 		}
@@ -90,7 +96,6 @@ public class Roles {
 	
 	@RequestMapping(value="/defineRoles " ,method=RequestMethod.GET)		
 	public  String defineRoles(ModelMap model,@CookieValue("username") String username){
-//		String username="akg8990@gmail.com";
 		User user = User.findByEmail(username);
 		RoleX roleX = RoleX.find.where(Expr.eq("company", user.companyobject)).findUnique();
 		Form<RoleX> roleXForm;
@@ -114,18 +119,33 @@ public class Roles {
 	
 	@RequestMapping(value="/saveRole " ,method=RequestMethod.POST)		
 	public @ResponseBody String saveRole(@CookieValue("username")String username,HttpServletRequest request){
-	//	String username="akg8990@gmail.com";
 		User user = User.findByEmail(username);
 		Form<RoleX> roleXForm = form(RoleX.class).bindFromRequest(request);
 		RoleX roleX = RoleX.find.where(Expr.eq("company", user.companyobject)).findUnique();
 		
 		if(roleX != null){
+			List<LeaveLevel> ll = LeaveLevel.findListByCompany(user.getCompanyobject().getId());
+			
 			for(RoleLevel _rl : roleXForm.get().roleLevels){
 				if( _rl.id != null ){
-				_rl.update();
+				Ebean.update(_rl,Sets.newHashSet("role_level","role_name"));	
+				//_rl.update();
 				} else {
+					if(RoleLevel.find.where()
+							.eq("role_name",_rl.role_name)
+							.eq("roleX", roleX).findUnique() != null){
+						return "Seems to be duplicate Submit or trying to insert duplicate roles name";
+					}
+					
 					_rl.roleX = roleX;
 					_rl.save();
+					for(LeaveLevel l : ll) {
+						RoleLeave rl=new RoleLeave();
+						rl.setRoleLevel(_rl);
+						rl.setCompany(user.getCompanyobject());
+						rl.setLeaveLevel(l);
+						rl.save();
+					}
 				}
 			}
 			
@@ -133,13 +153,8 @@ public class Roles {
 			roleXForm.get().company = user.companyobject;
 			roleXForm.get().save();
 		}
-//		String requestUrl = request().path().toString();
-	//	String requestUrl=request.getPathInfo().toString();
 		
 		return "Defined Roles has been saved";
-/*		if(requestUrl.equals("/saveOrg"))
-		else
-*/			
 	}
 	@RequestMapping(value="/saveOrg " ,method=RequestMethod.POST)		
 	public @ResponseBody String saveOrg(@CookieValue("username")String username,HttpServletRequest request){

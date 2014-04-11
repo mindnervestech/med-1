@@ -14,15 +14,6 @@ import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.joda.time.DateTime;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import models.ApplyLeave;
 import models.Company;
 import models.LeaveBalance;
@@ -32,28 +23,35 @@ import models.RoleLeave;
 import models.RoleLevel;
 import models.RoleX;
 import models.User;
+
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.joda.time.DateTime;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import play.data.DynamicForm;
 import play.data.Form;
 import play.libs.Json;
-//import play.mvc.Controller;
-import utils.EmailExceptionHandler;
 import utils.ExceptionHandler;
 
 import com.avaje.ebean.Expr;
 import com.custom.RoleLeaveBindFromRequest;
 import com.custom.domain.LeaveStatus;
 import com.custom.domain.RoleDomain;
-import com.custom.domain.RoleLevels;
 import com.custom.helpers.LeaveApplyContext;
 import com.custom.helpers.LeaveBucketSearchContext;
 import com.custom.helpers.LeaveSave;
-import com.custom.helpers.ProjectSearchContext;
 import com.custom.workflow.vacation.VacationWorkflowUtils;
 import com.mnt.core.domain.DomainEnum;
 
 
 //import controllers.routes.Status.userSearch;
 import dto.fixtures.MenuBarFixture;
+//import play.mvc.Controller;
 
 /*@Security.Authenticated(Secured.class)
 @BasicAuth*/
@@ -339,9 +337,7 @@ public class Leaves {
 		 for(int i=0;i<leaves.size();i++)
 			allTotalValue.add(leaves.get(i).getTotal_leave()); 
 		 model.addAttribute("user",user);
-		 model.addAttribute("allTotalValue",allTotalValue);
-		 model.addAttribute("roleLevel",Roles.getAllRoles(username));
-		 model.addAttribute("AllLeaves", getAllLeaves(username));
+		 model.addAttribute("leave2RoleMap", RoleTypeByLeaveTypeMap.build(user));
 		 model.addAttribute("_menuContext", MenuBarFixture.build(username));
 		 return "leaveSettings";
 	 } 
@@ -359,9 +355,10 @@ public class Leaves {
 					if(_rl.getId()!=null)
 					{
 						_rl.update();
-					}
+					} else {
 					_rl.setLeaveX(leaveX);
-						_rl.save();
+					_rl.save();
+					}
 				}
 			}else{
 				leaveXForm.get().setCompany(user.getCompanyobject());
@@ -372,20 +369,16 @@ public class Leaves {
 
 			List<LeaveLevel> ll=LeaveLevel.findListByCompany(user.getCompanyobject().getId());
 			for(RoleLevel r:rolelevel){
-		/*	{
-				RoleLeave rl=new RoleLeave();
-				rl.setRoleLevel(r);
-				rl.setCompany(user.getCompanyobject());
-				rl.setLeaveLevels(ll);
-				rl.save();
-		*/		
 				for(LeaveLevel l:ll) {
-					RoleLeave rl=new RoleLeave();
-					rl.setRoleLevel(r);
-					rl.setCompany(user.getCompanyobject());
-//					rl.setLeaveLevels(l);
-					rl.setLeaveLevel(l);
-					rl.save();
+					if(RoleLeave.find.where()
+					.eq("roleLevel", r)
+					.eq("leaveLevel", l).findUnique() == null) {;
+						RoleLeave rl=new RoleLeave();
+						rl.setRoleLevel(r);
+						rl.setCompany(user.getCompanyobject());
+						rl.setLeaveLevel(l);
+						rl.save();
+					}
 				}
 			}
 			return "Defined Leaves has been saved";	 
@@ -409,7 +402,8 @@ public class Leaves {
 	 {
 		 User user = User.findByEmail(username);
 		 HashMap<Long,List<String>> map = new HashMap<Long,List<String>>();
-		 List<RoleLeave>roleLeaves=RoleLeave.find.where().add(Expr.eq("company_id",user.getCompanyobject().getId())).findList();
+		 List<RoleLeave>roleLeaves=RoleLeave.find.where()
+				 .add(Expr.eq("company_id",user.getCompanyobject().getId())).setOrderBy("roleLevel.id, leaveLevel.id").findList();
 		 List<LeaveLevel>leaveLevels=LeaveLevel.findListByCompany(user.getCompanyobject().getId());
 		 List<String> leaves=new ArrayList<String>();
 		 for(int i=0;i<leaveLevels.size();i++)
@@ -421,6 +415,50 @@ public class Leaves {
 			 map.put(roleLeaves.get(i).getId(),leaves);
 		 }
 		 return map;
+	 }
+	 
+	 
+	 static class RoleTypeByLeaveTypeMap {
+		 public static Map<String,List<LeaveCell>> build(User user ) {
+			 List<RoleLeave>roleLeaves=RoleLeave.find.where()
+					 .add(Expr.eq("company_id",user.getCompanyobject().getId())).setOrderBy("roleLevel.id, leaveLevel.id").
+					 fetch("roleLevel","*").fetch("leaveLevel","*").findList();
+			
+			 Map<String,List<LeaveCell>> map = new HashMap<String,List<LeaveCell>>();
+			 for(RoleLeave rleave : roleLeaves) {
+				 String role_name = rleave.getRoleLevel().getRole_name();
+				 List<LeaveCell> leaveCells;
+				 if(map.containsKey(role_name)){
+					 leaveCells = map.get(role_name);
+				 } else {
+					 leaveCells = new ArrayList<LeaveCell>();
+				 }
+				 leaveCells.add(new LeaveCell(rleave.getId(), rleave.leaveLevel.getLeave_type(), rleave.getTotal_leave()));
+				 map.put(role_name, leaveCells);
+			 }
+			 return map;
+		 }
+		 
+		 public static class LeaveCell {
+			public Long id;
+			public String leaveType;
+			public Long totalLeave;
+			public LeaveCell(Long id, String leave_type, Long totalLeave) {
+				this.id = id;
+				this.leaveType = leave_type;
+				this.totalLeave = totalLeave == null ? 0 : totalLeave;
+			}
+			public Long getId() {
+				return id;
+			}
+			public String getLeaveType() {
+				return leaveType;
+			}
+			public Long getTotalLeave() {
+				return totalLeave;
+			}
+			
+		 }
 	 }
 	 
 	 
