@@ -28,7 +28,6 @@
    function Useredit_onCardReady(_wizard){
   	 if((_wizard).index==1){
   		 $("#UsereditannualIncome").focusout(function(){
-  			 alert($("#UsereditannualIncome").val());
   			 if($("#UsereditannualIncome").val() != null && $("#UsereditannualIncome").val() != ""){
   		 		$("#Useredithourlyrate").val((parseInt($('input[id=UsereditannualIncome]').val(),10)/2080).toFixed(2));
   			 }

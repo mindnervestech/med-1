@@ -32,23 +32,28 @@
  $(document).ready(function(){
 	 var leaveBalanceDS = {};
 	 <c:forEach var="leave" items="${leaves}" varStatus='loopIndex'>
-	 leaveBalanceDS["${leaves.get(loopIndex.index).getLeaveLevel().getLeave_type()}"] = ${leaves.get(loopIndex.index).getBalance()};
+	 leaveBalanceDS["${leaves.get(loopIndex.index).getLeaveLevel().getId()}"] = ${leaves.get(loopIndex.index).getBalance()};
 	</c:forEach>
 	
 	 $('#Leaveleave_domain').change (function() {
 		var v1 = $(this).val();
-		
 		if(parseInt($('#LeavenoOfDays').val()) > parseInt(leaveBalanceDS[v1])){
-	 		alert($('#LeavenoOfDays').val());
-			alert("u dont have sufficient leaves");
-	}else{
-		alert("success");
-	}
-		
+			alert("You don't have sufficient leaves");
+			$('#LeavenoOfDays').val(0);
+			return false;
+		}
 		
 	});	 
 
-
+	 $('#LeavenoOfDays').change (function() {
+		 var v1 = $('#Leaveleave_domain').val();
+		 if(parseInt($(this).val()) > parseInt(leaveBalanceDS[v1])){
+				alert("You don't have sufficient leaves");
+				$('#LeavenoOfDays').val(0);
+				return false;
+			}
+		 
+	 });
 	
 	
 	function Leave_confimationDialog(_url)
