@@ -36,13 +36,14 @@
 <link rel="stylesheet"  type="text/css" media="all" href='<c:url value="resources/stylesheets/jquery.pnotify.default.icons.css"/>'/>
 <script src='<c:url value="resources/javascripts/jquery.pnotify.js"/>' type="text/javascript"></script> 
 </head>
-<body>
+<body id="page">
 		<ul class="cb-slideshow">
             <li><span>Image 01</span>
             <li><span>Image 02</span>
             <li><span>Image 03</span>
             <li><span>Image 04</span>
             <li><span>Image 05</span>
+            <li><span>Image 06</span>
         </ul>
        
 
@@ -111,7 +112,7 @@
 			</div>
 			<div class="modal-body">
 				<p>
-				<h4>Comapany Privacy Policy</h4>
+				<h4>Company Privacy Policy</h4>
 
 				</p>
 			</div>
@@ -119,7 +120,7 @@
 				<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
 			</div>
 		</div>
-		<footer>
+		<footer style="margin-top: 17%;">
 			<p>
 				&copy; 2013 Company, Inc. &middot; 
 				<a href="#myModal"

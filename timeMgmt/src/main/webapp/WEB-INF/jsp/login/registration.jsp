@@ -8,7 +8,7 @@
 
 <html>
 <head>
-<title>Time</title>
+<title>TimeMinder</title>
 
 		<meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
@@ -37,15 +37,16 @@
 
 </head>
 
-<body>
+<body id="page">
 
-		<ul class="cb-slideshow">
+		 <ul class="cb-slideshow">
             <li><span>Image 01</span>
             <li><span>Image 02</span>
             <li><span>Image 03</span>
             <li><span>Image 04</span>
             <li><span>Image 05</span>
-        </ul>
+            <li><span>Image 06</span>
+        </ul> 
 
 	<div class="container">
 		<legend></legend>

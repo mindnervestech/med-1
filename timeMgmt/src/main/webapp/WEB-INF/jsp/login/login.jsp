@@ -33,15 +33,16 @@
 <script src='<c:url value="resources/javascripts/jquery.pnotify.js"/>' type="text/javascript"></script> 
 </head>
 
-<body>
+<body id="page">
 
-		<ul class="cb-slideshow">
+		 <ul class="cb-slideshow">
             <li><span>Image 01</span>
             <li><span>Image 02</span>
             <li><span>Image 03</span>
             <li><span>Image 04</span>
             <li><span>Image 05</span>
-        </ul>
+            <li><span>Image 06</span>
+        </ul> 
 	<div class="container">
 		<div class="heading">
 			
@@ -84,10 +85,10 @@
 				</fieldset>
 			</form:form>
 
-			<div class="forgotPass">
+			<div class="forgotPass" style="float: left;margin-left: 1%;">
 				<a href="forgot">Forgot Password?</a>
 			</div>
-			<div class="registration">
+			<div class="registration" style="margin-top: 5%;margin-right: 38%;">
 				<h2>
 					Don't have an account yet? <a href="registration"
 						class="btn btn-large btn-warning">Register Now</a>
@@ -108,7 +109,7 @@
 					<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
 				</div>
 			</div>
-			<footer>
+			<footer style="margin-top: 17%;">
 				<p>
 					&copy; 2014 MindNerves Technologies. &middot; <a href="#myModal"
 						data-toggle="modal">Privacy & Terms</a>
