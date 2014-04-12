@@ -45,7 +45,8 @@
     	 <script type="text/javascript" src='<c:url value="/resources/javascripts/moment.js"/>'></script>
     	 <script type="text/javascript" src='<c:url value="/resources/javascripts/bootbox.min.js"/>'></script>
     </head>
-    <body>
+    <body style="background-color: rgba(245, 245, 245, 0.71);box-shadow: 0 1px 30px #CCC;
+border-radius: 36px;">
     	<div id="loading" style='position:fixed;
     							top:50%;
     							left:50%;
@@ -55,7 +56,7 @@
     
     	<tiles:insertAttribute name="header" />
 		
-		<div class="container">
+		<div class="container" style="box-shadow: 0 5px 118px #CCC;">
 			<tiles:insertAttribute name="content" />
 		</div>
 		
