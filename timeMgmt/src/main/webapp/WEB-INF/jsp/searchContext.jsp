@@ -105,6 +105,10 @@
  option:hover{
 	background-color: gray;
 }
+
+.btn-default{
+	color: black !important;
+}
 </style>
  	<script type="text/javascript">
  	

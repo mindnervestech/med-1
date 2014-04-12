@@ -36,6 +36,7 @@ import com.avaje.ebean.Expr;
 import com.avaje.ebean.Expression;
 import com.custom.domain.LeaveStatus;
 import com.custom.domain.RoleLevels;
+import com.custom.domain.Status;
 import com.custom.domain.TimesheetStatus;
 import com.custom.emails.Email;
 import com.google.common.base.Function;
@@ -107,13 +108,13 @@ public class Application  {
 				
 				User superAdmin = User.find.where().eq("designation", "SuperAdmin").findUnique();
 				MailSetting smtpSetting = MailSetting.find.where().eq("companyObject",superAdmin.companyobject).findUnique();
-				//Email.sendOnlyMail(smtpSetting,recipients, subject, body);
+				Email.sendOnlyMail(smtpSetting,recipients, subject, body);
 				//Send Email to super Admin
 				
 				recipients = superAdmin.email;
 				subject = "New Company Registered";
 				body = "A New Company "+company.companyEmail +" is Registered.\n Please Take Neccesary Action For It!";
-				//Email.sendOnlyMail(smtpSetting,recipients, subject, body);
+				Email.sendOnlyMail(smtpSetting,recipients, subject, body);
 				return "redirect:"+routes.Application.login.url;
 			}
 		else
@@ -563,7 +564,8 @@ public class Application  {
 			{
 			 int count1 = Timesheet.find.where().and(Expr.eq("status", TimesheetStatus.Submitted),Expr.eq("timesheetWith", user)).findRowCount();
 			 int count2 = count = ApplyLeave.find.where().eq("status",LeaveStatus.Submitted).findRowCount();
-			 count = count1 + count2;
+			 int count3 = User.find.where().eq("status", Status.Submitted).findRowCount();
+			 count = count1 + count2 + count3;
 			}
 	   return count;
    }
@@ -615,4 +617,32 @@ public class Application  {
 			}
 	   return count;
    }
+   
+   public static int countUserRequest(String username)
+   {
+	   int count = 0;
+	   
+	   User user = User.findByEmail(username);
+	   
+	   if(user==null) return 0;
+
+	   if("Admin".equals(user.getDesignation()))
+		   	{
+			   Expression exp1 = Expr.eq("companyobject.companyCode", user.getCompanyobject().getCompanyCode());
+			   Expression exp2 = Expr.ne("email", user.getEmail());
+			   count = User.find.where().ilike("userStatus","PendingApproval").add(exp1).add(exp2).findRowCount();
+		   	}
+		else if("SuperAdmin".equals(user.getDesignation()))
+		   	{
+			   count = Company.find.where().ilike("companyStatus","PendingApproval").findRowCount();
+		   	}
+		else if(RoleLevel.checkUserLevel(user.getId(), user.getRole().getRole_level()))
+			{
+			 count = User.find.where().eq("status", Status.Submitted).findRowCount();
+			}
+	   return count;
+   }
+   
+   
+   
 }

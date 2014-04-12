@@ -178,15 +178,35 @@ body {
 						<h4 style="border-bottom: 1px solid black;width: 100%;padding-bottom: 4%;padding-top: 2%;text-align: center;">Notifications</h4>
 						<% int leavesRequest =com.mnt.time.controller.Application.countLeavesRequest(((models.User)request.getAttribute("user")).getEmail()); 
 						   int timesheetRequest =com.mnt.time.controller.Application.countTimesheetRequest(((models.User)request.getAttribute("user")).getEmail());
-						if(leavesRequest != 0) { %>
-							<h5 style="text-align: center;">Pending Leaves Request : <%=leavesRequest %> </h5>
-			 			<%} 
-			 			if(leavesRequest == 0  && timesheetRequest == 0 ) { %>
-							<h5 style="text-align: center;">No Pending Leaves and Timesheets Request </h5>
-			 			<%} 
+						   int UserRequest =com.mnt.time.controller.Application.countUserRequest(((models.User)request.getAttribute("user")).getEmail());
+						   if(leavesRequest != 0) { %>
+				<h5 style="text-align: center;">
+					Pending Leaves Request :
+					<%=leavesRequest %>
+				</h5>
+				<%}  else
+				{%>
+				<h5> </h5>
+			<%}
+			 	
 						if(timesheetRequest != 0) { %>
-						<h5 style="height: 155px;text-align: center;">Pending Timesheet Request : <%=timesheetRequest %> </h5>
-		 			<%}
+				<h5 style="text-align: center;">
+					Pending Timesheet Request :
+					<%=timesheetRequest %>
+				</h5>
+				<%} else
+				{%>
+				<h5> </h5>
+			<%}
+						if(UserRequest != 0) { %>
+						<h5 style="text-align: center;">
+							Pending User Request :
+							<%=UserRequest %>
+						</h5>
+						<%} else
+						{%>
+							<h5> </h5>
+						<%}
 			 			%>
 			 			
 					</div>
