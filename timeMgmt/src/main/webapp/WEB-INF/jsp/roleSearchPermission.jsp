@@ -56,7 +56,7 @@
 			<ul style="list-style-type: none;"></ul>
 		</div>
 		<div class="modal-footer">
-			<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+			<button class="btn" style="color: red;" data-dismiss="modal" aria-hidden="true">Close</button>
 			<button id="addRolePermissions" class="btn btn-primary">Save
 				changes</button>
 		</div>

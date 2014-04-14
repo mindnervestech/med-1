@@ -153,13 +153,30 @@ public class Leaves {
     
 	 @RequestMapping(value="/leaveCreate" , method = RequestMethod.POST)
 	public @ResponseBody String create(@CookieValue("username") String username,HttpServletRequest request) {
-		Form<ApplyLeave> leaveForm = form(ApplyLeave.class).bindFromRequest(request);
+		DynamicForm form = form().bindFromRequest(request);
+		System.out.println("gg"+form.get("noOfDays"));
+		 Form<ApplyLeave> leaveForm = form(ApplyLeave.class).bindFromRequest(request);
 		User user = User.findByEmail(username);
 		leaveForm.get().setUser(user);
 		leaveForm.get().setPendingWith(user);
 		leaveForm.get().setLeaveGuid(UUID.randomUUID().toString());
 		leaveForm.get().setStatus (LeaveStatus.Submitted);
-		leaveForm.get().save();
+		
+		leaveForm.get().getTypeOfLeave();
+	
+		LeaveBalance ll = LeaveBalance.find.where().eq("employee", user).eq("leaveLevel.id",Long.parseLong(form.get("leave_domain"))).findUnique();
+		
+		{
+			 Float nl = Float.parseFloat(leaveForm.get().getNoOfDays()); 
+			
+			if( nl < ll.getBalance()){
+				leaveForm.get().save();
+			}else{
+				System.out.println("hello");
+			}
+			
+		}
+		
 		
 		if(leaveForm.get().getStatus() == LeaveStatus.Submitted){
 			leaveForm.get().setPendingWith(user.getManager());
