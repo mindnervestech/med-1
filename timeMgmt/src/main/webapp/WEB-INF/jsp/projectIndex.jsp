@@ -31,7 +31,7 @@
 				} 
 	 });
 	 
-	 $("#s2id_ProjectclientName").after("<a style='margin-left: 2%;' href='<%=com.mnt.time.controller.routes.Clients.index.url%>'>New Client</a>");
+	 $("#s2id_ProjectclientName").after("<a style='margin-left: 2%;' href='${pageContext.request.contextPath}<%=com.mnt.time.controller.routes.Clients.index.url%>'>New Client</a>");
  });
  
  function Projectadd_onCardReady(_wizard){

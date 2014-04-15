@@ -53,18 +53,19 @@ body {
 		</div>
 
 
+
+		<div class="container">
+		
 			
-	<div class="container">
-	<div style="float: left;margin-left: 1%;width: 60%;border: 1px solid #4387bf;">
-			<div class="col-sm-6">
-				<div style="margin-left: 5%;"
-					class="innerAll bg-white">
-					<h5>User Profile</h5>
-					<div style="float: left;" class="media innerB ">
-						<a href="" class="pull-left"> <img
-							src="/resources/images/22.jpg" style="margin-left: 2%;"
-							width="75" />
-						</a>
+			<div style="float: left; margin-left: 2%; width: 60%; border: 1px solid #4387bf;">
+				<div class="col-sm-6">
+					<div style="margin-left: 5%;" class="innerAll bg-white">
+						<h5>User Profile</h5>
+						<div style="float: left;" class="media innerB ">
+							<a href="" class="pull-left"> <img
+								src="/resources/images/user.png" style="margin-left: 2%;"
+								width="75" />
+							</a>
 
 					</div>
 				</div>
