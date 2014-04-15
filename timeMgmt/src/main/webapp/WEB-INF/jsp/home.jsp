@@ -63,7 +63,7 @@ body {
 						<h5>User Profile</h5>
 						<div style="float: left;" class="media innerB ">
 							<a href="" class="pull-left"> <img
-								src="/resources/images/user.png" style="margin-left: 2%;"
+								src="/time/resources/images/user.png" style="margin-left: 2%;"
 								width="75" />
 							</a>
 
