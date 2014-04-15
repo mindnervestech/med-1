@@ -57,8 +57,8 @@ body {
 		<div class="container">
 		
 			
-			<div style="float: left; margin-left: 2%; width: 60%; border: 1px solid #4387bf;">
-				<div class="col-sm-6">
+			<div style="float: left; margin-left: 2%;background: rgb(238, 238, 238); width: 60%; border: 1px solid #4387bf;">
+				<div  class="col-sm-6 ui-jqgrid-titlebar ui-widget-header ui-corner-top ">
 					<div style="margin-left: 5%;" class="innerAll bg-white">
 						<h5>User Profile</h5>
 						<div style="float: left;" class="media innerB ">
@@ -173,33 +173,39 @@ body {
 							style="margin-left: 46%; margin-top: 2%;">Submit</button>
 					</form:form>
 				</div>
-			</div>	
+			</div>
+
+			<div
+				style="float: right;background: rgb(238, 238, 238); margin-right: 0%; width: 32%; height: 225px; border: 1px solid #4387bf;">
+				<h4 class="ui-jqgrid-titlebar ui-widget-header ui-corner-top"
+					style="border-bottom: 1px solid black; width: 100%; padding-bottom: 4%; margin-top: 0%; padding-top: 2%; text-align: center;">Notifications</h4>
+			  <% int leavesRequest =com.mnt.time.controller.Application.countLeavesRequest(((models.User)request.getAttribute("user")).getEmail()); 
+				  
+				   if(leavesRequest != 0) { %>
+						<h5 style="text-align: center;">
+						Pending Leaves Request :
+						<%=leavesRequest %>
+						</h5>
+						<%}  else
+									{%>
+									<h5> </h5>
+									<%}%> 
+				   
+				 <%  int timesheetRequest =com.mnt.time.controller.Application.countTimesheetRequest(((models.User)request.getAttribute("user")).getEmail());
+				  if(timesheetRequest != 0) { %>
+						<h5 style="text-align: center;">
+						Pending Timesheet Request :
+						<%=timesheetRequest %>
+						</h5>
+						<%} else
+						{%>
+						<h5> </h5>
+						<%}%>  
+				  
+			 	 <% int UserRequest =com.mnt.time.controller.Application.countUserRequest(((models.User)request.getAttribute("user")).getEmail());	
+				
+			 	if(UserRequest != 0) { %>
 			
-				<div style="float: right;margin-right: 0%;width: 32%; height: 225px; border: 1px solid #4387bf;">
-						<h4 style="border-bottom: 1px solid black;width: 100%;padding-bottom: 4%;padding-top: 2%;text-align: center;">Notifications</h4>
-						<% int leavesRequest =com.mnt.time.controller.Application.countLeavesRequest(((models.User)request.getAttribute("user")).getEmail()); 
-						   int timesheetRequest =com.mnt.time.controller.Application.countTimesheetRequest(((models.User)request.getAttribute("user")).getEmail());
-						   int UserRequest =com.mnt.time.controller.Application.countUserRequest(((models.User)request.getAttribute("user")).getEmail());
-						   if(leavesRequest != 0) { %>
-				<h5 style="text-align: center;">
-					Pending Leaves Request :
-					<%=leavesRequest %>
-				</h5>
-				<%}  else
-				{%>
-				<h5> </h5>
-			<%}
-			 	
-						if(timesheetRequest != 0) { %>
-				<h5 style="text-align: center;">
-					Pending Timesheet Request :
-					<%=timesheetRequest %>
-				</h5>
-				<%} else
-				{%>
-				<h5> </h5>
-			<%}
-						if(UserRequest != 0) { %>
 						<h5 style="text-align: center;">
 							Pending User Request :
 							<%=UserRequest %>
@@ -209,15 +215,16 @@ body {
 							<h5> </h5>
 						<%}
 			 			%>
-			 			
-					</div>
-				
-						
-				
+ 
+
 			</div>
-			<div class="container">
- 				<div style="float: right;margin-top: 2%;width:32%; height: 225px; border: 1px solid #4387bf;">
-		 					<h4 style="border-bottom: 1px solid black;width: 100%;padding-bottom: 4%;padding-top: 2%;text-align: center;">Leaves Balance</h4>
+
+
+
+		</div>
+		<div class="container">
+ 				<div style="float: right;margin-top: 2%;background: rgb(238, 238, 238); width:32%; height: 225px; border: 1px solid #4387bf;">
+		 					<h4 class="ui-jqgrid-titlebar ui-widget-header ui-corner-top" style="border-bottom: 1px solid black; width: 100%;padding-bottom: 4%;margin-top: 0%; padding-top: 2%;text-align: center;">Leaves Balance</h4>
 		
 					<div class="clearfix"
 						style="margin-right: 4%; float: left; width: 100%;">
