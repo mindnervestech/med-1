@@ -16,7 +16,7 @@
 
 
 <jsp:include page="menuContext.jsp" />
-<h3>
+<h3 style="margin-left: 2%;">
 	<b><i>Mail Settings</i></b>
 </h3>
 

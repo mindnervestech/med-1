@@ -368,7 +368,7 @@
 	margin-top: -3px;
 }
 body {
-  font-size: 12px;
+  font-size: 11px;
 }
 .ui-menu .ui-menu-item {
 	margin:0;
@@ -388,9 +388,13 @@ body {
 .wizard-modal.modal .nav-list li.active > a {
 	background-color:#428bca !important;
 }
-.btn {
-	color: #ffffff;
-	}
+ 
+
+/* .btn-default{
+	color: #000000 !important;
+}
+ */
+	
 .btn-warning {
   background-color: #4387bf !important;
   background-image: -o-linear-gradient(top, #4387bf, #4387bf ); 
@@ -407,6 +411,11 @@ body {
   background-image: linear-gradient(to bottom, #4387bf, #4387bf);
   
 }
+.btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .btn-info.disabled, .btn-info[disabled] {
+color: #ffffff;
+background-color: #4387bf;
+}
+
 .progress-striped .bar {
   background-color: #428bca !important;
 }

@@ -7,7 +7,7 @@
 	<jsp:include page="menuContext.jsp"/> 
 	
 	<h4 class="heading"><i>Manage User Permissions :</i></h4>
-	<div class="searchContainer">
+	<div class="searchContainer" style="height: 389px;">
 		<div id="searchPermission" class="well form-inline" >
 	
 			<table>

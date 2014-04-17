@@ -4,7 +4,7 @@
  <jsp:include page="menuContext.jsp"/> 
  <h4><b style=" width: 1051px; margin-left: 20px;"><i>My Leaves</i></b></h4>
 
-<div class=" twipsies well leaveLevel" style="width: 96%;">
+<div class=" twipsies well leaveLevel" style="width: 94%;margin-left: 1%">
 	<div class="clearfix"
 		style="margin-right: 4%; float: left; width: 100%;">
 		<c:forEach var="leave" items="${leaves}" varStatus='loopIndex'>

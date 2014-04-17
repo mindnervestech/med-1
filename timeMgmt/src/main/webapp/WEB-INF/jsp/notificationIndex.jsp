@@ -2,9 +2,9 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <jsp:include page="menuContext.jsp"/> 
-  <h3><b><i>TimeSheet Notification</i></b></h3>
+  <h3 style="margin-left: 2%;"><b><i>TimeSheet Notification</i></b></h3>
   		
-  		<form action="${pageContext.request.contextPath}<%=com.mnt.time.controller.routes.Notifications.save.url%>" id="notificationSettings" method="POST">
+  		<form style="margin-left: 2%;" action="${pageContext.request.contextPath}<%=com.mnt.time.controller.routes.Notifications.save.url%>" id="notificationSettings" method="POST">
 			
 			<c:forEach var="_node" items="${notifyForm.get().iterator()}">
 			<div class="container">

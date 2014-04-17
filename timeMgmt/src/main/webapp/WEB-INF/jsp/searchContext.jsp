@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
-<div style="width: 96%;float: left;"id='${_searchContext.entityName()}${mode}${"_search"}' class="well form-inline" >  
+<div style="width: 94%;margin-left:1%; float: left;"id='${_searchContext.entityName()}${mode}${"_search"}' class="well form-inline" >  
 		
 		<c:if test="${_searchContext.getFilter() != null}">		
 		 <c:forEach var="fieldType" items="${_searchContext.getFilter().iterator()}">
@@ -35,7 +35,7 @@
 
 <fieldset>
 
-		<div class="row-fluid">
+		<div class="row-fluid" style="margin-left: 1%">
 			<div class="span12">
 				<div class="row-fluid">
 					<div class="control-group">

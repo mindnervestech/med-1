@@ -46,6 +46,7 @@ import com.avaje.ebean.Expr;
 import com.custom.RoleLeaveBindFromRequest;
 import com.custom.domain.LeaveStatus;
 import com.custom.domain.RoleDomain;
+import com.custom.domain.TypeOfLeave;
 import com.custom.helpers.LeaveApplyContext;
 import com.custom.helpers.LeaveBucketSearchContext;
 import com.custom.helpers.LeaveSave;
@@ -80,7 +81,7 @@ public class Leaves {
 		
 		//leavebal.get(0).getId();
 		List<LeaveBalance> leavebal1 = LeaveBalance.find.where().eq("leaveLevel", user.getLevel()).findList();
-		System.out.println("hhhh"+leavebal.get(0).getId());
+	//	System.out.println("hhhh"+leavebal.get(0).getId());
 		//leavebal1.getEmployee().getId();
 		//LeaveBalance lv=LeaveBalance.findById();
 		//User user1=User.findById(leavebal1.getEmployee().getId());
@@ -154,15 +155,16 @@ public class Leaves {
 	 @RequestMapping(value="/leaveCreate" , method = RequestMethod.POST)
 	public @ResponseBody String create(@CookieValue("username") String username,HttpServletRequest request) {
 		DynamicForm form = form().bindFromRequest(request);
-		System.out.println("gg"+form.get("noOfDays"));
+		System.out.println("gg"+form.get("leave_domain").toString());
 		 Form<ApplyLeave> leaveForm = form(ApplyLeave.class).bindFromRequest(request);
-		User user = User.findByEmail(username);
+		LeaveLevel l1 = LeaveLevel.find.where().eq("id", form.get("leave_domain")).findUnique();
+		 User user = User.findByEmail(username);
 		leaveForm.get().setUser(user);
 		leaveForm.get().setPendingWith(user);
 		leaveForm.get().setLeaveGuid(UUID.randomUUID().toString());
 		leaveForm.get().setStatus (LeaveStatus.Submitted);
-		
-		leaveForm.get().getTypeOfLeave();
+		//l1.getLeave_type();
+		leaveForm.get().setTypeOfLeave(l1.getLeave_type());
 	
 		LeaveBalance ll = LeaveBalance.find.where().eq("employee", user).eq("leaveLevel.id",Long.parseLong(form.get("leave_domain"))).findUnique();
 		

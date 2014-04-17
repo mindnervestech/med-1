@@ -152,7 +152,7 @@ body {
 											Password</span>
 									</h5>
 									<input class="dataResponse span3"
-										style="width: 143px; padding: 0%; margin-bottom: 1%;"
+										style="width: 143px; margin-right: 16%; padding: 0%; margin-bottom: 1%;"
 										type="password" id="password" name="password"
 										placeholder="New Password" required value="">
 								</div>
@@ -164,8 +164,8 @@ body {
 									New Password</span>
 							</h5>
 							<input class="dataResponse span3"
-								style="padding: 0%; width: 143px;" type="password"
-								id="cpassword" name="cpassword"
+								style="padding: 0%; margin-right: 16%; width: 143px;"
+								type="password" id="cpassword" name="cpassword"
 								placeholder="Confirm New Password" required value="">
 						</div>
 
@@ -176,47 +176,67 @@ body {
 			</div>
 
 			<div
-				style="float: right;background: rgb(238, 238, 238); margin-right: 0%; width: 32%; height: 225px; border: 1px solid #4387bf;">
+				style="float: right;background: rgb(238, 238, 238); margin-right: 0%; width: 32%; height: 230px; border: 1px solid #4387bf;">
 				<h4 class="ui-jqgrid-titlebar ui-widget-header ui-corner-top"
 					style="border-bottom: 1px solid black; width: 100%; padding-bottom: 4%; margin-top: 0%; padding-top: 2%; text-align: center;">Notifications</h4>
-			  <% int leavesRequest =com.mnt.time.controller.Application.countLeavesRequest(((models.User)request.getAttribute("user")).getEmail()); 
-				  
-				   if(leavesRequest != 0) { %>
+			    <% int count0 =com.mnt.time.controller.Application.count0(((models.User)request.getAttribute("user")).getEmail());	
+				
+			 	if(count0 != 0) { %>
+			
+						<h5 style="text-align: center; margin-right: 10%;">
+						    Pending User Request :
+							<%=count0 %>
+							
+						</h5>
+						<%} else
+						{%>
+							<h5 style="margin-left: 10%;"> </h5>
+						<%}
+			 			%>  
+			 
+			 
+			  <% int count1 =com.mnt.time.controller.Application.count1(((models.User)request.getAttribute("user")).getEmail());	
+				
+			 	if(count1 != 0) { %>
+			
+						<h5 style="text-align: center; margin-right: 2%;">
+							 Pending Company Request :
+							<%=count1 %>
+							
+						</h5>
+						<%} else
+						{%>
+							<h5 style="margin-left: 10%;"> </h5>
+						<%}
+			 			%> 
+			 			
+			 			
+			 			<%  int count2 =com.mnt.time.controller.Application.count2(((models.User)request.getAttribute("user")).getEmail());
+				  if(count2 != 0) { %>
 						<h5 style="text-align: center;">
-						Pending Leaves Request :
-						<%=leavesRequest %>
+						   Pending Timesheet Request :
+						<%=count2 %>
+						</h5>
+						<%} else
+						{%>
+						<h5 style="margin-left: 10%;"> </h5>
+						<%}%>  
+				  
+			 
+			 
+			  <% int count3 =com.mnt.time.controller.Application.count3(((models.User)request.getAttribute("user")).getEmail()); 
+				  
+				   if(count3 != 0) { %>
+						<h5 style="text-align: center; margin-right: 6%;">
+					     Pending Leaves Request :
+						<%=count3 %>
 						</h5>
 						<%}  else
 									{%>
-									<h5> </h5>
+									<h5 style="margin-left: 10%;"> </h5>
 									<%}%> 
 				   
-				 <%  int timesheetRequest =com.mnt.time.controller.Application.countTimesheetRequest(((models.User)request.getAttribute("user")).getEmail());
-				  if(timesheetRequest != 0) { %>
-						<h5 style="text-align: center;">
-						Pending Timesheet Request :
-						<%=timesheetRequest %>
-						</h5>
-						<%} else
-						{%>
-						<h5> </h5>
-						<%}%>  
-				  
-			 	 <% int UserRequest =com.mnt.time.controller.Application.countUserRequest(((models.User)request.getAttribute("user")).getEmail());	
-				
-			 	if(UserRequest != 0) { %>
-			
-						<h5 style="text-align: center;">
-							Pending User Request :
-							<%=UserRequest %>
-						</h5>
-						<%} else
-						{%>
-							<h5> </h5>
-						<%}
-			 			%>
- 
-
+				 
 			</div>
 
 

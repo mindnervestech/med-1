@@ -117,7 +117,7 @@
 
 										<button type="submit" onClick="popupWin()"
 											class="btn btn-success">Register</button>
-										<a href="login" class="btn btn-info">Back</a>
+										<a href="/time" class="btn btn-info">Back</a>
 									</p>
 									<p>
 										Don't have a Company Domain yet? <a href="register"

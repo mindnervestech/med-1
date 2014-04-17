@@ -4,8 +4,8 @@
 	<jsp:include page="menuContext.jsp"/> 
 	
 	<h4 class="heading"><i>Manage Role Permissions :</i></h4>
-	<div class="searchContainer">
-		<div id="searchRolePermission" class="well form-inline" >
+	<div class="searchContainer" style="height: 389px;">
+		<div id="searchRolePermission" class="well form-inline" style="margin-left: 1%;margin-right: 1%;" >
 	
 			<table>
 				<tr>

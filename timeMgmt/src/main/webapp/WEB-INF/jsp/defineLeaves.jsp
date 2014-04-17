@@ -12,7 +12,7 @@
 	<fieldset>
 		<div id="leavex">
 			<c:forEach var="leaves" items="${leaveLevels}" varStatus='loopIndex'>
-				<div class=" twipsies well leaveLevel" style="width: 96%;">
+				<div class=" twipsies well leaveLevel" style="width: 94%;margin-left: 1%;">
 					<div class="clearfix" style="margin-right: 4%; float: left;">
 						<label for="leaveLevels_${loopIndex.index}__leave">Leaves
 							Type</label> <input type="text"
@@ -72,7 +72,7 @@
 
 
 	</fieldset>
-	<div class=" actions buttonPosition">
+	<div class=" actions buttonPosition" style="margin-left: 2%;">
 		<a class="addMore btn btn-success">Add More</a> <input type="button"
 			class="btn btn-info" id="submitButton" value="Submit"
 			style="width: 9%;">
