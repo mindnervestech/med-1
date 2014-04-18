@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
 	#custom-modal-container{
-		width: 1000px !important;
+		width: 950px !important;
 		left: 30% !important;
 	}
 
@@ -12,6 +12,7 @@
 	.timesheetFirstRow{
 		padding: 2% 5% 4%;
 		margin-bottom: 2%;
+		border-bottom: 1px solid #eee;
 	}
 	
 	.timesheetFirstRow p{
@@ -25,13 +26,17 @@
 	}
 	
 	.timesheetSecondRow td{
-		padding: 1% 2% !important;
+		padding: 1% 3% !important;
 		border-right: 1px solid #d5d5d5;
 		text-align: center; 
+		border-top: 1px solid #eee;
+		border-bottom: 1px solid #eee;
+		border-left: 1px solid #eee;
+
 	}
 	
 	.timesheetSecondRow td:LAST-CHILD{
-		border-right: none;
+		border-right: 1px solid #eee;
 	}
 	
 	.action{

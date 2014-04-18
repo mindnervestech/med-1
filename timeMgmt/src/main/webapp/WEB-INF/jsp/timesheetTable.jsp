@@ -6,7 +6,7 @@
 	type="text/javascript"></script>
 <script src='<c:url value="/resources/customScripts/timesheetRow.js"/>'
 	type="text/javascript"></script>
-<div id="timeSheetTable">
+<div id="timeSheetTable" style="float: left;width: 85%;"> 
 
 	<div class="worksheetHeader">
 		<h5>Work/Absence Hours Reporting</h5>
@@ -22,8 +22,8 @@
 		</div>
 	</div>
 
-	<div style="width: 85%;"class="reportingTable">
-		<div class="tableCss">
+	<div style="width: 96%;"class="reportingTable">
+		<div class="tableCss" style="margin-left: 1%;width: 904px;">
 			<div class="innerLabelDiv">
 				<div class="largeInputLabel largeInputLabel_First clearfix">Project
 					Codes</div>
@@ -53,13 +53,13 @@
 				</div>
 				<div class="smallInputLabel totalHRSLabel clearfix">T</div>
 				<div class="smallInputLabel clearfix">Overtime</div>
-				<a class="btn" id="addMore" style="margin-left: 18px; float: right;"><b>+</b></a>
+				<a class="btn" id="addMore" style="margin-left: 11px; float: left;"><b>+</b></a>
 			</div>
 		</div>
 
 		<c:forEach var="timeSheetRow" varStatus="loopIndex"
 			items="${timesheetForm.model.timesheetRows}">
-			<div class="twipsies well timesheetRow" style="width: 99%;">
+			<div class="twipsies well timesheetRow" style="width: 100%;margin-left: 1.5%;">
 				<div class="innerInputDiv">
 					<div class="innerChainSelect">
 						<div class="clearfix"
@@ -430,6 +430,15 @@
 		</div>
 	</div>
 </div>
+
+<style>
+.checkBox {
+	width: 15px !important;
+	margin: 8px !important;
+}
+
+</style>
+
 
 <script>
 	$(".dayName").focusout (function() {

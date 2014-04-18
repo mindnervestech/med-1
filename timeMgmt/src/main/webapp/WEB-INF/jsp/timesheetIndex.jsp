@@ -73,8 +73,8 @@
 	width: 48px;
 }
 .innerDaysDiv {
-	float: left;
-	width: 565px;
+	float: right;
+	width: 549px;
 }
 
 .largeInputLabel {
@@ -92,7 +92,8 @@
 	width: 5%;
 }
 .well {
-	width: 84%;
+	width: 96%;
+	margin-left: 1%;
 	padding-right: 0% !important;
 }
 </style>

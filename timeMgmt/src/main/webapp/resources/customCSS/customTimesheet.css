@@ -50,6 +50,7 @@ legend {
 	width: 325px;
 	float: left;
 	margin: 1%;
+	margin-left: 2%;
 }
 
 #empInfo h6{
@@ -69,8 +70,8 @@ legend {
 }
 
 #weekInfo{
-	float: right;
-	width: 50%;
+	float: left;
+	width: 47%;
 }
 
 #weekInfo h6{
@@ -118,7 +119,6 @@ legend {
 
 #statusInfo{
 	float: right;
-	width: 40%;
 }
 
 #statusInfo h6{
@@ -145,7 +145,8 @@ legend {
 	border-bottom: 1px solid;
 	padding-top: 10px;
 	float: left;
-	width: 100%;
+	width: 98%;
+	margin-left: 0.8%;
 }
 
 .worksheetHeader h5{
@@ -289,7 +290,7 @@ legend {
 
 .actions{
 	float: left;
-	margin: 2% 0 8% 0;
+	margin: 1% 0 8% 1.5%;
 }
 
 .timesheetRow_template{
