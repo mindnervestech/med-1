@@ -127,10 +127,10 @@
 						id="timesheetRows_${loopIndex.index}__mon_field">
 						<label for="timesheetRows_${loopIndex.index}__mon"></label>
 						<div style="margin-top: 8%;"class="input">
-							<input type="text" id="timesheetRows_${loopIndex.index}__mon"
+							<input type="number" name="h[]" min="0" max="24" id="timesheetRows_${loopIndex.index}__mon"
 								name="timesheetRows[${loopIndex.index}].mon"
 								value="${timesheetForm.model.timesheetRows.get(loopIndex.index).mon}"
-								placeholder="0:00" class="smallInput dayName"> <span
+								placeholder="hr" class="smallInput dayName"> <span
 								class="help-inline"></span> <span class="help-block"></span>
 						</div>
 					</div>
@@ -138,10 +138,10 @@
 						id="timesheetRows_${loopIndex.index}__tue_field">
 						<label for="timesheetRows_${loopIndex.index}__tue"></label>
 						<div class="input">
-							<input type="text" id="timesheetRows_${loopIndex.index}__tue"
+							<input type="number" name="h[]" min="0" max="24" id="timesheetRows_${loopIndex.index}__tue"
 								name="timesheetRows[${loopIndex.index}].tue"
 								value="${timesheetForm.model.timesheetRows.get(loopIndex.index).tue}"
-								placeholder="0:00" class="smallInput dayName"> <span
+								placeholder="hr" class="smallInput dayName"> <span
 								class="help-inline"></span> <span class="help-block"></span>
 						</div>
 					</div>
@@ -150,10 +150,10 @@
 						<label for="timesheetRows_${loopIndex.index}__wed"></label>
 
 						<div class="input">
-							<input type="text" id="timesheetRows_${loopIndex.index}__wed"
+							<input type="number" name="h[]" min="0" max="24" id="timesheetRows_${loopIndex.index}__wed"
 								name="timesheetRows[${loopIndex.index}].wed"
 								value="${timesheetForm.model.timesheetRows.get(loopIndex.index).wed}"
-								placeholder="0:00" class="smallInput dayName"> <span
+								placeholder="hr" class="smallInput dayName"> <span
 								class="help-inline"></span> <span class="help-block"></span>
 						</div>
 					</div>
@@ -162,10 +162,10 @@
 						<label for="timesheetRows_${loopIndex.index}__thu"></label>
 
 						<div class="input">
-							<input type="text" id="timesheetRows_${loopIndex.index}__thu"
+							<input type="number" name="h[]" min="0" max="24" id="timesheetRows_${loopIndex.index}__thu"
 								name="timesheetRows[${loopIndex.index}].thu"
 								value="${timesheetForm.model.timesheetRows.get(loopIndex.index).thu}"
-								placeholder="0:00" class="smallInput dayName"> <span
+								placeholder="hr" class="smallInput dayName"> <span
 								class="help-inline"></span> <span class="help-block"></span>
 						</div>
 					</div>
@@ -174,10 +174,10 @@
 						id="timesheetRows_${loopIndex.index}__fri_field">
 						<label for="timesheetRows_${loopIndex.index}__fri"></label>
 						<div class="input">
-							<input type="text" id="timesheetRows_${loopIndex.index}__fri"
+							<input type="number" name="h[]" min="0" max="24" id="timesheetRows_${loopIndex.index}__fri"
 								name="timesheetRows[${loopIndex.index}].fri"
 								value="${timesheetForm.model.timesheetRows.get(loopIndex.index).fri}"
-								placeholder="0:00" class="smallInput dayName"> <span
+								placeholder="hr" class="smallInput dayName"> <span
 								class="help-inline"></span> <span class="help-block"></span>
 						</div>
 					</div>
@@ -186,10 +186,10 @@
 						<label for="timesheetRows_${loopIndex.index}__sat"></label>
 
 						<div class="input">
-							<input type="text" id="timesheetRows_${loopIndex.index}__sat"
+							<input type="number" name="h[]" min="0" max="24" id="timesheetRows_${loopIndex.index}__sat"
 								name="timesheetRows[${loopIndex.index}].sat"
 								value="${timesheetForm.model.timesheetRows.get(loopIndex.index).sat}"
-								placeholder="0:00" class="smallInput dayName"> <span
+								placeholder="hr" class="smallInput dayName"> <span
 								class="help-inline"></span> <span class="help-block"></span>
 						</div>
 					</div>
@@ -198,10 +198,10 @@
 						<label for="timesheetRows_${loopIndex.index}__sun"></label>
 
 						<div class="input">
-							<input type="text" id="timesheetRows_${loopIndex.index}__sun"
+							<input type="number" name="h[]" min="0" max="24" id="timesheetRows_${loopIndex.index}__sun"
 								name="timesheetRows[${loopIndex.index}].sun"
 								value="${timesheetForm.model.timesheetRows.get(loopIndex.index).sun}"
-								placeholder="0:00" class="smallInput dayName"> <span
+								placeholder="hr" class="smallInput dayName"> <span
 								class="help-inline"></span> <span class="help-block"></span>
 						</div>
 					</div>
@@ -241,7 +241,7 @@
 
 	</div>
 
-	<div class="twipsies well timesheetRow_template">
+	<div class="twipsies well timesheetRow_template" style="width: 84%;margin-left: 1.5%;">
 		<div class="innerInputDiv">
 			<div class="innerChainSelect">
 

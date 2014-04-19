@@ -1,8 +1,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
 	#custom-modal-container{
-		width: 950px !important;
-		left: 30% !important;
+		/* width: 950px !important; */
+		left: 32% !important;
+		top: 20%;
 	}
 
 	.formClass{
@@ -11,7 +12,7 @@
 	
 	.timesheetFirstRow{
 		padding: 2% 5% 4%;
-		margin-bottom: 2%;
+		margin-bottom: 0%;
 		border-bottom: 1px solid #eee;
 	}
 	
@@ -196,8 +197,8 @@
 	</table>
 
 	<div class="action">
-		<input class="btn" type="button" id="approveTimeSheet" value="Approve">
-		<input class="btn" type="button" id="rejectTimeSheet" value="Reject">
+		<input class="btn btn-warning" type="button" id="approveTimeSheet" value="Approve">
+		<input class="btn btn-warning" type="button" id="rejectTimeSheet" value="Reject">
 	</div>	
 </div>
 

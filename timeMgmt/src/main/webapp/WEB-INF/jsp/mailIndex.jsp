@@ -71,9 +71,9 @@
 	</div>
 	<div style="margin-right: 27%;">
 		<button type="submit" id="updateButton" style="margin-left: 5%;"
-			class="btn btn-success">Submit</button>
-		<a href="<%=com.mnt.time.controller.routes.Application.index.url%>"
-			style="margin-left: 1.5%;" class="btn btn-info">Back</a>
+			class="btn btn-warning">Submit</button>
+		<a href="/time/index"
+			style="margin-left: 1.5%;" class="btn btn-warning">Back</a>
 
 	</div>
 

@@ -262,7 +262,7 @@
 	<c:when test="${fieldType.ctype().name()=='DATE'}">
 
 		<div class="control-group">
-			<label class="control-label" for="selectbasic">${fieldType.label()}
+			<label style="margin-left: 3%;" class="control-label" for="selectbasic">${fieldType.label()}
 				<c:if
 					test="${fieldType.validation() !=null && fieldType.validation().required()}">
 					<sup style="color: red"> *</sup>
@@ -272,7 +272,7 @@
 			<div id="${fieldType.name()}" data-provide="datepicker"
 				class='input-append date datepicker' data-date=""
 				data-date-format="dd-mm-yyyy">
-				<span class="add-on"><i class="icon-calendar"></i></span>
+				<span style="margin-left: 5%;" class="add-on"><i class="icon-calendar"></i></span>
 				<c:out value="${fieldType.value().dt}">${fieldType.value().getDt()}</c:out>
 				<c:choose>
 					<c:when test="${fieldType.value().dt != null}">

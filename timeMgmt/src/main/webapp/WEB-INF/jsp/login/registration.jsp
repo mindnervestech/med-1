@@ -70,20 +70,25 @@
 									<input type="hidden" id="companyId" name="companyId">
 
 									<p>
-										<input type="text" id="firstName" name="firstName"
-											placeholder="First Name" required rel="popover"
-											data-content="Enter Your First Name">
-
+										<div class="control-group">
+											<input type="text" id="firstName" name="firstName"
+												placeholder="First Name" required rel="popover"
+												data-content="Enter Your First Name">
+										</div>
 									</p>
 									<p>
-										<input type="text" id="middleName" name="middleName"
-											placeholder="Middle Name" rel="popover"
-											data-content="Enter Your Middle Name">
+										<div class="control-group">
+											<input type="text" id="middleName" name="middleName"
+												placeholder="Middle Name" required value="" rel="popover"
+												data-content="Enter Your Middle Name">
+										</div>		
 									</p>
 									<p>
-										<input type="text" id="lastName" name="lastName"
-											placeholder="Last Name" required rel="popover"
-											data-content="Enter Your Last Name">
+										<div class="control-group">
+											<input type="text" id="lastName" name="lastName"
+												placeholder="Last Name" required rel="popover"
+												data-content="Enter Your Last Name">
+										</div>
 									</p>
 
 									<div class="control-group">
@@ -101,9 +106,11 @@
 										</div>
 									</div>
 									<p>
-										<input type="password" id="cpassword" name="cpassword"
-											placeholder="Confirm Password" required rel="popover"
-											data-content="Please Re-Confirm your Password">
+										<div class="control-group">
+											<input type="password" id="cpassword" name="cpassword"
+												placeholder="Confirm Password" required rel="popover"
+												data-content="Please Re-Confirm your Password">
+										</div>
 									</p>
 									<p>
 										<select id="employeeStatus" name="status" required
@@ -137,7 +144,7 @@
 				</div>
 				<div class="modal-body">
 					<p>
-					<h4>Time Trotter Website Privacy Policy</h4>
+					<h4>Time Minder Website Privacy Policy</h4>
 										</p>
 				</div>
 				<div class="modal-footer">

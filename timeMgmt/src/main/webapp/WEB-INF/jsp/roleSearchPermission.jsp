@@ -23,7 +23,7 @@
 }
 
 #role_permission_search {
-	padding: 6px 10px;
+	padding: 5px 10px;
 	border-radius: 5px;
 }
 
@@ -31,6 +31,7 @@
 	background: #e6e6e6;
 	color: #fff;
 }
+
 </style>
 
 <table id="role_permission_list">

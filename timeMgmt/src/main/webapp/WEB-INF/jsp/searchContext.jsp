@@ -27,7 +27,7 @@
 			</c:choose>
 		 </c:forEach>
 			<label class="control-label" for="singlebutton">&nbsp;</label>
-			<button style="margin-left: 3%; color: gray;"id='${_searchContext.entityName()}${mode}${"_searchButton"}' onclick="return false;" name="searchButton" class="btn">Search</button>
+			<button style="margin-left: 5%; color: gray;"id='${_searchContext.entityName()}${mode}${"_searchButton"}' onclick="return false;" name="searchButton" class="btn">Search</button>
 		</c:if>		
 				
 </div>

@@ -26,13 +26,19 @@ h5 {
 	margin-top: 0%;
 }
 
+form {
+	margin-bottom: 13px !important;
+}
+
 body {
 	font-size: 11px !important;
 	/* background-image: url(resources/images/1.jpg); */
 }
 </style>
 
-<div class="row">
+
+
+<div class="row" style="height: 565px;">
 	<div class="col-lg-9 col-md-8">
 
 		<div class="timeline-cover">
@@ -45,7 +51,7 @@ body {
  -->
 					<div class="status innerAll" style="margin-left: 3%;">
 						<i class="fa fa-quote-left text-muted pull-left fa-fw"></i>
-						<p class="lead margin-none">Welcome
+						<p class="lead margin-none" style="display: block;">Welcome
 							${user.firstName.toUpperCase()} ${user.lastName.toUpperCase()}</p>
 					</div>
 				</div>
@@ -57,22 +63,25 @@ body {
 		<div class="container">
 		
 			
-			<div style="float: left; margin-left: 2%;background: rgb(238, 238, 238); width: 60%; border: 1px solid #4387bf;">
-				<div  class="col-sm-6 ui-jqgrid-titlebar ui-widget-header ui-corner-top ">
+			<div style="float: left; margin-left: 2%;background: rgb(238, 238, 238); width: 63%; border: 1px solid #4387bf;">
+				<div  class="col-sm-6 ui-jqgrid-titlebar ui-widget-header ui-corner-top " style="height: 30px">
+					
 					<div style="margin-left: 5%;" class="innerAll bg-white">
-						<h5>User Profile</h5>
+						<h5 style="width: 96%;float: left;">User Profile</h5>
+						<a role="link"   href="javascript:void(0)" class="ui-jqgrid-titlebar-close HeaderButton" id="s1" style="right: 0px;">
+					<span class="ui-icon ui-icon-circle-triangle-n"></span>
 						<div style="float: left;" class="media innerB ">
-							<a href="" class="pull-left"> <img
+							<a href="" class="pull-left" id="s3"> <img
 								src="/time/resources/images/user.png" style="margin-left: 2%;"
 								width="75" />
 							</a>
 
+						</div>
 					</div>
 				</div>
-			</div>
-			
-				<div class="" style="width: 50%; margin: 0 auto; float: left;">
-					
+
+				<div class="" style="width: 50%; margin: 0 auto; float: left;" id="s2">
+
 					<form:form
 						action="<%=com.mnt.time.controller.routes.Application.changePassword.url%>"
 						id="changePassword">
@@ -176,9 +185,14 @@ body {
 			</div>
 
 			<div
-				style="float: right;background: rgb(238, 238, 238); margin-right: 0%; width: 32%; height: 230px; border: 1px solid #4387bf;">
-				<h4 class="ui-jqgrid-titlebar ui-widget-header ui-corner-top"
-					style="border-bottom: 1px solid black; width: 100%; padding-bottom: 4%; margin-top: 0%; padding-top: 2%; text-align: center;">Notifications</h4>
+				style="float: right;background: rgb(238, 238, 238); margin-right: 0%; width: 32%; border: 1px solid #4387bf;">
+				<div style="width: 100%; float: left;border-bottom: 1px solid black;" class="ui-widget-header" id="t1">
+					<h4 class="ui-jqgrid-titlebar ui-corner-top"
+						style=" width: 86%; margin-left: 8%; margin-top: 0%; padding-top: 2%; text-align: center;float: left;">Notifications
+					</h4>
+						<span class="ui-icon ui-icon-circle-triangle-n"></span>	
+			   </div>
+			   <div id="t2" style="height: 238px;">
 			    <% int count0 =com.mnt.time.controller.Application.count0(((models.User)request.getAttribute("user")).getEmail());	
 				
 			 	if(count0 != 0) { %>
@@ -239,15 +253,20 @@ body {
 				 
 			</div>
 
-
+</div>
 
 		</div>
-		<div class="container">
- 				<div style="float: right;margin-top: 2%;background: rgb(238, 238, 238); width:32%; height: 225px; border: 1px solid #4387bf;">
-		 					<h4 class="ui-jqgrid-titlebar ui-widget-header ui-corner-top" style="border-bottom: 1px solid black; width: 100%;padding-bottom: 4%;margin-top: 0%; padding-top: 2%;text-align: center;">Leaves Balance</h4>
-		
-					<div class="clearfix"
-						style="margin-right: 4%; float: left; width: 100%;">
+		<div class="container" style="margin-top: 2%;">
+ 				<div
+				style="float: right;background: rgb(238, 238, 238); margin-right: 0%; width: 32%;  border: 1px solid #4387bf;">
+				<div style="width: 100%; float: left;border-bottom: 1px solid black;" class="ui-widget-header" id="w1">
+					<h4 class="ui-jqgrid-titlebar ui-corner-top"
+						style=" width: 86%; margin-left: 8%; margin-top: 0%; padding-top: 2%; text-align: center;float: left;">Leave Balance
+					</h4>
+						<span class="ui-icon ui-icon-circle-triangle-n"></span>	
+			   </div>
+					<div class="clearfix" id="w2" 
+						style="margin-right: 4%; float: left; width: 100%;height: 205px;">
 						<c:forEach var="leave" items="${leaves}" varStatus='loopIndex'>
 							<label style="float: left;text-align: center;margin-left: 15%;font-weight: bold;font-size: 12px;"
 								for="leave_${loopIndex.index}_leave_name">
@@ -356,5 +375,28 @@ body {
 											}
 										}, "");
 
-					});
-</script>
+						});
+		
+		
+		$('#s1').click(function() {
+			$('#s1').show();
+			$('#s2').toggle();
+			$('#s3').toggle();
+			
+		});
+		
+		$('#t1').click(function() {
+			$('#t1').show();
+			$('#t2').toggle();
+			
+			
+		});
+		
+		$('#w1').click(function() {
+			$('#w1').show();
+			$('#w2').toggle();
+			
+			
+		});
+		
+	</script>

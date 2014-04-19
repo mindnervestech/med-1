@@ -107,7 +107,7 @@
 </c:if>
 	<c:forEach var="button" items="${_pageContext.getButtonActions()}">
   		<c:if test="${button.visibility()}">
-		  			<button style="float:right;margin-top:6%;width: 13%;"type="button" id='${_pageContext.pageName()}${button.id()}' class="btn btn-warning" >${button.label()}</button>
+		  			<button style="float:right;margin-top:5%;width: 12%;margin-right: 2%;"type="button" id='${_pageContext.pageName()}${button.id()}' class="btn btn-warning" >${button.label()}</button>
   		</c:if>
   	</c:forEach>
 <c:if test='${isModal}'>	

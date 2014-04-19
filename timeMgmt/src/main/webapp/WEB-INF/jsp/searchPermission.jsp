@@ -4,7 +4,7 @@
 }
 
 #permission_search{
-	padding: 6px 10px;
+	padding: 5px 10px;
 	border-radius: 5px;
 }
 

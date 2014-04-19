@@ -76,7 +76,7 @@
 						<p>
 							<input type="password" name="password" placeholder="Password"
 								rel="popover" required="required"
-								data-content="What's your password on Time Trotter?">
+								data-content="What's your password on Time Minder?">
 						</p>
 						<p>
 							<button type="submit" class="btn btn-success">Login</button>

@@ -35,7 +35,7 @@
 			</div>	
 			</c:forEach>
 			
-			<input type="submit" name="Submit" class="btn btnColor">
+			<input type="submit" name="Submit" class="btn btn-warning"style="margin-top: 2%;">
 		 	
 					
  </form>

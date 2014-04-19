@@ -134,7 +134,7 @@
 				</c:forEach>
 
 				<div class="actions" style="margin-top: 1%;">
-					<input type="button" class="btn btn-info" id="submitButton"
+					<input type="button" class="btn btn-warning" id="submitButton"
 						value="Submit" style="margin: 1% 2%; width: 8%;">
 				</div>
 			</c:if>
