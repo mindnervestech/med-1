@@ -65,7 +65,7 @@
  
  function Taskadd_onCardReady(_wizard){
 	 if((_wizard).index==1){
-		 Projectadd_SearchGrid.resizeGrid();  
+		 Taskadd_SearchGrid.resizeGrid();  
 	 }
  }
  
@@ -75,7 +75,7 @@
  function Taskedit_onCardReady(_wizard){
 	 
 	 if((_wizard).index==1){
-		 Projectedit_SearchGrid.resizeGrid();  
+		 Taskadd_SearchGrid.resizeGrid();  
 	 } 
  }	 
  </script>

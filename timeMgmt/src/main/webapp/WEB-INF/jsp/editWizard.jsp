@@ -5,7 +5,7 @@
 	<c:forEach var="wizard" items='${_searchContext.getWizards()}'>
 		<div class="wizard-card" data-cardname='${wizard.name()}${"_edit"}'
 			data-validate='${"form_"}${_searchContext.entityName()}${"_edit_wizard"}'>
-			<h3>${wizard.name()}</h3>
+			
 			<c:forEach var="fieldType" items="${wizard.card().iterator()}">
 				<c:choose>
 					<c:when test='${fieldType.ctype().name()=="INPUT"}'>
@@ -178,7 +178,7 @@
 											    	callback(data);
 											    }
 											}).on('change',function(ev){
-											//	console.log(ev.val);
+											
 												$('#'+'${_searchContext.entityName()}${"edit"}${fieldType.name()}${"_hidden"}').val(ev.val);
 											});
 											</script>

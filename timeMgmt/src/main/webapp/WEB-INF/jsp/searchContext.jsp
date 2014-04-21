@@ -205,7 +205,7 @@
 								 	});
 								
 								}else{
-									//alert(_action);
+									
 									if(_action == 'EDIT_TYPE'){
 										${_searchContext.entityName()}${mode}${"_SearchGrid"}.doEdit(s);					
 									}else{
@@ -500,7 +500,7 @@
 					<c:when test='${button.target().name()=="MODAL"}'>
 					
 			  		 $('#${_searchContext.entityName()}${mode}${button.id()}').click(function() {
-							//alert("hello");		
+									
 								s =  ${_searchContext.entityName()}${"_this"}.selectedItem();
 								if(s.length == 0 ){
 									bootbox.confirm("Please Mark Selection From Grid", function(result) {
