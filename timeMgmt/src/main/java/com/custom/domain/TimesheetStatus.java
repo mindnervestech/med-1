@@ -3,10 +3,11 @@ package com.custom.domain;
 import com.mnt.core.domain.DomainEnum;
 
 public enum TimesheetStatus implements DomainEnum{
+	Submitted("Submitted"),
 	Draft("Draft"),
 	Approved("Approved"),
-	Rejected("Rejected"),
-	Submitted("Submitted");
+	Rejected("Rejected");
+	
 	private boolean uiHidden = false;
 	@Override
 	public boolean uiHidden() {

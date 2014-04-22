@@ -2,7 +2,8 @@
 <style>
 	#custom-modal-container{
 		width: 500px !important;
-		left: 50% !important;
+		left: 55% !important;
+		top: 30%;
 	}
 
 	.formClass{

@@ -3,7 +3,7 @@ package com.custom.domain;
 import com.mnt.core.domain.DomainEnum;
 
 public enum Status implements DomainEnum {
-		
+		Submitted("Submitted"),
 		PendingApproval("Pending Approval"),
 		Approved("Approved"),
 		Disapproved("Disapproved");

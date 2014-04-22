@@ -87,7 +87,7 @@ public class TimesheetBucketSearchContext extends ASearchContext<TimeSheetBucket
          
           @Override
           public String url() {
-                return "approveTimesheets";
+                return "/timesheet/approveTimesheets";
           }
          
           @Override
@@ -115,7 +115,7 @@ public class TimesheetBucketSearchContext extends ASearchContext<TimeSheetBucket
 	       
 	        @Override
 	        public String url() {
-	              return "rejectTimesheets";
+	              return "/timesheet/rejectTimesheets";
 	        }
 	       
 	        @Override
@@ -143,7 +143,7 @@ public class TimesheetBucketSearchContext extends ASearchContext<TimeSheetBucket
 	       
 	        @Override
 	        public String url() {
-	              return "displayTimesheet";
+	              return "/timesheet/displayTimesheet";
 	        }
 	       
 	        @Override

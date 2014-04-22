@@ -6,6 +6,7 @@
 #custom-modal-container {
 	width: 580px !important;
 	left: 50% !important;
+	top: 20%;
 }
 
 .formClass {
