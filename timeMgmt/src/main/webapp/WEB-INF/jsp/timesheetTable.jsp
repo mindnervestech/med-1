@@ -127,7 +127,7 @@
 						id="timesheetRows_${loopIndex.index}__mon_field">
 						<label for="timesheetRows_${loopIndex.index}__mon"></label>
 						<div style="margin-top: 8%;"class="input">
-							<input type="number" name="h[]" min="0" max="24" id="timesheetRows_${loopIndex.index}__mon"
+							<input type="number"  min="0" max="24" id="timesheetRows_${loopIndex.index}__mon"
 								name="timesheetRows[${loopIndex.index}].mon"
 								value="${timesheetForm.model.timesheetRows.get(loopIndex.index).mon}"
 								placeholder="hr" class="smallInput dayName"> <span
@@ -138,7 +138,7 @@
 						id="timesheetRows_${loopIndex.index}__tue_field">
 						<label for="timesheetRows_${loopIndex.index}__tue"></label>
 						<div class="input">
-							<input type="number" name="h[]" min="0" max="24" id="timesheetRows_${loopIndex.index}__tue"
+							<input type="number"  min="0" max="24" id="timesheetRows_${loopIndex.index}__tue"
 								name="timesheetRows[${loopIndex.index}].tue"
 								value="${timesheetForm.model.timesheetRows.get(loopIndex.index).tue}"
 								placeholder="hr" class="smallInput dayName"> <span
@@ -150,7 +150,7 @@
 						<label for="timesheetRows_${loopIndex.index}__wed"></label>
 
 						<div class="input">
-							<input type="number" name="h[]" min="0" max="24" id="timesheetRows_${loopIndex.index}__wed"
+							<input type="number" min="0" max="24" id="timesheetRows_${loopIndex.index}__wed"
 								name="timesheetRows[${loopIndex.index}].wed"
 								value="${timesheetForm.model.timesheetRows.get(loopIndex.index).wed}"
 								placeholder="hr" class="smallInput dayName"> <span
@@ -162,7 +162,7 @@
 						<label for="timesheetRows_${loopIndex.index}__thu"></label>
 
 						<div class="input">
-							<input type="number" name="h[]" min="0" max="24" id="timesheetRows_${loopIndex.index}__thu"
+							<input type="number"  min="0" max="24" id="timesheetRows_${loopIndex.index}__thu"
 								name="timesheetRows[${loopIndex.index}].thu"
 								value="${timesheetForm.model.timesheetRows.get(loopIndex.index).thu}"
 								placeholder="hr" class="smallInput dayName"> <span
@@ -174,7 +174,7 @@
 						id="timesheetRows_${loopIndex.index}__fri_field">
 						<label for="timesheetRows_${loopIndex.index}__fri"></label>
 						<div class="input">
-							<input type="number" name="h[]" min="0" max="24" id="timesheetRows_${loopIndex.index}__fri"
+							<input type="number"  min="0" max="24" id="timesheetRows_${loopIndex.index}__fri"
 								name="timesheetRows[${loopIndex.index}].fri"
 								value="${timesheetForm.model.timesheetRows.get(loopIndex.index).fri}"
 								placeholder="hr" class="smallInput dayName"> <span
@@ -186,7 +186,7 @@
 						<label for="timesheetRows_${loopIndex.index}__sat"></label>
 
 						<div class="input">
-							<input type="number" name="h[]" min="0" max="24" id="timesheetRows_${loopIndex.index}__sat"
+							<input type="number" min="0" max="24" id="timesheetRows_${loopIndex.index}__sat"
 								name="timesheetRows[${loopIndex.index}].sat"
 								value="${timesheetForm.model.timesheetRows.get(loopIndex.index).sat}"
 								placeholder="hr" class="smallInput dayName"> <span
@@ -198,7 +198,7 @@
 						<label for="timesheetRows_${loopIndex.index}__sun"></label>
 
 						<div class="input">
-							<input type="number" name="h[]" min="0" max="24" id="timesheetRows_${loopIndex.index}__sun"
+							<input type="number"  min="0" max="24" id="timesheetRows_${loopIndex.index}__sun"
 								name="timesheetRows[${loopIndex.index}].sun"
 								value="${timesheetForm.model.timesheetRows.get(loopIndex.index).sun}"
 								placeholder="hr" class="smallInput dayName"> <span
@@ -295,8 +295,8 @@
 			<div class="clearfix" id="timesheetRows_x__mon_field">
 				<label for="timesheetRows_x__mon"></label>
 				<div class="input">
-					<input type="text" id="timesheetRows_x__mon"
-						name="timesheetRows[x].mon" value="" placeholder="0:00"
+					<input type="number"  min="0" max="24" id="timesheetRows_x__mon"
+						name="timesheetRows[x].mon" value="" placeholder="hr"
 						class="smallInput dayName"> <span class="help-inline"></span> <span
 						class="help-block"></span>
 				</div>
@@ -304,8 +304,8 @@
 			<div class="clearfix" id="timesheetRows_x__tue_field">
 				<label for="timesheetRows_x__tue"></label>
 				<div class="input">
-					<input type="text" id="timesheetRows_x__tue"
-						name="timesheetRows[x].tue" value="" placeholder="0:00"
+					<input type="number"  min="0" max="24" id="timesheetRows_x__tue"
+						name="timesheetRows[x].tue" value="" placeholder="hr"
 						class="smallInput dayName"> <span class="help-inline"></span> <span
 						class="help-block"></span>
 				</div>
@@ -314,8 +314,8 @@
 				<label for="timesheetRows_x__wed"></label>
 
 				<div class="input">
-					<input type="text" id="timesheetRows_x__wed"
-						name="timesheetRows[x].wed" value="" placeholder="0:00"
+					<input type="number"  min="0" max="24" id="timesheetRows_x__wed"
+						name="timesheetRows[x].wed" value="" placeholder="hr"
 						class="smallInput dayName"> <span class="help-inline"></span> <span
 						class="help-block"></span>
 				</div>
@@ -324,8 +324,8 @@
 				<label for="timesheetRows_x__thu"></label>
 
 				<div class="input">
-					<input type="text" id="timesheetRows_x__thu"
-						name="timesheetRows[x].thu" value="" placeholder="0:00"
+					<input type="number"  min="0" max="24" id="timesheetRows_x__thu"
+						name="timesheetRows[x].thu" value="" placeholder="hr"
 						class="smallInput dayName"> <span class="help-inline"></span> <span
 						class="help-block"></span>
 				</div>
@@ -334,8 +334,8 @@
 			<div class="clearfix" id="timesheetRows_x__fri_field">
 				<label for="timesheetRows_x__fri"></label>
 				<div class="input">
-					<input type="text" id="timesheetRows_x__fri"
-						name="timesheetRows[x].fri" value="" placeholder="0:00"
+					<input type="number"  min="0" max="24" id="timesheetRows_x__fri"
+						name="timesheetRows[x].fri" value="" placeholder="hr"
 						class="smallInput dayName"> <span class="help-inline"></span> <span
 						class="help-block"></span>
 				</div>
@@ -344,8 +344,8 @@
 				<label for="timesheetRows_x__sat"></label>
 
 				<div class="input">
-					<input type="text" id="timesheetRows_x__sat"
-						name="timesheetRows[x].sat" value="" placeholder="0:00"
+					<input type="number"  min="0" max="24" id="timesheetRows_x__sat"
+						name="timesheetRows[x].sat" value="" placeholder="hr"
 						class="smallInput dayName"> <span class="help-inline"></span> <span
 						class="help-block"></span>
 				</div>
@@ -354,8 +354,8 @@
 				<label for="timesheetRows_x__sun"></label>
 
 				<div class="input">
-					<input type="text" id="timesheetRows_x__sun"
-						name="timesheetRows[x].sun" value="" placeholder="0:00"
+					<input type="number"  min="0" max="24" id="timesheetRows_x__sun"
+						name="timesheetRows[x].sun" value="" placeholder="hr"
 						class="smallInput dayName"> <span class="help-inline"></span> <span
 						class="help-block"></span>
 				</div>

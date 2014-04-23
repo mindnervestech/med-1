@@ -373,11 +373,16 @@ public class Leaves {
 		public @ResponseBody String saveLeaves(@CookieValue("username")String username,HttpServletRequest request){
 				
 			final User user = User.findByEmail(username);
+			
+			List<RoleLevel> rl2 = RoleLevel.find.all();
 			Form<LeaveX> leaveXForm = form(LeaveX.class).bindFromRequest(request);
 			LeaveX leaveX = LeaveX.find.where(Expr.eq("company", user.getCompanyobject())).findUnique();
 			List<RoleLevel> rolelevel=RoleLevel.findListByCompany(user.getCompanyobject().getId());
-	
-			if(leaveX != null){
+			
+			if(leaveX == null){
+				leaveXForm.get().setCompany(user.getCompanyobject());
+				leaveXForm.get().save();
+				
 				for(LeaveLevel _rl : leaveXForm.get().getLeaveLevels()){
 					if(_rl.getId()!=null)
 					{
@@ -385,12 +390,14 @@ public class Leaves {
 					} else {
 						_rl.setLeaveX(leaveX);
 						_rl.save();
-						updateLeaveBalance(_rl, user);
 					}
+					updateLeaveBalance(_rl, user);
+					 updateRoleLeave(_rl,rolelevel);
+					
 				}
 			}else{
-				leaveXForm.get().setCompany(user.getCompanyobject());
-				leaveXForm.get().save();
+				/*leaveXForm.get().setCompany(user.getCompanyobject());
+				leaveXForm.get().save();*/
 			}
 			
 			List<LeaveLevel> ll=LeaveLevel.findListByCompany(user.getCompanyobject().getId());
@@ -439,11 +446,30 @@ public class Leaves {
 				LeaveBalance lbalance = new LeaveBalance();
 				lbalance.employee = u;
 				lbalance.leaveLevel = rl;
+				lbalance.balance = 0f;
 				lbalance.save();
 			}
 		}
 		 
 	}
+	
+	
+	private void updateRoleLeave(LeaveLevel rl, List<RoleLevel> rolelevel ){
+		List<RoleLevel> rl1 = RoleLevel.find.all();
+		//List<User> users = User.find.where().eq("companyobject",user.getCompanyobject()).findList();
+		for(RoleLevel r:rl1) {
+			if(RoleLeave.find.where().eq("company", rl.getLeaveX().getCompany()).eq("roleLevel", r).eq("leaveLevel", rl).findUnique() == null){
+				RoleLeave Rleave = new RoleLeave();
+				Rleave.roleLevel = r;
+				Rleave.company = rl.leaveX.getCompany();
+				Rleave.leaveLevel = rl;
+				Rleave.total_leave = 0l;
+				Rleave.save();
+			}
+		}
+		 
+	}
+	
 	
 	 
 	 static class RoleTypeByLeaveTypeMap {
