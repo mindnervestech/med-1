@@ -15,13 +15,15 @@
 		<tiles.version>3.0.1</tiles.version>
 	</properties>
 	<dependencies>
-		<dependency>
+		<!-- <dependency>
 			<groupId>crud-ebean</groupId>
 			<artifactId>crud-ebean</artifactId>
 			<version>0.0.2</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
+			<scope>system</scope>
+         
+         <systemPath>${project.basedir}/libs/crud-ebean-0.0.2.jar</systemPath>
+			
+		</dependency> -->
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
